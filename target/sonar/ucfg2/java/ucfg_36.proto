@@ -1,0 +1,83 @@
+
+Àpe.gob.onpe.wsonpe.security.SecurityConfig#securityFilterChain(Lorg/springframework/security/config/annotation/web/builders/HttpSecurity;)Lorg/springframework/security/web/SecurityFilterChain;c
+YC:/xampp/htdocs/transmision/src/main/java/pe/gob/onpe/wsonpe/security/SecurityConfig.java (0"startingBlock*£
+startingBlock0 (Kå
+â
+ (
+%14"
+__annotate*K
+
+__unknown_file (/-
++org.springframework.context.annotation.Bean*v
+
+__unknown_file (Z
+X
+httpSecurityHorg.springframework.security.config.annotation.web.builders.HttpSecurityš
+—
+> (JX
+httpSecurityHorg.springframework.security.config.annotation.web.builders.HttpSecurity"__annotation*#
+
+__unknown_file (
+
+%14*
+1*•
+1 (ýú
+ (,N
+%0Horg.springframework.security.config.annotation.web.builders.HttpSecurity"Éorg.springframework.security.config.annotation.web.builders.HttpSecurity#csrf(Lorg/springframework/security/config/Customizer;)Lorg/springframework/security/config/annotation/web/builders/HttpSecurity;*v
+
+__unknown_file (Z
+X
+httpSecurityHorg.springframework.security.config.annotation.web.builders.HttpSecurity*"
+
+__unknown_file (
+""26csrf(Lorg/springframework/security/config/Customizer;)³
+°
+ ()4
+%1.org.springframework.security.config.Customizer"__declareFunction*[
+
+__unknown_file (?=
+;__sonar_lambda_0$pe.gob.onpe.wsonpe.security.SecurityConfigÅÂ
+ (	N
+%9Horg.springframework.security.config.annotation.web.builders.HttpSecurity"Úorg.springframework.security.config.annotation.web.builders.HttpSecurity#authorizeHttpRequests(Lorg/springframework/security/config/Customizer;)Lorg/springframework/security/config/annotation/web/builders/HttpSecurity;*l
+
+__unknown_file (P
+N
+%0Horg.springframework.security.config.annotation.web.builders.HttpSecurity*R
+
+__unknown_file (6
+4
+%1.org.springframework.security.config.Customizer2GauthorizeHttpRequests(Lorg/springframework/security/config/Customizer;){y
+ (09
+%102pe.gob.onpe.wsonpe.security.JWTAuthorizationFilter"2pe.gob.onpe.wsonpe.security.JWTAuthorizationFilter«
+¨
+ (2
+%11"<pe.gob.onpe.wsonpe.security.JWTAuthorizationFilter#<init>()V*W
+
+__unknown_file (;
+9
+%102pe.gob.onpe.wsonpe.security.JWTAuthorizationFilterÓÐ
+ (_O
+%12Horg.springframework.security.config.annotation.web.builders.HttpSecurity"Ìorg.springframework.security.config.annotation.web.builders.HttpSecurity#addFilterAfter(Ljakarta/servlet/Filter;Ljava/lang/Class;)Lorg/springframework/security/config/annotation/web/builders/HttpSecurity;*l
+
+__unknown_file (P
+N
+%9Horg.springframework.security.config.annotation.web.builders.HttpSecurity*W
+
+__unknown_file (;
+9
+%102pe.gob.onpe.wsonpe.security.JWTAuthorizationFilter*"
+
+__unknown_file (
+""29addFilterAfter(Ljakarta/servlet/Filter;Ljava/lang/Class;)´±
+! !(B
+%13;org.springframework.security.web.DefaultSecurityFilterChain"`org.springframework.security.config.annotation.AbstractSecurityBuilder#build()Ljava/lang/Object;*v
+
+__unknown_file (Z
+X
+httpSecurityHorg.springframework.security.config.annotation.web.builders.HttpSecurity2build()"P
+! !( D
+B
+%13;org.springframework.security.web.DefaultSecurityFilterChain:d
+1 (JX
+httpSecurityHorg.springframework.security.config.annotation.web.builders.HttpSecurityB.,
+*pe.gob.onpe.wsonpe.security.SecurityConfigH

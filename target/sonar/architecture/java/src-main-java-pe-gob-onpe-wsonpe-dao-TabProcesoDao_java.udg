@@ -1,0 +1,75 @@
+
+1.0craniologo_transmisionJavaFrontend"1756337469096*java2.BÂ
+<
+7src/main/java/pe/gob/onpe/wsonpe/dao/TabProcesoDao.java2
+	
+type3
+	
+MAIN4
+
+
+module-key5
+
+craniologo_transmision6
+
+package8
+2
+-craniologo_transmision:pe.gob.onpe.wsonpe.dao9
+*
+$pe.gob.onpe.wsonpe.dao.TabProcesoDao11
+
+	interface12
+
+access13
+
+public14
+
+simple-name15
+
+TabProcesoDao16
+R
+Lpe.gob.onpe.wsonpe.dao.TabProcesoDao#obtenerFechaProceso()Ljava/lang/String;18
+
+method19
+
+obtenerFechaProceso20J#
+!
+1
+12
+
+3
+4
+
+5
+6Z
+
+7
+7982
+
+
+5
+6j„
+>
+108
+101112 *
+1 (:7B
+
+
+13
+14
+
+
+15
+16
+B
+17<
+171819 *
+1 (	210:7B
+
+
+13
+14
+
+
+15
+20

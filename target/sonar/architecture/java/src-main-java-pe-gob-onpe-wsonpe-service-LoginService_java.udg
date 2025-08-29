@@ -1,0 +1,823 @@
+
+1.0craniologo_transmisionJavaFrontend"1756337476514*java2.B˝!
+?
+:src/main/java/pe/gob/onpe/wsonpe/service/LoginService.java2
+	
+type3
+	
+MAIN4
+
+
+module-key5
+
+craniologo_transmision6
+
+package8
+6
+1craniologo_transmision:pe.gob.onpe.wsonpe.service9
+-
+'pe.gob.onpe.wsonpe.service.LoginService11
+
+class12
+
+access13
+
+public14
+
+simple-name15
+
+LoginService16
+.
+(pe.gob.onpe.wsonpe.service.ILoginService18
+
+unknown19
+
+
+implements20
+,
+&org.springframework.stereotype.Service22
+
+annotated by23
+
+
+uses24
+
+lombok.extern.slf4j.Slf4j26
+?
+9pe.gob.onpe.wsonpe.service.LoginService.usuarioRepository28
+
+field29
+
+private30
+
+usuarioRepository31
+8
+2pe.gob.onpe.wsonpe.repository.TabUsuarioRepository33
+
+is type34
+>
+8pe.gob.onpe.wsonpe.service.LoginService.confTxRepository36
+
+confTxRepository37
+7
+1pe.gob.onpe.wsonpe.repository.TabConfTxRepository39
+@
+:pe.gob.onpe.wsonpe.service.LoginService.eleccionRepository41
+
+eleccionRepository42
+9
+3pe.gob.onpe.wsonpe.repository.TabEleccionRepository44
+4
+.pe.gob.onpe.wsonpe.service.LoginService.ACTIVE46
+
+ACTIVE47
+9
+3pe.gob.onpe.wsonpe.service.LoginService.jwtLifetime49
+
+jwtLifetime50
+8
+2org.springframework.beans.factory.annotation.Value52
+@
+:pe.gob.onpe.wsonpe.service.LoginService.refreshJwtLifetime54
+
+refreshJwtLifetime55
+‘
+Õpe.gob.onpe.wsonpe.service.LoginService#<init>(Lpe/gob/onpe/wsonpe/repository/TabUsuarioRepository;Lpe/gob/onpe/wsonpe/repository/TabConfTxRepository;Lpe/gob/onpe/wsonpe/repository/TabEleccionRepository;)V57
+
+method58
+
+	has param59
+
+calls60
+
+
+references61
+Ñ
+~pe.gob.onpe.wsonpe.service.LoginService#login(Lpe/gob/onpe/wsonpe/dto/LoginRequest;)Lpe/gob/onpe/wsonpe/dto/MensajeWsResponse;63
+
+login64
+.
+(pe.gob.onpe.wsonpe.dto.MensajeWsResponse66
+
+returns67
+)
+#pe.gob.onpe.wsonpe.dto.LoginRequest69
+|
+vpe.gob.onpe.wsonpe.repository.TabUsuarioRepository#spValidaAcceso(Ljava/lang/String;Ljava/lang/String;)Ljava/util/Map;71
+*
+$pe.gob.onpe.wsonpe.utils.WsOnpeUtils73
+W
+Qpe.gob.onpe.wsonpe.utils.WsOnpeUtils#getSHA(Ljava/lang/String;)Ljava/lang/String;75
+`
+Zpe.gob.onpe.wsonpe.service.LoginService#getJwtToken(Ljava/lang/String;Z)Ljava/lang/String;77
+£
+úpe.gob.onpe.wsonpe.service.LoginService#dataAuthentication(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lpe/gob/onpe/wsonpe/dto/MensajeWsResponse;79
+
+dataAuthentication80
+@
+:pe.gob.onpe.wsonpe.projections.FindConfigurationProjection82
+j
+dpe.gob.onpe.wsonpe.repository.TabConfTxRepository#findBynEstado(Ljava/lang/Integer;)Ljava/util/List;84
+*
+$pe.gob.onpe.wsonpe.model.TabEleccion86
+S
+Mpe.gob.onpe.wsonpe.repository.TabEleccionRepository#findAll()Ljava/util/List;88
+)
+#pe.gob.onpe.wsonpe.dto.UserResponse90
+4
+.pe.gob.onpe.wsonpe.dto.UserResponse$Elecciones92
+1
++com.fasterxml.jackson.databind.ObjectMapper94
+j
+dcom.fasterxml.jackson.databind.ObjectMapper#writeValueAsString(Ljava/lang/Object;)Ljava/lang/String;96
+8
+2com.fasterxml.jackson.core.JsonProcessingException98
+8
+1org.apache.commons.lang3.exception.ExceptionUtils100
+l
+eorg.apache.commons.lang3.exception.ExceptionUtils#getMessage(Ljava/lang/Throwable;)Ljava/lang/String;102
+
+getJwtToken103
+9
+2org.springframework.security.core.GrantedAuthority105
+A
+:org.springframework.security.core.authority.AuthorityUtils107
+ä
+Çorg.springframework.security.core.authority.AuthorityUtils#commaSeparatedStringToAuthorityList(Ljava/lang/String;)Ljava/util/List;109
+&
+pe.gob.onpe.wsonpe.utils.Crypto111
+]
+Vpe.gob.onpe.wsonpe.utils.Crypto#encryptStringAES(Ljava/lang/String;)Ljava/lang/String;113
+!
+io.jsonwebtoken.JwtBuilder115
+n
+gio.jsonwebtoken.JwtBuilder#signWith(Lio/jsonwebtoken/SignatureAlgorithm;[B)Lio/jsonwebtoken/JwtBuilder;117
+]
+Vio.jsonwebtoken.JwtBuilder#setExpiration(Ljava/util/Date;)Lio/jsonwebtoken/JwtBuilder;119
+[
+Tio.jsonwebtoken.JwtBuilder#setIssuedAt(Ljava/util/Date;)Lio/jsonwebtoken/JwtBuilder;121
+\
+Uio.jsonwebtoken.JwtBuilder#setSubject(Ljava/lang/String;)Lio/jsonwebtoken/JwtBuilder;123
+X
+Qio.jsonwebtoken.JwtBuilder#setClaims(Ljava/util/Map;)Lio/jsonwebtoken/JwtBuilder;125
+
+io.jsonwebtoken.Jwts127
+A
+:io.jsonwebtoken.Jwts#builder()Lio/jsonwebtoken/JwtBuilder;129
+)
+"io.jsonwebtoken.SignatureAlgorithm131
+/
+(io.jsonwebtoken.SignatureAlgorithm.HS512133
+0
+)pe.gob.onpe.wsonpe.constants.CryptoValues135J#
+!
+1
+12
+
+3
+4
+
+5
+6Z
+
+7
+7982
+
+
+5
+6j©
+
+120
+12012119
+
+112
+11211319
+
+132
+13213319
+B
+78<
+787958 *
+1W W(	210:7B
+
+
+13
+30
+
+
+15
+80
+B
+27<
+272829 *
+1% %(	210:7B
+
+
+13
+30
+
+
+15
+31
+
+43
+434419
+B
+45<
+454629 *
+1) )(	210:7B
+
+
+13
+30
+
+
+15
+47
+
+114
+11411519
+
+130
+13013119
+
+95
+959619
+
+32
+323319
+
+104
+10410519
+
+70
+707119
+
+25
+252619
+B
+48<
+484929 *
+1+ +(210:7B
+
+
+13
+30
+
+
+15
+50
+
+65
+656619
+
+68
+686919
+
+126
+12612719
+
+116
+11611719
+
+118
+11811919
+
+128
+12812919
+
+72
+727319
+
+91
+919219
+
+38
+383919
+B
+56<
+565758 *
+12 2(	210:7B
+
+
+13
+14
+
+
+15
+16
+
+99
+9910019
+
+17
+171819
+B
+53<
+535429 *
+1. .(210:7B
+
+
+13
+30
+
+
+15
+55
+
+81
+818219
+
+110
+11011119
+
+51
+515219
+
+21
+212219
+
+101
+10110219
+
+87
+878819
+C
+76=
+767758 *
+1} }(	210:7B
+
+
+13
+30
+
+15
+103
+
+74
+747519
+
+89
+899019
+
+93
+939419
+
+97
+979819
+>
+108
+101112 *
+1# #(:7B
+
+
+13
+14
+
+
+15
+16
+
+85
+858619
+
+122
+12212319
+B
+35<
+353629 *
+1& &(	210:7B
+
+
+13
+30
+
+
+15
+37
+B
+62<
+626358 *
+19 9(210:7B
+
+
+13
+14
+
+
+15
+64
+
+124
+12412519
+
+134
+13413519
+
+83
+838419
+
+108
+10810919
+
+106
+10610719
+B
+40<
+404129 *
+1' '(	210:7B
+
+
+13
+30
+
+
+15
+42rø
+
+101720*
+1#& #(3
+
+102123*
+1! !(
+
+102124*
+1! !(	
+
+102523*
+1" "(
+
+102524*
+1" "(
+
+101724*
+1#& #(3
+
+273234*
+1% %($
+
+273224*
+1% %($
+
+273224*
+1%% %(6
+
+353834*
+1& &(#
+
+353824*
+1& &(#
+
+353824*
+1&$ &(4
+
+404334*
+1' '(%
+
+404324*
+1' '(%
+
+404324*
+1'& '(8
+
+485123*
+1+ +(
+
+485124*
+1+ +(	
+
+535123*
+1. .(
+
+535124*
+1. .(	
+
+563259*
+12 2(+
+
+563859*
+12? 2(R
+
+564359*
+13 3(
+
+561060*
+12
+ 2(
+
+563234*
+12, 2(=
+
+563224*
+12 2(+
+
+563834*
+12S 2(c
+
+563824*
+12? 2(R
+
+564334*
+13 3(,
+
+564324*
+13 3(
+
+561024*
+14 4(
+
+561061*
+14 4(
+
+563224*
+14 4(
+
+562761*
+14 4(
+
+561024*
+15 5(
+
+561061*
+15 5(
+
+563824*
+15 5(
+
+563561*
+15 5(
+
+561024*
+16 6(
+
+561061*
+16 6(
+
+564324*
+16 6(
+
+564061*
+16 6(
+
+626567*
+1:	 :(
+
+626859*
+1:! :(-
+
+626524*
+1:	 :(
+
+626834*
+1:. :(5
+
+626824*
+1:! :(-
+
+623261*
+1?. ?(?
+
+627060*
+1?@ ?(N
+
+622761*
+1?. ?(?
+
+623224*
+1?. ?(?
+
+622761*
+1?. ?(?
+
+627261*
+1@ @(
+
+627460*
+1@ @(
+
+627224*
+1@ @(
+
+621061*
+1N N(
+
+627660*
+1N N(
+
+626567*
+1T
+ T(
+
+621061*
+1T
+ T(
+
+627860*
+1T
+ T(
+
+786567*
+1W
+ W(
+
+786524*
+1W
+ W(
+
+788124*
+1Y Y(#
+
+783861*
+1Y0 Y(@
+
+788360*
+1YA Y(N
+
+783561*
+1Y0 Y(@
+
+783824*
+1Y0 Y(@
+
+783561*
+1Y0 Y(@
+
+784561*
+1YO Y(U
+
+788524*
+1Z Z(
+
+784361*
+1Z' Z(9
+
+788760*
+1Z: Z(A
+
+784061*
+1Z' Z(9
+
+784324*
+1Z' Z(9
+
+784061*
+1Z' Z(9
+
+788924*
+1[ [(
+
+789124*
+1[ [(
+
+789161*
+1[ [(
+
+788134*
+1b b(%
+
+788124*
+1b b(
+
+788167*
+1b( b(0
+
+788534*
+1e e(
+
+788924*
+1f f(
+
+789334*
+1i i(
+
+789324*
+1i i(
+
+789360*
+1i# i(/
+
+788934*
+1j j(
+
+788924*
+1j j(
+
+789361*
+1p p(
+
+789560*
+1p p(*
+
+789734*
+1q$ q(%
+
+789724*
+1q q(#
+
+789961*
+1s s(
+
+7810160*
+1s s('
+
+789924*
+1s s(
+
+7610424*
+1~ ~(
+
+7610661*
+1~/ ~(=
+
+7610860*
+1~> ~(a
+
+7610624*
+1~/ ~(=
+
+765361*
+1Ç" Ç(4
+
+764861*
+1Ç= Ç(H
+
+7610424*
+1Ö> Ö(N
+
+7611061*
+1Ü Ü(
+
+7611260*
+1Ü Ü(+
+
+7611024*
+1Ü Ü(
+
+7611467*
+1à à(
+
+7611461*
+1à à(
+
+7611660*
+1é é(
+
+7611467*
+1à à(
+
+7611461*
+1à à(
+
+7611860*
+1ç ç(
+
+7611467*
+1à à(
+
+7611461*
+1à à(
+
+7612060*
+1å å(
+
+7611467*
+1à à(
+
+7611461*
+1à à(
+
+7612260*
+1ã ã(
+
+7611467*
+1à à(
+
+7611461*
+1à à(
+
+7612460*
+1ä ä(
+
+7611467*
+1à à(
+
+7612661*
+1à à(
+
+7612860*
+1â â(
+
+7612624*
+1à à(
+
+7613024*
+1é é(-
+
+7613024*
+1é. é(3
+
+7613261*
+1é. é(3
+
+7613424*
+1é5 é(A

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UserController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">wsOnpe</a> &gt; <a href="index.source.html" class="el_package">pe.gob.onpe.wsonpe.controller</a> &gt; <span class="el_source">UserController.java</span></div><h1>UserController.java</h1><pre class="source lang-java linenums">package pe.gob.onpe.wsonpe.controller;
+
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.view.RedirectView;
+import pe.gob.onpe.wsonpe.dto.MensajeWsResponse;
+import pe.gob.onpe.wsonpe.dto.UserRequest;
+import pe.gob.onpe.wsonpe.enums.AccionesUsuarioEnum;
+import pe.gob.onpe.wsonpe.service.IUserService;
+import pe.gob.onpe.wsonpe.utils.WsOnpeUtils;
+
+@RestController
+@RequestMapping(&quot;/usuario&quot;)
+<span class="fc" id="L20">@Slf4j</span>
+public class UserController {
+
+
+  @Value(&quot;${stae.trans.masterkey}&quot;)
+  private String masterKey;
+
+  private final IUserService userService;
+
+<span class="fc" id="L29">  public UserController(IUserService userService) {</span>
+<span class="fc" id="L30">    this.userService = userService;</span>
+<span class="fc" id="L31">  }</span>
+
+  @GetMapping()
+  public RedirectView getMethod() {
+<span class="nc" id="L35">    return new RedirectView(&quot;/&quot;);</span>
+  }
+
+  @PostMapping(consumes = {&quot;application/x-www-form-urlencoded;charset=UTF-8&quot;,
+    MediaType.APPLICATION_JSON_VALUE})
+  public MensajeWsResponse userLogin(@RequestParam(value = &quot;a&quot;) String accion,
+    @RequestParam(value = &quot;d&quot;) String llaveUsuario,
+    @RequestParam(value = &quot;f&quot;) String mesa,
+    @RequestParam(value = &quot;g&quot;) String tipoSolucion,
+    @RequestParam(value = &quot;e&quot;) String usbParte,
+    @RequestParam(value = &quot;h&quot;) String usbModulo,
+    @RequestParam(value = &quot;j&quot;) String paginaNro) {
+
+<span class="nc" id="L48">    String requestUser = WsOnpeUtils.getRequestUser();</span>
+
+<span class="nc" id="L50">    UserRequest request = new UserRequest(accion, requestUser, llaveUsuario, mesa,</span>
+      tipoSolucion, usbParte, usbModulo, paginaNro);
+
+<span class="nc bnc" id="L53" title="All 2 branches missed.">    if (!request.getLlaveUsuario().equals(masterKey)) {</span>
+<span class="nc" id="L54">      return new MensajeWsResponse(1, false, &quot;Key de acceso incorrecta&quot;);</span>
+    }
+
+<span class="nc bnc" id="L57" title="All 2 branches missed.">    if (request.getAccion().equals(AccionesUsuarioEnum.UPDATE_ESTADO.getCode())) {</span>
+<span class="nc" id="L58">      return userService.updateEstado(request);</span>
+<span class="nc bnc" id="L59" title="All 2 branches missed.">    } else if(request.getAccion().equals(AccionesUsuarioEnum.VERIFICAR_PUESTA_CERO.getCode())) {</span>
+<span class="nc" id="L60">      return userService.verificarPuestaCero(request);</span>
+<span class="nc bnc" id="L61" title="All 2 branches missed.">    } else if(request.getAccion().equals(AccionesUsuarioEnum.VERIFICAR_PUESTA_CERO_DIAGNOSTICO.getCode())) {</span>
+<span class="nc" id="L62">      return userService.verificarPuestaCeroDiagnostico(request);</span>
+<span class="nc bnc" id="L63" title="All 2 branches missed.">    } else if(request.getAccion().equals(AccionesUsuarioEnum.VERIFICAR_PUESTA_CERO_Y_TRANSMITIDO.getCode())) {</span>
+<span class="nc" id="L64">      return userService.verificarPuestaCeroYTransmitido(request);</span>
+<span class="nc bnc" id="L65" title="All 2 branches missed.">    } else if(request.getAccion().equals(AccionesUsuarioEnum.VERIFICAR_PUESTA_CERO_Y_TRANSMITIDO2.getCode())) {</span>
+<span class="nc" id="L66">      return userService.verificarPuestaCeroYTransmitido2(request);</span>
+<span class="nc bnc" id="L67" title="All 2 branches missed.">    } else if(request.getAccion().equals(AccionesUsuarioEnum.EJECUTAR_PUESTA_CERO.getCode())) {</span>
+<span class="nc" id="L68">      return userService.ejecutarPuestaCero(request);</span>
+<span class="nc bnc" id="L69" title="All 2 branches missed.">    } else if(request.getAccion().equals(AccionesUsuarioEnum.EJECUTAR_PUESTA_CERO_DIAGNOSTICO.getCode())) {</span>
+<span class="nc" id="L70">      return userService.ejecutarPuestaCeroD(request);</span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">    } else if(request.getAccion().equals(AccionesUsuarioEnum.VERIFICAR_HORA_INGRESO.getCode())) {</span>
+<span class="nc" id="L72">      return userService.verificarTimeSufEs(request);</span>
+<span class="nc bnc" id="L73" title="All 2 branches missed.">    }else if(request.getAccion().equals(AccionesUsuarioEnum.VSA.getCode())) {</span>
+<span class="nc" id="L74">      return userService.verificarSessionActiva(request);</span>
+    } else {
+<span class="nc" id="L76">      return new MensajeWsResponse(0, false, &quot;Codigo de accion no encontrado.&quot;);</span>
+    }
+
+  }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

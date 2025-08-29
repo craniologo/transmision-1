@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UserService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">wsOnpe</a> &gt; <a href="index.source.html" class="el_package">pe.gob.onpe.wsonpe.service</a> &gt; <span class="el_source">UserService.java</span></div><h1>UserService.java</h1><pre class="source lang-java linenums">package pe.gob.onpe.wsonpe.service;
+
+
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.stereotype.Service;
+import pe.gob.onpe.wsonpe.dao.TabProcesoDao;
+import pe.gob.onpe.wsonpe.dao.TabVersionDao;
+import pe.gob.onpe.wsonpe.dto.MensajeWsResponse;
+import pe.gob.onpe.wsonpe.dto.UserRequest;
+import pe.gob.onpe.wsonpe.model.TabUsuario;
+import pe.gob.onpe.wsonpe.repository.TabMesaTransmitidaRepository;
+import pe.gob.onpe.wsonpe.repository.TabTareasMesaRepository;
+import pe.gob.onpe.wsonpe.repository.TabUsuarioRepository;
+
+import java.time.LocalDateTime;
+import java.util.Map;
+
+@Service
+<span class="fc" id="L21">@Slf4j</span>
+<span class="fc" id="L22">@AllArgsConstructor</span>
+public class UserService implements IUserService {
+
+  private TabUsuarioRepository usuarioRepository;
+
+  private static final String PO_RESULTADO = &quot;PO_RESULTADO&quot;;
+  private static final String PO_MENSAJE = &quot;PO_MENSAJE&quot;;
+  private static final String LOG_CALLING_PROCEDURE = &quot;Calling stored procedure.&quot;;
+  private final TabMesaTransmitidaRepository tabMesaTransmitidaRepository;
+  private final TabProcesoDao tabProcesoDao;
+  private final TabVersionDao tabVersionDao;
+  private final TabTareasMesaRepository tabTareasMesaRepository;
+
+  @Override
+  public MensajeWsResponse updateEstado(UserRequest request) {
+
+<span class="fc" id="L38">    log.info(&quot;Acción update estado.&quot;);</span>
+<span class="fc" id="L39">    log.info(&quot;Llamando stored procedure.&quot;);</span>
+
+<span class="fc" id="L41">    Map&lt;String, Object&gt; actualizaEstadoResponse = usuarioRepository.spActualizaEstado(request.getUsuario(), 1);</span>
+
+<span class="fc" id="L43">    Integer codigo = (Integer) actualizaEstadoResponse.get(PO_RESULTADO);</span>
+<span class="fc bfc" id="L44" title="All 2 branches covered.">    boolean success = codigo == 1;</span>
+<span class="fc" id="L45">    String descripcion = (String) actualizaEstadoResponse.get(PO_MENSAJE);</span>
+
+<span class="fc bfc" id="L47" title="All 2 branches covered.">		if (!success) {</span>
+<span class="fc" id="L48">			log.error(&quot;Usuario: {}, Accion: {}, Logout Usuario Error {}&quot;, request.getUsuario(), request.getAccion(),</span>
+					descripcion);
+<span class="fc" id="L50">			return new MensajeWsResponse(codigo, false, descripcion);</span>
+		}
+
+<span class="fc" id="L53">		return new MensajeWsResponse(codigo, true, descripcion);</span>
+
+	}
+
+	@Override
+	public MensajeWsResponse verificarPuestaCero(UserRequest request) {
+<span class="fc" id="L59">		log.info(&quot;Acción verificar puesta cero.&quot;);</span>
+<span class="fc" id="L60">		log.info(&quot;Llamando stored procedure.&quot;);</span>
+
+<span class="fc" id="L62">		String fecha = tabProcesoDao.obtenerFechaProceso();</span>
+<span class="fc" id="L63">		log.info(&quot;{}, {}, Fecha proceso: {}&quot;, request.getUsuario(), request.getAccion(), fecha);</span>
+
+<span class="fc" id="L65">    MensajeWsResponse versionResponse = tabVersionDao.verificarVersion(fecha);</span>
+<span class="fc" id="L66">		log.info(&quot;Verificar versión response : {}&quot;, versionResponse);</span>
+
+<span class="fc" id="L68">    TabUsuario usuario = usuarioRepository.findByUsuario(request.getUsuario());</span>
+    int codigo;
+    String mensaje;
+<span class="fc bfc" id="L71" title="All 2 branches covered.">    boolean success = usuario != null;</span>
+
+<span class="fc bfc" id="L73" title="All 2 branches covered.">		if (success) {</span>
+<span class="fc" id="L74">      Short flagPuestaCero = usuario.getNFlagPuestaCero();</span>
+<span class="fc" id="L75">      codigo = 1;</span>
+<span class="pc bpc" id="L76" title="1 of 2 branches missed.">      mensaje = flagPuestaCero != null ? String.valueOf(flagPuestaCero) : &quot;&quot;;</span>
+<span class="fc" id="L77">			log.info(&quot;Usuario: {}, Acción: {}, Puesta Cero Realizada Satisfactoriamente.&quot;, request.getUsuario(),</span>
+<span class="fc" id="L78">					request.getAccion());</span>
+<span class="fc" id="L79">		} else {</span>
+<span class="fc" id="L80">      codigo = 2;</span>
+<span class="fc" id="L81">      mensaje = &quot;Ocurrió un error durante la verificación de puesta a cero&quot;;</span>
+<span class="fc" id="L82">			log.error(&quot;Usuario: {}, Acción: {}, Ocurrió un error al ejecutar la puesta cero.&quot;, request.getUsuario(),</span>
+<span class="fc" id="L83">					request.getAccion());</span>
+		}
+
+<span class="fc" id="L86">		return new MensajeWsResponse(codigo, success, mensaje);</span>
+	}
+
+	@Override
+	public MensajeWsResponse verificarPuestaCeroDiagnostico(UserRequest request) {
+
+<span class="fc" id="L92">    TabUsuario usuario = usuarioRepository.findByUsuario(request.getUsuario());</span>
+<span class="fc" id="L93">    int codigo = 2;</span>
+<span class="fc" id="L94">    String mensaje = &quot;Ocurrió un error durante la verificación de puesta a cero&quot;;</span>
+<span class="fc bfc" id="L95" title="All 2 branches covered.">    boolean success = usuario != null;</span>
+
+<span class="fc bfc" id="L97" title="All 2 branches covered.">    if (success) {</span>
+<span class="fc" id="L98">      codigo = 1;</span>
+<span class="fc" id="L99">      Short flagPuestaCero = usuario.getNFlagPuestaCero();</span>
+<span class="pc bpc" id="L100" title="1 of 2 branches missed.">      mensaje = flagPuestaCero != null ? String.valueOf(flagPuestaCero) : &quot;&quot;;</span>
+    }
+
+<span class="fc" id="L103">		log.info(&quot;Usuario: {}, Acción: {}, Verificación de puesta cero {}&quot;, request.getUsuario(), request.getAccion(),</span>
+      mensaje);
+
+<span class="fc" id="L106">		return new MensajeWsResponse(codigo, success, mensaje);</span>
+	}
+
+	@Override
+	public MensajeWsResponse verificarPuestaCeroYTransmitido(UserRequest request) {
+
+<span class="fc" id="L112">		Integer tipoSolucion = Integer.valueOf(request.getTipoSolucion());</span>
+<span class="fc bfc" id="L113" title="All 2 branches covered.">		Integer usbModulo = request.getUsbModulo().equals(StringUtils.EMPTY) ? 0</span>
+<span class="fc" id="L114">				: Integer.parseInt(request.getUsbModulo());</span>
+<span class="fc bfc" id="L115" title="All 2 branches covered.">		Integer usbParte = request.getUsbParte().equals(StringUtils.EMPTY) ? 0</span>
+<span class="fc" id="L116">      : Integer.parseInt(request.getUsbParte());</span>
+<span class="fc bfc" id="L117" title="All 2 branches covered.">		Integer paginaNro = request.getPaginaNro().equals(StringUtils.EMPTY) ? 0</span>
+<span class="fc" id="L118">				: Integer.parseInt(request.getPaginaNro());</span>
+
+<span class="fc" id="L120">		Map&lt;String, Object&gt; spVerificaPuestaCeroTransMap = usuarioRepository.spVerificaPuestaCeroTrans(</span>
+<span class="fc" id="L121">				request.getUsuario(), request.getMesa(), tipoSolucion, usbParte, usbModulo, paginaNro);</span>
+
+<span class="fc" id="L123">		Integer codigo = (Integer) spVerificaPuestaCeroTransMap.get(PO_RESULTADO);</span>
+<span class="pc bpc" id="L124" title="1 of 2 branches missed.">		Boolean success = codigo == 1;</span>
+<span class="fc" id="L125">		String descripcion = (String) spVerificaPuestaCeroTransMap.get(PO_MENSAJE);</span>
+
+<span class="fc" id="L127">		log.info(&quot;Usuario: {}, Accion: {}, Verificación puesta cero y transmitido: {}&quot;, request.getUsuario(),</span>
+<span class="fc" id="L128">				request.getAccion(), descripcion);</span>
+
+<span class="fc" id="L130">		return new MensajeWsResponse(codigo, success, descripcion);</span>
+	}
+
+	@Override
+	public MensajeWsResponse verificarPuestaCeroYTransmitido2(UserRequest request) {
+
+<span class="fc" id="L136">		Integer tipoSolucion = Integer.valueOf(request.getTipoSolucion());</span>
+<span class="fc" id="L137">		Integer usbModulo = Integer.valueOf(request.getUsbModulo());</span>
+
+<span class="fc" id="L139">		Map&lt;String, Object&gt; spVerificaPuestaCeroTransDMap = usuarioRepository.spVerificaPuestaCeroTransD(</span>
+<span class="fc" id="L140">				request.getUsuario(), request.getMesa(), tipoSolucion, request.getUsbParte(), usbModulo);</span>
+
+<span class="fc" id="L142">		Integer codigo = (Integer) spVerificaPuestaCeroTransDMap.get(PO_RESULTADO);</span>
+<span class="pc bpc" id="L143" title="1 of 2 branches missed.">		Boolean success = codigo == 1;</span>
+<span class="fc" id="L144">		String descripcion = (String) spVerificaPuestaCeroTransDMap.get(PO_MENSAJE);</span>
+
+<span class="fc" id="L146">		log.info(&quot;Usuario: {}, Accion: {}, Verificación puesta cero y transmitido: {}&quot;, request.getUsuario(),</span>
+<span class="fc" id="L147">				request.getAccion(), descripcion);</span>
+
+<span class="fc" id="L149">		return new MensajeWsResponse(codigo, success, descripcion);</span>
+	}
+
+	@Override
+	public MensajeWsResponse ejecutarPuestaCero(UserRequest request) {
+
+<span class="fc" id="L155">		log.info(&quot;Ejecutar Puesta Cero.&quot;);</span>
+<span class="fc" id="L156">		log.info(LOG_CALLING_PROCEDURE);</span>
+
+<span class="fc" id="L158">    int codigo = 1;</span>
+<span class="fc" id="L159">    String descripcion = &quot;Puesta Cero Satisfactoria&quot;;</span>
+
+    // reemplaza SP_PUESTA_CERO
+<span class="fc" id="L162">    boolean respPuestaCero = puestaCero(request.getUsuario());</span>
+
+<span class="fc bfc" id="L164" title="All 2 branches covered.">		if (respPuestaCero) {</span>
+<span class="fc" id="L165">			log.info(&quot;Usuario: {}, Acción: {}, Ejecución de puesta a cero satisfactoria.&quot;,</span>
+<span class="fc" id="L166">        request.getUsuario(), request.getAccion());</span>
+		} else {
+<span class="fc" id="L168">      descripcion = &quot;Error en ejecutar la Puesta Cero&quot;;</span>
+<span class="fc" id="L169">      codigo = 2;</span>
+<span class="fc" id="L170">			log.error(&quot;Usuario: {}, Acción: {}, Ejecución de puesta a cero fallida: {}&quot;,</span>
+<span class="fc" id="L171">        request.getUsuario(), request.getAccion(), descripcion);</span>
+		}
+
+<span class="fc" id="L174">		return new MensajeWsResponse(codigo, respPuestaCero, descripcion);</span>
+	}
+
+
+	@Override
+	public MensajeWsResponse ejecutarPuestaCeroD(UserRequest request) {
+
+<span class="fc" id="L181">		log.info(&quot;Ejecutar Puesta Cero Diagnostico.&quot;);</span>
+<span class="fc" id="L182">		log.info(LOG_CALLING_PROCEDURE);</span>
+<span class="fc" id="L183">		Map&lt;String, Object&gt; ejecutarPuestaCeroDMap = usuarioRepository.spEjecutarPuestaCeroD(request.getUsuario());</span>
+
+<span class="fc" id="L185">		Integer codigo = (Integer) ejecutarPuestaCeroDMap.get(PO_RESULTADO);</span>
+<span class="fc bfc" id="L186" title="All 2 branches covered.">		boolean success = codigo == 1;</span>
+<span class="fc" id="L187">		String descripcion = (String) ejecutarPuestaCeroDMap.get(PO_MENSAJE);</span>
+
+<span class="fc bfc" id="L189" title="All 2 branches covered.">		if (success) {</span>
+<span class="fc" id="L190">			log.info(&quot;Usuario: {}, Accion: {}, Ejecución de puesta a cero Satifactoria.&quot;, request.getUsuario(),</span>
+<span class="fc" id="L191">					request.getAccion());</span>
+		} else {
+<span class="fc" id="L193">			log.error(&quot;Usuario: {}, Accion: {}, Ejecucion de puesta a cero Fallida: {}.&quot;, request.getUsuario(),</span>
+<span class="fc" id="L194">					request.getAccion(), descripcion);</span>
+		}
+
+<span class="fc" id="L197">		return new MensajeWsResponse(codigo, success, descripcion);</span>
+
+	}
+
+	@Override
+	public MensajeWsResponse verificarTimeSufEs(UserRequest request) {
+
+<span class="fc" id="L204">		log.info(&quot;Verificar Hora de Ingreso Escrutinio Mayor a las 4:00pm Usuario.&quot;);</span>
+
+<span class="fc" id="L206">		Integer codigo = 1;</span>
+		boolean success;
+<span class="fc" id="L208">		String descripcion = &quot;&quot;;</span>
+
+<span class="fc" id="L210">		LocalDateTime locaDate = LocalDateTime.now();</span>
+<span class="fc" id="L211">		int hora = locaDate.getHour();</span>
+
+<span class="pc bpc" id="L213" title="1 of 2 branches missed.">    success = hora &gt;= 4;</span>
+
+<span class="pc bpc" id="L215" title="1 of 2 branches missed.">		if (success) {</span>
+<span class="fc" id="L216">			log.info(&quot;Usuario: {}, Acción: {}, Ingreso de Esrutino Valido mayor igual que las 4pm.&quot;,</span>
+<span class="fc" id="L217">					request.getUsuario(), request.getAccion());</span>
+		} else {
+<span class="nc" id="L219">			log.error(&quot;Usuario: {}, Acción: {}, Ingreso de Esrutino Valido mayor igual que las 4pm.&quot;,</span>
+<span class="nc" id="L220">					request.getUsuario(), request.getAccion());</span>
+		}
+
+<span class="fc" id="L223">		return new MensajeWsResponse(codigo, success, descripcion);</span>
+
+	}
+
+	@Override
+	public MensajeWsResponse verificarSessionActiva(UserRequest request) {
+
+<span class="fc" id="L230">		log.info(&quot;Verificar Sesión Activa del Usuario.&quot;);</span>
+<span class="fc" id="L231">		log.info(LOG_CALLING_PROCEDURE);</span>
+<span class="fc" id="L232">		Map&lt;String, Object&gt; validaEstadoMap = usuarioRepository.spValidaEstado(request.getUsuario());</span>
+
+<span class="fc" id="L234">		Integer codigo = (Integer) validaEstadoMap.get(PO_RESULTADO);</span>
+<span class="fc bfc" id="L235" title="All 2 branches covered.">		boolean success = codigo == 1;</span>
+<span class="fc" id="L236">		String descripcion = (String) validaEstadoMap.get(PO_MENSAJE);</span>
+
+<span class="fc bfc" id="L238" title="All 2 branches covered.">		if (success) {</span>
+<span class="fc" id="L239">			log.info(&quot;Usuario: {}, Acción: {}, Usuario Válido.&quot;, request.getUsuario(), request.getAccion());</span>
+		} else {
+<span class="fc" id="L241">			log.error(&quot;Usuario: {}, Acción: {}, El usuario no está conectado.&quot;, request.getUsuario(),</span>
+<span class="fc" id="L242">					request.getAccion());</span>
+		}
+
+<span class="fc" id="L245">		return new MensajeWsResponse(codigo, success, descripcion);</span>
+
+	}
+
+  private boolean puestaCero(String usuario){
+<span class="fc" id="L250">    boolean response = true;</span>
+
+    try {
+<span class="fc" id="L253">      TabUsuario tabUsuario = usuarioRepository.findByUsuario(usuario);</span>
+<span class="fc" id="L254">      tabMesaTransmitidaRepository.eliminarIntegracionPorUsuario(tabUsuario.getNUsuarioPk());</span>
+<span class="fc" id="L255">      tabMesaTransmitidaRepository.eliminarSincronizacionPorUsuario(tabUsuario.getNUsuarioPk());</span>
+<span class="fc" id="L256">      tabMesaTransmitidaRepository.eliminarMesasTransmitidasPorUsuario(tabUsuario.getNUsuarioPk());</span>
+<span class="fc" id="L257">      tabTareasMesaRepository.eliminarPorUsuario(usuario);</span>
+<span class="fc" id="L258">      tabUsuario.setNFlagPuestaCero((short) 1);</span>
+<span class="fc" id="L259">      usuarioRepository.saveAndFlush(tabUsuario);</span>
+<span class="fc" id="L260">    } catch (Exception e) {</span>
+<span class="fc" id="L261">      log.warn(&quot;Error en la puesta a cero del usuario {} - {}&quot;, usuario, e.getMessage());</span>
+<span class="fc" id="L262">      response = false;</span>
+<span class="fc" id="L263">    }</span>
+
+<span class="fc" id="L265">    return response;</span>
+  }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

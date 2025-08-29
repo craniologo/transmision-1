@@ -1,0 +1,188 @@
+
+ópe.gob.onpe.wsonpe.service.UserService#verificarPuestaCeroYTransmitido2(Lpe/gob/onpe/wsonpe/dto/UserRequest;)Lpe/gob/onpe/wsonpe/dto/MensajeWsResponse;a
+UC:/xampp/htdocs/transmision/src/main/java/pe/gob/onpe/wsonpe/service/UserService.javaÜ Ü(:"startingBlock*∂
+startingBlock
+Ü: Ü(O¢
+ü
+
+Ö Ö(
+
+%9"
+__annotate*2
+
+__unknown_file (
+java.lang.Override*K
+
+__unknown_file (/
+-
+request"pe.gob.onpe.wsonpe.dto.UserRequesto
+m
+
+ÜG Ü(N-
+request"pe.gob.onpe.wsonpe.dto.UserRequest"__annotation*"
+
+__unknown_file (
+
+%9*
+1*…
+1
+à à( Æ
+´
+
+à à(C
+%0"@java.lang.Integer#valueOf(Ljava/lang/String;)Ljava/lang/Integer;*1
+
+__unknown_file ("
+java.lang.Integer*"
+
+__unknown_file (
+""[
+Y
+
+à à(D!
+tipoSolucionjava.lang.Integer"__id*"
+
+__unknown_file (
+
+%0Æ
+´
+
+â â(=
+%1"@java.lang.Integer#valueOf(Ljava/lang/String;)Ljava/lang/Integer;*1
+
+__unknown_file ("
+java.lang.Integer*"
+
+__unknown_file (
+""X
+V
+
+â â(>
+	usbModulojava.lang.Integer"__id*"
+
+__unknown_file (
+
+%1Æ
+´
+
+ã6 ã(G8
+%22pe.gob.onpe.wsonpe.repository.TabUsuarioRepository"__id*]
+
+__unknown_file (A*?(
+&pe.gob.onpe.wsonpe.service.UserService"
+usuarioRepositoryèå
+
+ã6 å(\
+%3"∫pe.gob.onpe.wsonpe.repository.TabUsuarioRepository#spVerificaPuestaCeroTransD(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/Integer;)Ljava/util/Map;*V
+
+__unknown_file (:
+8
+%22pe.gob.onpe.wsonpe.repository.TabUsuarioRepository*"
+
+__unknown_file (
+""*"
+
+__unknown_file (
+""*?
+
+__unknown_file (#
+!
+tipoSolucionjava.lang.Integer*"
+
+__unknown_file (
+""*<
+
+__unknown_file ( 
+
+	usbModulojava.lang.Integer2xspVerificaPuestaCeroTransD(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/Integer;)h
+f
+
+ã å(].
+spVerificaPuestaCeroTransDMapjava.util.Map"__id*"
+
+__unknown_file (
+
+%3Z
+X
+
+é? é(K
+%4java.lang.String"__id*,
+
+__unknown_file (
+PO_RESULTADOµ
+≤
+
+é é(L
+%5java.lang.Object"__mapGet*L
+
+__unknown_file (0
+.
+spVerificaPuestaCeroTransDMapjava.util.Map*4
+
+__unknown_file (
+
+%4java.lang.Stringg
+e
+
+é é(M
+codigojava.lang.Integer"__id*4
+
+__unknown_file (
+
+%5java.lang.Object
+}
+
+è è(
+%6boolean"	__compare*
+
+è è(
+==*+
+
+è è(
+
+codigojava.lang.Integer*
+
+è è(2_
+]
+
+è è( 
+successjava.lang.Boolean"__id*+
+
+__unknown_file (
+
+%6booleanX
+V
+
+êB ê(L
+%7java.lang.String"__id**
+
+__unknown_file (
+
+PO_MENSAJEµ
+≤
+
+ê  ê(M
+%8java.lang.Object"__mapGet*L
+
+__unknown_file (0
+.
+spVerificaPuestaCeroTransDMapjava.util.Map*4
+
+__unknown_file (
+
+%7java.lang.Stringk
+i
+
+ê ê(N
+descripcionjava.lang.String"__id*4
+
+__unknown_file (
+
+%8java.lang.Object"
+
+ï ï(=
+"":;
+
+Ü; Ü(N-
+request"pe.gob.onpe.wsonpe.dto.UserRequestB*(
+&pe.gob.onpe.wsonpe.service.UserServiceH

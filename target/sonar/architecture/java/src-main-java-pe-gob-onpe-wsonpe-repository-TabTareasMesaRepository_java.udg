@@ -1,0 +1,373 @@
+
+1.0craniologo_transmisionJavaFrontend"1756337472363*java2.Bš
+M
+Hsrc/main/java/pe/gob/onpe/wsonpe/repository/TabTareasMesaRepository.java2
+	
+type3
+	
+MAIN4
+
+
+module-key5
+
+craniologo_transmision6
+
+package8
+9
+4craniologo_transmision:pe.gob.onpe.wsonpe.repository9
+;
+5pe.gob.onpe.wsonpe.repository.TabTareasMesaRepository11
+
+	interface12
+
+access13
+
+public14
+
+simple-name15
+
+TabTareasMesaRepository16
+;
+5org.springframework.data.jpa.repository.JpaRepository18
+
+unknown19
+
+
+implements20
+
+
+uses21
+,
+&pe.gob.onpe.wsonpe.model.TabTareasMesa23
+Ï
+Èpe.gob.onpe.wsonpe.repository.TabTareasMesaRepository#spInsercionTareas(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;)Ljava/util/Map;25
+
+method26
+
+spInsercionTareas27
+=
+7org.springframework.data.jpa.repository.query.Procedure29
+
+annotated by30
+5
+/org.springframework.data.repository.query.Param32
+‚
+|pe.gob.onpe.wsonpe.repository.TabTareasMesaRepository#spVerificaTareas(Ljava/lang/String;Ljava/lang/Integer;)Ljava/util/Map;34
+
+spVerificaTareas35
+Ë
+Äpe.gob.onpe.wsonpe.repository.TabTareasMesaRepository#spListaTareas(Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;)Ljava/util/Map;37
+
+spListaTareas38
+Ë
+Äpe.gob.onpe.wsonpe.repository.TabTareasMesaRepository#confirmarTransmisionArchivo(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;)V40
+!
+confirmarTransmisionArchivo41
+'
+!jakarta.transaction.Transactional43
+7
+1org.springframework.data.jpa.repository.Modifying45
+3
+-org.springframework.data.jpa.repository.Query47
+c
+]pe.gob.onpe.wsonpe.repository.TabTareasMesaRepository#eliminarPorUsuario(Ljava/lang/String;)V49
+
+eliminarPorUsuario50J#
+!
+1
+12
+
+3
+4
+
+5
+6Z
+
+7
+7982
+
+
+5
+6j 
+
+44
+444519
+
+31
+313219
+B
+39<
+394026 *
+1' '(210:7B
+
+
+13
+14
+
+
+15
+41
+
+46
+464719
+
+22
+222319
+
+28
+282919
+B
+48<
+484926 *
+1: :(210:7B
+
+
+13
+14
+
+
+15
+50
+B
+24<
+242526 *
+1 (210:7B
+
+
+13
+14
+
+
+15
+27
+B
+33<
+333426 *
+1 (210:7B
+
+
+13
+14
+
+
+15
+35
+B
+36<
+363726 *
+1 (210:7B
+
+
+13
+14
+
+
+15
+38
+
+42
+424319
+>
+108
+101112 *
+1 ():7B
+
+
+13
+14
+
+
+15
+16
+
+17
+171819r¥
+
+101720*
+12 (?
+
+101721*
+12 (?
+
+102221*
+1@ (M
+
+242830*
+1 (
+
+242821*
+1 (
+
+243130*
+1 (
+
+243121*
+1 (
+
+243130*
+1 (
+
+243121*
+1 (
+
+243130*
+1 (
+
+243121*
+1 (
+
+243130*
+1 (
+
+243121*
+1 (
+
+243130*
+1 (
+
+243121*
+1 (
+
+243130*
+1 (
+
+243121*
+1 (
+
+332830*
+1 (
+
+332821*
+1 (
+
+333130*
+1 (
+
+333121*
+1 (
+
+333130*
+1 (
+
+333121*
+1 (
+
+362830*
+1 (
+
+362821*
+1 (
+
+363130*
+1 (
+
+363121*
+1 (
+
+363130*
+1   (
+
+363121*
+1   (
+
+363130*
+1! !(
+
+363121*
+1! !(
+
+363130*
+1" "(
+
+363121*
+1" "(
+
+363130*
+1# #(
+
+363121*
+1# #(
+
+363130*
+1$ $(
+
+363121*
+1$ $(
+
+394230*
+1' '(
+
+394221*
+1' '(
+
+394430*
+1( ((
+
+394421*
+1( ((
+
+394630*
+1) )(
+
+394621*
+1) )(	
+
+393130*
+13$ 3(%
+
+393121*
+13% 3(*
+
+393130*
+14$ 4(%
+
+393121*
+14% 4(*
+
+393130*
+15$ 5(%
+
+393121*
+15% 5(*
+
+393130*
+16$ 6(%
+
+393121*
+16% 6(*
+
+393130*
+17$ 7(%
+
+393121*
+17% 7(*
+
+393130*
+18$ 8(%
+
+393121*
+18% 8(*
+
+484230*
+1: :(
+
+484221*
+1: :(
+
+484430*
+1; ;(
+
+484421*
+1; ;(
+
+484630*
+1< <(
+
+484621*
+1< <(	
+
+483130*
+1? ?(
+
+483121*
+1? ?(!

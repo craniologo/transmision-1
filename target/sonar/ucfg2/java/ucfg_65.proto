@@ -1,0 +1,1308 @@
+
+Ñpe.gob.onpe.wsonpe.service.TramaService#receiveTrama(Ljava/lang/String;Ljava/lang/String;)Lpe/gob/onpe/wsonpe/dto/MensajeWsResponse;`
+VC:/xampp/htdocs/transmision/src/main/java/pe/gob/onpe/wsonpe/service/TramaService.java ('"startingBlock*≈
+68M# M(^Æ
+´
+M# M(^
+%25"@java.lang.Integer#valueOf(Ljava/lang/String;)Ljava/lang/Integer;*1
+
+__unknown_file ("
+java.lang.Integer*#
+
+__unknown_file (
+
+%24*
+67*õ
+24
+Ü á(^r
+p
+
+Ü á(^(
+listaTareasFileResponsejava.util.Map"__id*2
+
+__unknown_file (
+
+%67java.util.Map[
+Y
+
+â; â(G
+%68java.lang.String"__id*,
+
+__unknown_file (
+PO_RESULTADO±
+Æ
+
+â â(H
+%69java.lang.Object"__mapGet*F
+
+__unknown_file (*
+(
+listaTareasFileResponsejava.util.Map*5
+
+__unknown_file (
+
+%68java.lang.String*
+23*±
+69M3 M(]ö
+ó
+M3 M(]
+%24".java.lang.String#valueOf([C)Ljava/lang/String;*0
+
+__unknown_file ("
+java.lang.String*"
+
+__unknown_file (
+""*
+68*È
+25
+á á(±
+Æ
+
+á á(<
+%665pe.gob.onpe.wsonpe.repository.TabTareasMesaRepository"__id*\
+
+__unknown_file (@*>)
+'pe.gob.onpe.wsonpe.service.TramaService"
+tramaRepositoryúô
+
+á á(]
+%67java.util.Map"ƒpe.gob.onpe.wsonpe.repository.TabTareasMesaRepository#spListaTareas(Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;)Ljava/util/Map;*Z
+
+__unknown_file (>
+<
+%665pe.gob.onpe.wsonpe.repository.TabTareasMesaRepository*6
+
+__unknown_file (
+
+mesajava.lang.String*?
+
+__unknown_file (#
+!
+tipoSolucionjava.lang.Integer*<
+
+__unknown_file ( 
+
+	tipoTramajava.lang.Integer*9
+
+__unknown_file (
+
+modulojava.lang.Integer*<
+
+__unknown_file ( 
+
+	tipoFlujojava.lang.Integer*!
+
+__unknown_file (
+F2spListaTareas(Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;)*
+24*&
+26
+É É(K"
+
+É É(K
+""*‘
+70M# M(*Ω
+∫
+MB M(J-
+%23&pe.gob.onpe.wsonpe.dto.TramaLogRequest"
+__arrayGet*O
+
+__unknown_file (3
+1
+array(pe.gob.onpe.wsonpe.dto.TramaLogRequest[]*"
+
+__unknown_file (
+""*
+69*{
+71L L(b
+`
+L L()
+%22boolean"	__compare*
+L L(
+<*
+L L(
+""*
+L L()
+""*
+70
+1*ê
+30
+Ä Ä('ò
+ï
+
+Ä Ä(9
+%64java.lang.String"__concat*/
+
+Ä Ä('!
+
+descripcionjava.lang.String*3
+
+Ä* Ä(9%
+#
+descripcionJsonjava.lang.Stringo
+m
+
+Ä Ä(?
+%65java.lang.String"__concat*'
+
+Ä Ä(9
+
+%64java.lang.String*
+
+Ä< Ä(?
+,l
+j
+
+Ä Ä(?
+descripcionjava.lang.String"__id*5
+
+__unknown_file (
+
+%65java.lang.String*
+25*å
+31} }(Rn
+l
+} }(R#
+descripcionJsonjava.lang.String"__id*5
+
+__unknown_file (
+
+%63java.lang.Object*
+25
+26
+30*ä
+76E E(Ej
+h
+E E(E
+descripcionjava.lang.String"__id*5
+
+__unknown_file (
+
+%21java.lang.Object*
+47
+5
+71
+1*Å
+32x x(LB
+@
+z, z(D
+
+%58int"__id*"
+
+__unknown_file (
+""i
+g
+z" z(D
+%59boolean"	__compare*
+z) z(+
+==*
+z" z((
+""*
+z, z(D
+
+
+%58intB
+@
+|0 |(D
+
+%60int"__id*"
+
+__unknown_file (
+""i
+g
+|& |(D
+%61boolean"	__compare*
+|- |(/
+==*
+|& |(,
+""*
+|0 |(D
+
+
+%60intW
+U
+}G }(Q
+%62java.lang.String"__id**
+
+__unknown_file (
+
+PO_MENSAJE≥
+∞
+}' }(R
+%63java.lang.Object"__mapGet*J
+
+__unknown_file (.
+,
+listaTareasMetadataResponsejava.util.Map*5
+
+__unknown_file (
+
+%62java.lang.String*
+31*⁄
+779 9(CB
+@
+<2 <(L
+
+%12int"__id*"
+
+__unknown_file (
+""i
+g
+<( <(L
+%13boolean"	__compare*
+</ <(1
+==*
+<( <(.
+""*
+<2 <(L
+
+
+%12intB
+@
+>/ >(F
+
+%14int"__id*"
+
+__unknown_file (
+""i
+g
+>% >(F
+%15boolean"	__compare*
+>, >(.
+==*
+>% >(+
+""*
+>/ >(F
+
+
+%14intB
+@
+@3 @(O
+
+%16int"__id*"
+
+__unknown_file (
+""i
+g
+@) @(O
+%17boolean"	__compare*
+@0 @(2
+==*
+@) @(/
+""*
+@3 @(O
+
+
+%16intB
+@
+C* C(D
+
+%18int"__id*"
+
+__unknown_file (
+""i
+g
+C  C(D
+%19boolean"	__compare*
+C' C()
+==*
+C  C(&
+""*
+C* C(D
+
+
+%18intW
+U
+E: E(D
+%20java.lang.String"__id**
+
+__unknown_file (
+
+PO_MENSAJEÆ
+´
+E E(E
+%21java.lang.Object"__mapGet*E
+
+__unknown_file ()
+'
+verificaTareasResponsejava.util.Map*5
+
+__unknown_file (
+
+%20java.lang.String*
+76*õ
+33u v(^t
+r
+u v(^,
+listaTareasMetadataResponsejava.util.Map"__id*2
+
+__unknown_file (
+
+%55java.util.MapY
+W
+x? x(K
+%56java.lang.String"__id*,
+
+__unknown_file (
+PO_RESULTADO≥
+∞
+x x(L
+%57java.lang.Object"__mapGet*J
+
+__unknown_file (.
+,
+listaTareasMetadataResponsejava.util.Map*5
+
+__unknown_file (
+
+%56java.lang.String*
+32*ê
+787 7(dn
+l
+7 7(d'
+verificaTareasResponsejava.util.Map"__id*1
+
+__unknown_file (
+
+%9java.util.MapY
+W
+96 9(B
+%10java.lang.String"__id*,
+
+__unknown_file (
+PO_RESULTADOÆ
+´
+9 9(C
+%11java.lang.Object"__mapGet*E
+
+__unknown_file ()
+'
+verificaTareasResponsejava.util.Map*5
+
+__unknown_file (
+
+%10java.lang.String*
+77*„
+34v v(Ø
+¨
+v v(<
+%545pe.gob.onpe.wsonpe.repository.TabTareasMesaRepository"__id*\
+
+__unknown_file (@*>)
+'pe.gob.onpe.wsonpe.service.TramaService"
+tramaRepositoryöó
+v v(]
+%55java.util.Map"ƒpe.gob.onpe.wsonpe.repository.TabTareasMesaRepository#spListaTareas(Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;)Ljava/util/Map;*Z
+
+__unknown_file (>
+<
+%545pe.gob.onpe.wsonpe.repository.TabTareasMesaRepository*6
+
+__unknown_file (
+
+mesajava.lang.String*?
+
+__unknown_file (#
+!
+tipoSolucionjava.lang.Integer*<
+
+__unknown_file ( 
+
+	tipoTramajava.lang.Integer*9
+
+__unknown_file (
+
+modulojava.lang.Integer*<
+
+__unknown_file ( 
+
+	tipoFlujojava.lang.Integer*!
+
+__unknown_file (
+M2spListaTareas(Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;)*
+33*ÿ
+7975 7(DÆ
+´
+75 7(D;
+%85pe.gob.onpe.wsonpe.repository.TabTareasMesaRepository"__id*\
+
+__unknown_file (@*>)
+'pe.gob.onpe.wsonpe.service.TramaService"
+tramaRepositoryêç
+75 7(c
+%9java.util.Map"|pe.gob.onpe.wsonpe.repository.TabTareasMesaRepository#spVerificaTareas(Ljava/lang/String;Ljava/lang/Integer;)Ljava/util/Map;*Y
+
+__unknown_file (=
+;
+%85pe.gob.onpe.wsonpe.repository.TabTareasMesaRepository*6
+
+__unknown_file (
+
+mesajava.lang.String*"
+
+__unknown_file (
+""27spVerificaTareas(Ljava/lang/String;Ljava/lang/Integer;)*
+78*|
+35q q(nf
+d
+q q(n
+logHeadjava.lang.String"__id*5
+
+__unknown_file (
+
+%53java.lang.String*
+34*´
+36o o(GW
+U
+o o(G
+	tipoFlujojava.lang.Integer"__id*#
+
+__unknown_file (
+
+%51f
+d
+q+ q(E
+%52java.lang.String"__id*9
+
+__unknown_file (
+Mesa:%s, S:%s, M:%s, T:%s”
+–
+q q(m
+%53java.lang.String"Pjava.lang.String#format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;*0
+
+__unknown_file ("
+java.lang.String*5
+
+__unknown_file (
+
+%52java.lang.String*6
+
+__unknown_file (
+
+mesajava.lang.String*?
+
+__unknown_file (#
+!
+tipoSolucionjava.lang.Integer*9
+
+__unknown_file (
+
+modulojava.lang.Integer*<
+
+__unknown_file ( 
+
+	tipoTramajava.lang.Integer*
+35*ƒ
+37o  o(F≠
+™
+o  o(F
+%51"@java.lang.Integer#valueOf(Ljava/lang/String;)Ljava/lang/Integer;*1
+
+__unknown_file ("
+java.lang.Integer*"
+
+__unknown_file (
+""*
+36*™
+38n n(CT
+R
+n n(C
+modulojava.lang.Integer"__id*#
+
+__unknown_file (
+
+%49Ω
+∫
+o0 o(8-
+%50&pe.gob.onpe.wsonpe.dto.TramaLogRequest"
+__arrayGet*O
+
+__unknown_file (3
+1
+array(pe.gob.onpe.wsonpe.dto.TramaLogRequest[]*"
+
+__unknown_file (
+""*
+37*ƒ
+39n n(B≠
+™
+n n(B
+%49"@java.lang.Integer#valueOf(Ljava/lang/String;)Ljava/lang/Integer;*1
+
+__unknown_file ("
+java.lang.Integer*"
+
+__unknown_file (
+""*
+38*≈
+82- -(1P
+N
+- -(1
+mesajava.lang.String"__id*"
+
+__unknown_file (
+
+%6]
+[
+/ /(	
+%7int"__calculate*
+/ /(
+**
+/ /(
+""*
+/ /(2*
+79*∞
+83- -(1ô
+ñ
+- -(1
+%6".java.lang.String#valueOf([C)Ljava/lang/String;*0
+
+__unknown_file ("
+java.lang.String*"
+
+__unknown_file (
+""*
+82*Ê
+84+ +(Fî
+ë
++ +(F1
+array(pe.gob.onpe.wsonpe.dto.TramaLogRequest[]"__id*L
+
+__unknown_file (0
+.
+%4(pe.gob.onpe.wsonpe.dto.TramaLogRequest[]∏
+µ
+- -(&,
+%5&pe.gob.onpe.wsonpe.dto.TramaLogRequest"
+__arrayGet*O
+
+__unknown_file (3
+1
+array(pe.gob.onpe.wsonpe.dto.TramaLogRequest[]*
+
+__unknown_file (2 *
+83*≠
+40m m(IW
+U
+m m(I
+	tipoTramajava.lang.Integer"__id*#
+
+__unknown_file (
+
+%47Ω
+∫
+n- n(5-
+%48&pe.gob.onpe.wsonpe.dto.TramaLogRequest"
+__arrayGet*O
+
+__unknown_file (3
+1
+array(pe.gob.onpe.wsonpe.dto.TramaLogRequest[]*"
+
+__unknown_file (
+""*
+39*ï
+85* *( i
+g
+* *( 1
+array(pe.gob.onpe.wsonpe.dto.TramaLogRequest[]"__id*"
+
+__unknown_file (
+""ìê
++ +(F.
+%4(pe.gob.onpe.wsonpe.dto.TramaLogRequest[]"lcom.fasterxml.jackson.databind.ObjectMapper#readValue(Ljava/lang/String;Ljava/lang/Class;)Ljava/lang/Object;*Y
+
+__unknown_file (=
+;
+objectMapper+com.fasterxml.jackson.databind.ObjectMapper*7
+
+__unknown_file (
+
+tramajava.lang.String*"
+
+__unknown_file (
+""2.readValue(Ljava/lang/String;Ljava/lang/Class;)*
+84*ƒ
+41m  m(H≠
+™
+m  m(H
+%47"@java.lang.Integer#valueOf(Ljava/lang/String;)Ljava/lang/Integer;*1
+
+__unknown_file ("
+java.lang.Integer*"
+
+__unknown_file (
+""*
+40*Ÿ
+86"  "(2lj
+"$ "(01
+%2+com.fasterxml.jackson.databind.ObjectMapper"+com.fasterxml.jackson.databind.ObjectMapperõ
+ò
+"  "(2
+%3"5com.fasterxml.jackson.databind.ObjectMapper#<init>()V*O
+
+__unknown_file (3
+1
+%2+com.fasterxml.jackson.databind.ObjectMapper°
+û
+" "(3;
+objectMapper+com.fasterxml.jackson.databind.ObjectMapper"__id*O
+
+__unknown_file (3
+1
+%2+com.fasterxml.jackson.databind.ObjectMapperS
+Q
+$ $(
+descripcionjava.lang.String"__id*
+
+__unknown_file ( W
+U
+% %( #
+descripcionJsonjava.lang.String"__id*
+
+__unknown_file ( e
+c
+& &(
+mesajava.lang.String"__id*7
+
+__unknown_file (
+
+tramajava.lang.String*
+85*∞
+42l l(_Z
+X
+l l(_!
+tipoSolucionjava.lang.Integer"__id*#
+
+__unknown_file (
+
+%45Ω
+∫
+m0 m(8-
+%46&pe.gob.onpe.wsonpe.dto.TramaLogRequest"
+__arrayGet*O
+
+__unknown_file (3
+1
+array(pe.gob.onpe.wsonpe.dto.TramaLogRequest[]*"
+
+__unknown_file (
+""*
+41*"
+87# ($"
+ (<
+""*≈
+43l# l(^Æ
+´
+l# l(^
+%45"@java.lang.Integer#valueOf(Ljava/lang/String;)Ljava/lang/Integer;*1
+
+__unknown_file ("
+java.lang.Integer*#
+
+__unknown_file (
+
+%44*
+42*ñ
+88 (|z
+ ((
+%1boolean"java.lang.String#isEmpty()Z*7
+
+__unknown_file (
+
+tramajava.lang.String2	isEmpty()*
+86
+87*±
+44l3 l(]ö
+ó
+l3 l(]
+%44".java.lang.String#valueOf([C)Ljava/lang/String;*0
+
+__unknown_file ("
+java.lang.String*"
+
+__unknown_file (
+""*
+43*ë
+89 (w
+u
+ (
+%0boolean"	__compare*
+ (
+==*'
+ (
+
+tramajava.lang.String*
+ (
+""*
+87
+88*‘
+45l# l(*Ω
+∫
+lB l(J-
+%43&pe.gob.onpe.wsonpe.dto.TramaLogRequest"
+__arrayGet*O
+
+__unknown_file (3
+1
+array(pe.gob.onpe.wsonpe.dto.TramaLogRequest[]*"
+
+__unknown_file (
+""*
+44*|
+46k k(b
+`
+k k()
+%42boolean"	__compare*
+k k(
+<*
+k k(
+""*
+k k()
+""*
+15
+45*i
+47j j(S
+Q
+j
+ j(
+descripcionjava.lang.String"__id*
+
+__unknown_file ( *
+46*"
+53_ _(I"
+_ _(I
+""*Ì
+10
+õ õ(w
+u
+
+õ õ()
+%82java.lang.String"__concat*
+
+õ õ(
+[*/
+
+õ õ()!
+
+descripcionjava.lang.Stringo
+m
+
+õ õ(/
+%83java.lang.String"__concat*'
+
+õ õ()
+
+%82java.lang.String*
+
+õ, õ(/
+]l
+j
+
+õ
+ õ(/
+descripcionjava.lang.String"__id*5
+
+__unknown_file (
+
+%83java.lang.String*
+1*Ñ
+11
+ô ô(Kl
+j
+
+ô ô(K
+descripcionjava.lang.String"__id*5
+
+__unknown_file (
+
+%81java.lang.String*
+10*˘
+12
+ôI ô(Jl
+j
+
+ô3 ô(J
+
+%80int"__calculate*
+
+ôG ô(H
+-*
+
+ô3 ô(G
+
+
+%79int*
+
+ôI ô(J2ÚÔ
+
+ô ô(K
+%81java.lang.String"0java.lang.String#substring(II)Ljava/lang/String;*=
+
+__unknown_file (!
+
+descripcionjava.lang.String*
+
+__unknown_file (2 *(
+
+__unknown_file (
+
+
+%80int2substring(II)*
+11*Ñ
+56[ [(Ij
+h
+[ [(I
+descripcionjava.lang.String"__id*5
+
+__unknown_file (
+
+%41java.lang.Object*
+71
+53*ó
+13
+ô ô(%}
+
+ô3 ô(G
+
+%79int"java.lang.String#length()I*=
+
+__unknown_file (!
+
+descripcionjava.lang.String2length()*
+12*Õ
+57Y Y(GB
+@
+Z( Z(B
+
+%38int"__id*"
+
+__unknown_file (
+""i
+g
+Z Z(B
+%39boolean"	__compare*
+Z% Z('
+==*
+Z Z($
+""*
+Z( Z(B
+
+
+%38intW
+U
+[> [(H
+%40java.lang.String"__id**
+
+__unknown_file (
+
+PO_MENSAJEÆ
+´
+[# [(I
+%41java.lang.Object"__mapGet*E
+
+__unknown_file ()
+'
+verificaTareasResponsejava.util.Map*5
+
+__unknown_file (
+
+%40java.lang.String*
+56*ë
+58V W(fo
+m
+V W(f'
+registraTareasResponsejava.util.Map"__id*2
+
+__unknown_file (
+
+%35java.util.MapY
+W
+Y: Y(F
+%36java.lang.String"__id*,
+
+__unknown_file (
+PO_RESULTADOÆ
+´
+Y Y(G
+%37java.lang.Object"__mapGet*E
+
+__unknown_file ()
+'
+registraTareasResponsejava.util.Map*5
+
+__unknown_file (
+
+%36java.lang.String*
+57*Ï
+15
+ó ó(œÃ
+
+ò ò('
+%78boolean".java.lang.String#endsWith(Ljava/lang/String;)Z*=
+
+__unknown_file (!
+
+descripcionjava.lang.String*!
+
+__unknown_file (
+,2endsWith(Ljava/lang/String;)*
+13
+10*Ñ
+59W W(Ø
+¨
+W W(<
+%345pe.gob.onpe.wsonpe.repository.TabTareasMesaRepository"__id*\
+
+__unknown_file (@*>)
+'pe.gob.onpe.wsonpe.service.TramaService"
+tramaRepositoryª∏
+W W(e
+%35java.util.Map"»pe.gob.onpe.wsonpe.repository.TabTareasMesaRepository#spInsercionTareas(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;)Ljava/util/Map;*Z
+
+__unknown_file (>
+<
+%345pe.gob.onpe.wsonpe.repository.TabTareasMesaRepository*6
+
+__unknown_file (
+
+mesajava.lang.String*9
+
+__unknown_file (
+
+usuariojava.lang.String*?
+
+__unknown_file (#
+!
+tipoSolucionjava.lang.Integer*<
+
+__unknown_file ( 
+
+	tipoTramajava.lang.Integer*9
+
+__unknown_file (
+
+modulojava.lang.Integer*<
+
+__unknown_file ( 
+
+	tipoFlujojava.lang.Integer2ÉspInsercionTareas(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;)*
+58*&
+17
+î î(K"
+
+î î(K
+""*%
+1
+´! ´('"
+
+´ ´(<
+""*˚
+startingBlock' (Eè
+å
+ (
+%86"
+__annotate*2
+
+__unknown_file (
+java.lang.Override*9
+
+__unknown_file (
+
+usuariojava.lang.String\
+Z
+/ (6
+usuariojava.lang.String"__annotation*#
+
+__unknown_file (
+
+%86ç
+ä
+ (
+%87"
+__annotate*2
+
+__unknown_file (
+java.lang.Override*7
+
+__unknown_file (
+
+tramajava.lang.StringZ
+X
+? (D
+tramajava.lang.String"__annotation*#
+
+__unknown_file (
+
+%87*
+89*%
+5
+•
+ •(C"
+
+•
+ •(C
+""*|
+60R R(nf
+d
+R R(n
+logHeadjava.lang.String"__id*5
+
+__unknown_file (
+
+%33java.lang.String*
+59*´
+61P P(GW
+U
+P P(G
+	tipoFlujojava.lang.Integer"__id*#
+
+__unknown_file (
+
+%31f
+d
+R+ R(E
+%32java.lang.String"__id*9
+
+__unknown_file (
+Mesa:%s, S:%s, M:%s, T:%s”
+–
+R R(m
+%33java.lang.String"Pjava.lang.String#format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;*0
+
+__unknown_file ("
+java.lang.String*5
+
+__unknown_file (
+
+%32java.lang.String*6
+
+__unknown_file (
+
+mesajava.lang.String*?
+
+__unknown_file (#
+!
+tipoSolucionjava.lang.Integer*9
+
+__unknown_file (
+
+modulojava.lang.Integer*<
+
+__unknown_file ( 
+
+	tipoTramajava.lang.Integer*
+60*ƒ
+62P  P(F≠
+™
+P  P(F
+%31"@java.lang.Integer#valueOf(Ljava/lang/String;)Ljava/lang/Integer;*1
+
+__unknown_file ("
+java.lang.Integer*"
+
+__unknown_file (
+""*
+61*™
+63O O(CT
+R
+O O(C
+modulojava.lang.Integer"__id*#
+
+__unknown_file (
+
+%29Ω
+∫
+P0 P(8-
+%30&pe.gob.onpe.wsonpe.dto.TramaLogRequest"
+__arrayGet*O
+
+__unknown_file (3
+1
+array(pe.gob.onpe.wsonpe.dto.TramaLogRequest[]*"
+
+__unknown_file (
+""*
+62*ƒ
+64O O(B≠
+™
+O O(B
+%29"@java.lang.Integer#valueOf(Ljava/lang/String;)Ljava/lang/Integer;*1
+
+__unknown_file ("
+java.lang.Integer*"
+
+__unknown_file (
+""*
+63*≠
+65N N(IW
+U
+N N(I
+	tipoTramajava.lang.Integer"__id*#
+
+__unknown_file (
+
+%27Ω
+∫
+O- O(5-
+%28&pe.gob.onpe.wsonpe.dto.TramaLogRequest"
+__arrayGet*O
+
+__unknown_file (3
+1
+array(pe.gob.onpe.wsonpe.dto.TramaLogRequest[]*"
+
+__unknown_file (
+""*
+64*ê
+21
+ë ë('ò
+ï
+
+ë ë(9
+%76java.lang.String"__concat*/
+
+ë ë('!
+
+descripcionjava.lang.String*3
+
+ë* ë(9%
+#
+descripcionJsonjava.lang.Stringo
+m
+
+ë ë(?
+%77java.lang.String"__concat*'
+
+ë ë(9
+
+%76java.lang.String*
+
+ë< ë(?
+,l
+j
+
+ë ë(?
+descripcionjava.lang.String"__id*5
+
+__unknown_file (
+
+%77java.lang.String*
+46*ƒ
+66N  N(H≠
+™
+N  N(H
+%27"@java.lang.Integer#valueOf(Ljava/lang/String;)Ljava/lang/Integer;*1
+
+__unknown_file ("
+java.lang.Integer*"
+
+__unknown_file (
+""*
+65*ê
+22
+é é(Np
+n
+
+é é(N#
+descripcionJsonjava.lang.String"__id*5
+
+__unknown_file (
+
+%75java.lang.Object*
+46
+17
+21*∞
+67M M(_Z
+X
+M M(_!
+tipoSolucionjava.lang.Integer"__id*#
+
+__unknown_file (
+
+%25Ω
+∫
+N0 N(8-
+%26&pe.gob.onpe.wsonpe.dto.TramaLogRequest"
+__arrayGet*O
+
+__unknown_file (3
+1
+array(pe.gob.onpe.wsonpe.dto.TramaLogRequest[]*"
+
+__unknown_file (
+""*
+66*ó
+23
+â â(HD
+B
+
+ã$ ã(<
+
+%70int"__id*"
+
+__unknown_file (
+""q
+o
+
+ã ã(<
+%71boolean"	__compare*
+
+ã! ã(#
+==*
+
+ã ã( 
+""*
+
+ã$ ã(<
+
+
+%70intD
+B
+
+ç( ç(<
+
+%72int"__id*"
+
+__unknown_file (
+""q
+o
+
+ç ç(<
+%73boolean"	__compare*
+
+ç% ç('
+==*
+
+ç ç($
+""*
+
+ç( ç(<
+
+
+%72intY
+W
+
+éC é(M
+%74java.lang.String"__id**
+
+__unknown_file (
+
+PO_MENSAJE±
+Æ
+
+é' é(N
+%75java.lang.Object"__mapGet*F
+
+__unknown_file (*
+(
+listaTareasFileResponsejava.util.Map*5
+
+__unknown_file (
+
+%74java.lang.String*
+22:'
+( (7
+usuariojava.lang.String:%
+8 (D
+tramajava.lang.StringB+)
+'pe.gob.onpe.wsonpe.service.TramaServiceH

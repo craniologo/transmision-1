@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: pe.gob.onpe.wsonpe.security.JWTAuthorizationFilterTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.58 s - in pe.gob.onpe.wsonpe.security.JWTAuthorizationFilterTest

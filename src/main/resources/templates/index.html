@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>.: ONPE :.</title>
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+
+<div class="bg_cuadritos">
+    <header>
+        <div class="logo_sea">
+            <img src="/images/logo_saje.png" width="180" height="33" alt="sea"> </div>
+        <h1 class="titulo_principal">ONPE TRANSMISIÓN
+        </h1>
+        <div class="logo_onpe">
+            <img src="/images/logo_onpe_fondoblanco.png" width="173" height="120" alt="ONPE">
+        </div>
+    </header>
+    <section class="wrap">
+        <div class="wrap_actualizar">
+        </div>
+
+        <div class="filtros" th:each="election: ${allElections}">
+            <span class="filtros_msj_alt" th:text="${election.processName}" th:remove="tag"> </span><br>
+            <span class="filtros_msj_sub" th:text="${election.processDate}" th:remove="tag"> </span>
+        </div>
+
+    </section>
+    <footer>
+    </footer>
+</div>
+</body>
+</html>

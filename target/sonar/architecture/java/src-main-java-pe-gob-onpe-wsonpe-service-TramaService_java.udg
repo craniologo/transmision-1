@@ -1,0 +1,528 @@
+
+1.0craniologo_transmisionJavaFrontend"1756337475125*java2.Bß
+?
+:src/main/java/pe/gob/onpe/wsonpe/service/TramaService.java2
+	
+type3
+	
+MAIN4
+
+
+module-key5
+
+craniologo_transmision6
+
+package8
+6
+1craniologo_transmision:pe.gob.onpe.wsonpe.service9
+-
+'pe.gob.onpe.wsonpe.service.TramaService11
+
+class12
+
+access13
+
+public14
+
+simple-name15
+
+TramaService16
+.
+(pe.gob.onpe.wsonpe.service.ITramaService18
+
+unknown19
+
+
+implements20
+,
+&org.springframework.stereotype.Service22
+
+annotated by23
+
+
+uses24
+
+lombok.extern.slf4j.Slf4j26
+:
+4pe.gob.onpe.wsonpe.service.TramaService.PO_RESULTADO28
+
+field29
+
+private30
+
+PO_RESULTADO31
+8
+2pe.gob.onpe.wsonpe.service.TramaService.PO_MENSAJE33
+
+
+PO_MENSAJE34
+=
+7pe.gob.onpe.wsonpe.service.TramaService.tramaRepository36
+
+tramaRepository37
+;
+5pe.gob.onpe.wsonpe.repository.TabTareasMesaRepository39
+
+is type40
+n
+hpe.gob.onpe.wsonpe.service.TramaService#<init>(Lpe/gob/onpe/wsonpe/repository/TabTareasMesaRepository;)V42
+
+method43
+
+	has param44
+
+calls45
+
+
+references46
+‹
+„pe.gob.onpe.wsonpe.service.TramaService#receiveTrama(Ljava/lang/String;Ljava/lang/String;)Lpe/gob/onpe/wsonpe/dto/MensajeWsResponse;48
+
+receiveTrama49
+.
+(pe.gob.onpe.wsonpe.dto.MensajeWsResponse51
+
+returns52
+1
++com.fasterxml.jackson.databind.ObjectMapper54
+,
+&pe.gob.onpe.wsonpe.dto.TramaLogRequest56
+r
+lcom.fasterxml.jackson.databind.ObjectMapper#readValue(Ljava/lang/String;Ljava/lang/Class;)Ljava/lang/Object;58
+‚
+|pe.gob.onpe.wsonpe.repository.TabTareasMesaRepository#spVerificaTareas(Ljava/lang/String;Ljava/lang/Integer;)Ljava/util/Map;60
+-
+'pe.gob.onpe.wsonpe.constants.WebService62
+=
+7pe.gob.onpe.wsonpe.constants.WebService.REGISTRO_TAREAS64
+:
+4pe.gob.onpe.wsonpe.constants.WebService.LISTA_TAREAS66
+?
+9pe.gob.onpe.wsonpe.constants.WebService.REGISTRO_D_TAREAS68
+=
+7pe.gob.onpe.wsonpe.constants.WebService.REGISTRO_TRAMAS70
+=
+7pe.gob.onpe.wsonpe.constants.WebService.LOG_HEAD_FORMAT72
+Ï
+Èpe.gob.onpe.wsonpe.repository.TabTareasMesaRepository#spInsercionTareas(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;)Ljava/util/Map;74
+Ë
+Äpe.gob.onpe.wsonpe.repository.TabTareasMesaRepository#spListaTareas(Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;)Ljava/util/Map;76
+;
+5pe.gob.onpe.wsonpe.constants.WebService.JSON_NOT_NULL78
+7
+1pe.gob.onpe.wsonpe.constants.WebService.JSON_NULL80
+8
+2com.fasterxml.jackson.core.JsonProcessingException82
+W
+Qcom.fasterxml.jackson.core.JsonProcessingException#getMessage()Ljava/lang/String;84J#
+!
+1
+12
+
+3
+4
+
+5
+6Z
+
+7
+7982
+
+
+5
+6j¸
+
+67
+676819
+
+79
+798019
+
+17
+171819
+B
+41<
+414243 *
+1 (	210:7B
+
+
+13
+14
+
+
+15
+16
+B
+47<
+474843 *
+1 (210:7B
+
+
+13
+14
+
+
+15
+49
+
+61
+616219
+
+55
+555619
+B
+27<
+272829 *
+1 (
+210:7B
+
+
+13
+30
+
+
+15
+31
+
+83
+838419
+
+63
+636419
+
+21
+212219
+
+71
+717219
+
+57
+575819
+
+53
+535419
+>
+108
+101112 *
+1 (:7B
+
+
+13
+14
+
+
+15
+16
+
+81
+818219
+B
+32<
+323329 *
+1 (
+210:7B
+
+
+13
+30
+
+
+15
+34
+
+65
+656619
+
+73
+737419
+
+59
+596019
+
+69
+697019
+
+25
+252619
+
+50
+505119
+
+75
+757619
+
+77
+777819
+B
+35<
+353629 *
+1 (
+210:7B
+
+
+13
+30
+
+
+15
+37
+
+38
+383919rþ
+
+101720*
+1& (3
+
+102123*
+1 (
+
+102124*
+1 (	
+
+102523*
+1 (
+
+102524*
+1 (
+
+101724*
+1& (3
+
+353840*
+1 ("
+
+353824*
+1 ("
+
+353824*
+1# (2
+
+413844*
+1 (.
+
+411045*
+1
+ (
+
+413840*
+1/ (>
+
+413824*
+1 (.
+
+411024*
+1 (	
+
+411046*
+1 (	
+
+413824*
+1
+ (
+
+413546*
+1
+ (
+
+475052*
+1
+ (
+
+475024*
+1
+ (
+
+475340*
+1" "(
+
+475324*
+1" "(
+
+475345*
+1"% "(1
+
+475540*
+1* *( 
+
+475524*
+1*	 *(
+
+475552*
+1+ +(
+
+475346*
+1+ +(
+
+475745*
+1+ +('
+
+475524*
+1+/ +(>
+
+473846*
+176 7(E
+
+475945*
+17F 7(V
+
+473546*
+176 7(E
+
+473824*
+176 7(E
+
+473546*
+176 7(E
+
+472746*
+197 9(C
+
+476124*
+1<3 <(=
+
+476346*
+1<> <(M
+
+476124*
+1>0 >(:
+
+476546*
+1>; >(G
+
+476124*
+1@4 @(>
+
+476746*
+1@? @(P
+
+476124*
+1C+ C(5
+
+476946*
+1C6 C(E
+
+473246*
+1E; E(E
+
+476124*
+1R, R(6
+
+477146*
+1R7 R(F
+
+473846*
+1W W(
+
+477345*
+1W W(0
+
+473546*
+1W W(
+
+473824*
+1W W(
+
+473546*
+1W W(
+
+472746*
+1Y; Y(G
+
+476124*
+1Z) Z(3
+
+476346*
+1Z4 Z(C
+
+473246*
+1[? [(I
+
+476124*
+1q, q(6
+
+477146*
+1q7 q(F
+
+473846*
+1v v(
+
+477545*
+1v v(,
+
+473546*
+1v v(
+
+473824*
+1v v(
+
+473546*
+1v v(
+
+472746*
+1x@ x(L
+
+476124*
+1z- z(7
+
+477746*
+1z8 z(E
+
+476124*
+1|1 |(;
+
+477946*
+1|< |(E
+
+473246*
+1}H }(R
+
+473846*
+1‡ ‡(
+
+477545*
+1‡ ‡(,
+
+473546*
+1‡ ‡(
+
+473824*
+1‡ ‡(
+
+473546*
+1‡ ‡(
+
+472746*
+1‰< ‰(H
+
+476124*
+1‹% ‹(/
+
+477746*
+1‹0 ‹(=
+
+476124*
+1) (3
+
+477946*
+14 (=
+
+473246*
+1ŽD Ž(N
+
+476124*
+1— —(
+
+476546*
+1— —(+
+
+478140*
+1§& §('
+
+478124*
+1§ §(%
+
+478146*
+1¨E ¨(F
+
+478345*
+1¨G ¨(Q

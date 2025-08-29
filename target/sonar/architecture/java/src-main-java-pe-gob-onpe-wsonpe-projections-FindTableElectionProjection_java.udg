@@ -1,0 +1,126 @@
+
+1.0craniologo_transmisionJavaFrontend"1756337476732*java2.BË
+R
+Msrc/main/java/pe/gob/onpe/wsonpe/projections/FindTableElectionProjection.java2
+	
+type3
+	
+MAIN4
+
+
+module-key5
+
+craniologo_transmision6
+
+package8
+:
+5craniologo_transmision:pe.gob.onpe.wsonpe.projections9
+@
+:pe.gob.onpe.wsonpe.projections.FindTableElectionProjection11
+
+class12
+
+access13
+
+public14
+
+simple-name15
+!
+FindTableElectionProjection16
+
+lombok.Value18
+
+unknown19
+
+annotated by20
+
+
+uses21
+
+lombok.Setter23
+L
+Fpe.gob.onpe.wsonpe.projections.FindTableElectionProjection.cEleccionPk25
+
+field26
+
+private27
+
+cEleccionPk28
+U
+Ope.gob.onpe.wsonpe.projections.FindTableElectionProjection.cNombreCortoEleccion30
+
+cNombreCortoEleccion31J#
+!
+1
+12
+
+3
+4
+
+5
+6Z
+
+7
+7982
+
+
+5
+6jð
+>
+108
+101112 *
+1 ():7B
+
+
+13
+14
+
+
+15
+16
+
+22
+222319
+B
+29<
+293026 *
+1
+ 
+(
+210:7B
+
+
+13
+27
+
+
+15
+31
+B
+24<
+242526 *
+1	 	(
+210:7B
+
+
+13
+27
+
+
+15
+28
+
+17
+171819rl
+
+101720*
+1 (
+
+101721*
+1 (
+
+102220*
+1 (
+
+102221*
+1 (

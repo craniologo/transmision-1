@@ -1,0 +1,253 @@
+
+1.0craniologo_transmisionJavaFrontend"1756337475368*java2.Bž
+>
+9src/main/java/pe/gob/onpe/wsonpe/dto/TramaLogRequest.java2
+	
+type3
+	
+MAIN4
+
+
+module-key5
+
+craniologo_transmision6
+
+package8
+2
+-craniologo_transmision:pe.gob.onpe.wsonpe.dto9
+,
+&pe.gob.onpe.wsonpe.dto.TramaLogRequest11
+
+class12
+
+access13
+
+public14
+
+simple-name15
+
+TramaLogRequest16
+
+lombok.Setter18
+
+unknown19
+
+annotated by20
+
+
+uses21
+
+lombok.Getter23
+
+lombok.Data25
+
+lombok.AllArgsConstructor27
+
+lombok.NoArgsConstructor29
+#
+lombok.experimental.Accessors31
+1
++pe.gob.onpe.wsonpe.dto.TramaLogRequest.mesa33
+
+field34
+
+private35
+
+
+mesa36
+9
+3pe.gob.onpe.wsonpe.dto.TramaLogRequest.tipoSolucion38
+
+tipoSolucion39
+3
+-pe.gob.onpe.wsonpe.dto.TramaLogRequest.modulo41
+
+modulo42
+6
+0pe.gob.onpe.wsonpe.dto.TramaLogRequest.tipoTrama44
+
+	tipoTrama45
+1
++pe.gob.onpe.wsonpe.dto.TramaLogRequest.data47
+
+
+data48
+7
+1pe.gob.onpe.wsonpe.dto.TramaLogRequest.transmitio50
+
+
+transmitio51
+4
+.pe.gob.onpe.wsonpe.dto.TramaLogRequest.idFlujo53
+
+idFlujo54J#
+!
+1
+12
+
+3
+4
+
+5
+6Z
+
+7
+7982
+
+
+5
+6j”
+
+17
+171819
+
+30
+303119
+
+22
+222319
+>
+108
+101112 *
+1 (:7B
+
+
+13
+14
+
+
+15
+16
+B
+43<
+434434 *
+1 (210:7B
+
+
+13
+35
+
+
+15
+45
+B
+32<
+323334 *
+1 (210:7B
+
+
+13
+35
+
+
+15
+36
+B
+46<
+464734 *
+1 (210:7B
+
+
+13
+35
+
+
+15
+48
+B
+49<
+495034 *
+1! !(210:7B
+
+
+13
+35
+
+
+15
+51
+B
+52<
+525334 *
+1$ $(210:7B
+
+
+13
+35
+
+
+15
+54
+
+24
+242519
+B
+40<
+404134 *
+1 (210:7B
+
+
+13
+35
+
+
+15
+42
+
+26
+262719
+B
+37<
+373834 *
+1 (210:7B
+
+
+13
+35
+
+
+15
+39
+
+28
+282919rÄ
+
+101720*
+1
+ 
+(
+
+101721*
+1
+ 
+(
+
+102220*
+1 (
+
+102221*
+1 (
+
+102420*
+1 (
+
+102421*
+1 (
+
+102620*
+1 (
+
+102621*
+1 (
+
+102820*
+1 (
+
+102821*
+1 (
+
+103020*
+1 (
+
+103021*
+1 (

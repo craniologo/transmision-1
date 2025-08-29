@@ -1,0 +1,97 @@
+
+1.0craniologo_transmisionJavaFrontend"1756337474655*java2.Bâ
+N
+Isrc/main/java/pe/gob/onpe/wsonpe/utils/exceptions/AlgorithmException.java2
+	
+type3
+	
+MAIN4
+
+
+module-key5
+
+craniologo_transmision6
+
+package8
+?
+:craniologo_transmision:pe.gob.onpe.wsonpe.utils.exceptions9
+<
+6pe.gob.onpe.wsonpe.utils.exceptions.AlgorithmException11
+
+	exception12
+
+access13
+
+public14
+
+simple-name15
+
+AlgorithmException16
+m
+gpe.gob.onpe.wsonpe.utils.exceptions.AlgorithmException#<init>(Ljava/lang/String;Ljava/lang/Throwable;)V18
+
+method19
+
+calls20
+[
+Upe.gob.onpe.wsonpe.utils.exceptions.AlgorithmException#<init>(Ljava/lang/Throwable;)V22J#
+!
+1
+12
+
+3
+4
+
+5
+6Z
+
+7
+7982
+
+
+5
+6jÈ
+>
+108
+101112 *
+1 ( :7B
+
+
+13
+14
+
+
+15
+16
+B
+21<
+212219 *
+1 (	210:7B
+
+
+13
+14
+
+
+15
+16
+B
+17<
+171819 *
+1 (	210:7B
+
+
+13
+14
+
+
+15
+16r6
+
+171020*
+1
+ (
+
+211020*
+1
+ (

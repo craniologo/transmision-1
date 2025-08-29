@@ -1,0 +1,130 @@
+
+1.0craniologo_transmisionJavaFrontend"1756337474009*java2.Bý
+J
+Esrc/main/java/pe/gob/onpe/wsonpe/repository/TabVersionRepository.java2
+	
+type3
+	
+MAIN4
+
+
+module-key5
+
+craniologo_transmision6
+
+package8
+9
+4craniologo_transmision:pe.gob.onpe.wsonpe.repository9
+8
+2pe.gob.onpe.wsonpe.repository.TabVersionRepository11
+
+	interface12
+
+access13
+
+public14
+
+simple-name15
+
+TabVersionRepository16
+;
+5org.springframework.data.jpa.repository.JpaRepository18
+
+unknown19
+
+
+implements20
+/
+)org.springframework.stereotype.Repository22
+
+annotated by23
+
+
+uses24
+)
+#pe.gob.onpe.wsonpe.model.TabVersion26
+Y
+Spe.gob.onpe.wsonpe.repository.TabVersionRepository#obtenerVersion()Ljava/util/List;28
+
+method29
+
+obtenerVersion30
+3
+-org.springframework.data.jpa.repository.Query32J#
+!
+1
+12
+
+3
+4
+
+5
+6Z
+
+7
+7982
+
+
+5
+6jÔ
+
+31
+313219
+>
+108
+101112 *
+1 (&:7B
+
+
+13
+14
+
+
+15
+16
+B
+27<
+272829 *
+1 (210:7B
+
+
+13
+14
+
+
+15
+30
+
+25
+252619
+
+21
+212219
+
+17
+171819r½
+
+101720*
+1/ (<
+
+102123*
+1
+ 
+(
+
+102124*
+1
+ 
+(
+
+101724*
+1/ (<
+
+102524*
+1= (G
+
+273123*
+1 (
+
+273124*
+1 (	

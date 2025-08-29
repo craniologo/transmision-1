@@ -1,0 +1,1075 @@
+
+1.0craniologo_transmisionJavaFrontend"1756337483470*java2.B€"
+I
+Dsrc/test/java/pe/gob/onpe/wsonpe/controller/TramaControllerTest.java2
+	
+type3
+	
+TEST4
+
+
+module-key5
+
+craniologo_transmision6
+
+package8
+9
+4craniologo_transmision:pe.gob.onpe.wsonpe.controller9
+7
+1pe.gob.onpe.wsonpe.controller.TramaControllerTest11
+
+class12
+
+access13
+
+	protected14
+
+simple-name15
+
+TramaControllerTest16
+5
+/org.springframework.test.context.ActiveProfiles18
+
+unknown19
+
+annotated by20
+
+
+uses21
+0
+*org.junit.jupiter.api.extension.ExtendWith23
+0
+*org.mockito.junit.jupiter.MockitoExtension25
+D
+>pe.gob.onpe.wsonpe.controller.TramaControllerTest.tramaService27
+
+field28
+
+private29
+
+tramaService30
+.
+(pe.gob.onpe.wsonpe.service.ITramaService32
+
+is type33
+
+org.mockito.Mock35
+G
+Ape.gob.onpe.wsonpe.controller.TramaControllerTest.tramaController37
+
+tramaController38
+3
+-pe.gob.onpe.wsonpe.controller.TramaController40
+
+org.mockito.InjectMocks42
+B
+<pe.gob.onpe.wsonpe.controller.TramaControllerTest.TRAMA_TEST44
+
+
+TRAMA_TEST45
+A
+;pe.gob.onpe.wsonpe.controller.TramaControllerTest.USER_TEST47
+
+	USER_TEST48
+@
+:pe.gob.onpe.wsonpe.controller.TramaControllerTest#setup()V50
+
+method51
+
+setup52
+&
+ org.junit.jupiter.api.BeforeEach54
+7
+1org.springframework.test.util.ReflectionTestUtils56
+
+
+references57
+y
+sorg.springframework.test.util.ReflectionTestUtils#setField(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/Object;)V59
+
+calls60
+K
+Epe.gob.onpe.wsonpe.controller.TramaControllerTest#testReceiveTrama()V62
+
+testReceiveTrama63
+ 
+org.junit.jupiter.api.Test65
+.
+(pe.gob.onpe.wsonpe.dto.MensajeWsResponse67
+N
+Hpe.gob.onpe.wsonpe.dto.MensajeWsResponse#setCodigo(Ljava/lang/Integer;)V69
+O
+Ipe.gob.onpe.wsonpe.dto.MensajeWsResponse#setSuccess(Ljava/lang/Boolean;)V71
+N
+Hpe.gob.onpe.wsonpe.dto.MensajeWsResponse#setMessage(Ljava/lang/String;)V73
+
+org.mockito.MockedStatic75
+*
+$pe.gob.onpe.wsonpe.utils.WsOnpeUtils77
+
+returns78
+
+org.mockito.Mockito80
+Q
+Korg.mockito.Mockito#mockStatic(Ljava/lang/Class;)Lorg/mockito/MockedStatic;82
+*
+$org.mockito.stubbing.OngoingStubbing84
+o
+iorg.mockito.stubbing.OngoingStubbing#thenReturn(Ljava/lang/Object;)Lorg/mockito/stubbing/OngoingStubbing;86
+r
+lorg.mockito.MockedStatic#when(Lorg/mockito/MockedStatic$Verification;)Lorg/mockito/stubbing/OngoingStubbing;88
++
+%org.mockito.MockedStatic$Verification90
+X
+Rorg.mockito.Mockito#when(Ljava/lang/Object;)Lorg/mockito/stubbing/OngoingStubbing;92
+å
+Öpe.gob.onpe.wsonpe.service.ITramaService#receiveTrama(Ljava/lang/String;Ljava/lang/String;)Lpe/gob/onpe/wsonpe/dto/MensajeWsResponse;94
+~
+xpe.gob.onpe.wsonpe.controller.TramaController#receiveTrama(Ljava/lang/String;)Lpe/gob/onpe/wsonpe/dto/MensajeWsResponse;96
+&
+ org.junit.jupiter.api.Assertions98
+J
+Corg.junit.jupiter.api.Assertions#assertNotNull(Ljava/lang/Object;)V100
+]
+Vorg.junit.jupiter.api.Assertions#assertEquals(Ljava/lang/Integer;Ljava/lang/Integer;)V102
+N
+Gpe.gob.onpe.wsonpe.dto.MensajeWsResponse#getCodigo()Ljava/lang/Integer;104
+[
+Torg.junit.jupiter.api.Assertions#assertEquals(Ljava/lang/Object;Ljava/lang/Object;)V106
+N
+Gpe.gob.onpe.wsonpe.dto.MensajeWsResponse#getMessage()Ljava/lang/String;108
+6
+/org.junit.jupiter.api.Assertions#assertTrue(Z)V110
+O
+Hpe.gob.onpe.wsonpe.dto.MensajeWsResponse#getSuccess()Ljava/lang/Boolean;112
+G
+@org.mockito.Mockito#verify(Ljava/lang/Object;)Ljava/lang/Object;114
+Y
+Rpe.gob.onpe.wsonpe.controller.TramaControllerTest#testReceiveTramaErrorResponse()V116
+$
+testReceiveTramaErrorResponse117
+I
+Bpe.gob.onpe.wsonpe.controller.TramaControllerTest#testGetMethod()V119
+
+testGetMethod120
+8
+1org.springframework.web.servlet.view.RedirectView122
+s
+lpe.gob.onpe.wsonpe.controller.TramaController#getMethod()Lorg/springframework/web/servlet/view/RedirectView;124
+@
+9org.springframework.web.servlet.view.AbstractUrlBasedView126
+[
+Torg.springframework.web.servlet.view.AbstractUrlBasedView#getUrl()Ljava/lang/String;128
+U
+Npe.gob.onpe.wsonpe.controller.TramaControllerTest#testControllerConstructor()V130
+ 
+testControllerConstructor131
+X
+Qpe.gob.onpe.wsonpe.controller.TramaControllerTest#testControllerInitialization()V133
+#
+testControllerInitialization134
+D
+=org.mockito.Mockito#mock(Ljava/lang/Class;)Ljava/lang/Object;136
+y
+rorg.springframework.test.util.ReflectionTestUtils#getField(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;138J#
+!
+1
+12
+
+3
+4
+
+5
+6Z
+
+7
+7982
+
+
+5
+6j‘
+
+53
+535419
+
+111
+11111219
+
+99
+9910019
+
+17
+171819
+
+81
+818219
+
+113
+11311419
+B
+26<
+262728 *
+1 (210:7B
+
+
+13
+29
+
+
+15
+30
+
+22
+222319
+
+121
+12112219
+
+137
+13713819
+B
+49<
+495051 *
+1& &(210:7B
+
+
+13
+14
+
+
+15
+52
+
+95
+959619
+
+101
+10110219
+
+24
+242519
+F
+129?
+12913051 *
+1l l(210:7B
+
+
+13
+14
+
+15
+131
+F
+132?
+13213351 *
+1u u(210:7B
+
+
+13
+14
+
+15
+134
+
+85
+858619
+
+89
+899019
+
+127
+12712819
+B
+61<
+616251 *
+1, ,(210:7B
+
+
+13
+14
+
+
+15
+63
+
+64
+646519
+
+109
+10911019
+
+74
+747519
+
+66
+666719
+
+125
+12512619
+B
+36<
+363728 *
+1   (210:7B
+
+
+13
+29
+
+
+15
+38
+
+103
+10310419
+
+76
+767719
+
+91
+919219
+
+34
+343519
+
+31
+313219
+
+123
+12312419
+
+135
+13513619
+
+39
+394019
+F
+115?
+11511651 *
+1I I(210:7B
+
+
+13
+14
+
+15
+117
+B
+43<
+434428 *
+1# #(
+210:7B
+
+
+13
+29
+
+
+15
+45
+
+72
+727319
+
+41
+414219
+
+87
+878819
+
+70
+707119
+F
+118?
+11811951 *
+1b b(210:7B
+
+
+13
+14
+
+15
+120
+
+83
+838419
+
+55
+555619
+B
+46<
+464728 *
+1$ $(
+210:7B
+
+
+13
+29
+
+
+15
+48
+
+58
+585919
+
+93
+939419
+>
+108
+101112 *
+1 (:7B
+
+
+13
+14
+
+
+15
+16
+
+79
+798019
+
+105
+10510619
+
+97
+979819
+
+107
+10710819
+
+68
+686919r∂-
+
+101720*
+1 (
+
+101721*
+1 (
+
+102220*
+1 (
+
+102221*
+1 (
+
+102421*
+1 (
+
+263133*
+1 (
+
+263420*
+1 (
+
+263421*
+1 (
+
+263121*
+1 (
+
+263121*
+1 (%
+
+363933*
+1! !(
+
+364120*
+1   (
+
+364121*
+1   (
+
+363921*
+1! !(
+
+363921*
+1! !(*
+
+495320*
+1& &(
+
+495321*
+1& &(
+
+495557*
+1) )(
+
+495860*
+1) )(!
+
+495521*
+1) )(
+
+493921*
+1)" )(1
+
+493657*
+1)" )(1
+
+616420*
+1, ,(
+
+616421*
+1, ,(
+
+616633*
+1/ /('
+
+616621*
+1/ /(
+
+616660*
+1/. /(?
+
+616657*
+10 0(
+
+616860*
+10 0(
+
+616657*
+11 1(
+
+617060*
+11 1( 
+
+616657*
+12 2(
+
+617260*
+12 2( 
+
+617433*
+15$ 5(0
+
+617421*
+15
+ 5(
+
+617621*
+15 5("
+
+617478*
+153 5(:
+
+617957*
+153 5(:
+
+618160*
+15; 5(E
+
+617921*
+153 5(:
+
+617621*
+15F 5(Q
+
+618378*
+16 6(
+
+618357*
+16 6(
+
+618560*
+166 6(@
+
+618378*
+16 6(
+
+617457*
+16 6(
+
+618760*
+16 6(
+
+618957*
+16& 6(4
+
+617621*
+16 6($
+
+614657*
+16A 6(J
+
+618378*
+19 9(
+
+618357*
+19 9(
+
+618560*
+19> 9(H
+
+618378*
+19 9(
+
+617957*
+19 9(
+
+619160*
+19 9(
+
+616678*
+19 9(
+
+613157*
+19 9(
+
+619360*
+19 9(%
+
+612657*
+19 9(
+
+613121*
+19 9(
+
+612657*
+19 9(
+
+614657*
+19& 9(/
+
+614357*
+191 9(;
+
+616633*
+1< <(
+
+616621*
+1< <(
+
+616678*
+1<" <(1
+
+613957*
+1<" <(1
+
+619560*
+1<2 <(>
+
+613657*
+1<" <(1
+
+613921*
+1<" <(1
+
+613657*
+1<" <(1
+
+614357*
+1<? <(I
+
+619757*
+1? ?(
+
+619960*
+1? ?(
+
+619757*
+1@ @(
+
+6110160*
+1@ @(
+
+616657*
+1@ @($
+
+6110360*
+1@% @(.
+
+616657*
+1@2 @(8
+
+6110360*
+1@9 @(B
+
+619757*
+1A A(
+
+6110560*
+1A A(
+
+616657*
+1A A($
+
+6110760*
+1A% A(/
+
+616657*
+1A3 A(9
+
+6110760*
+1A: A(D
+
+619757*
+1B B(
+
+6110960*
+1B B(
+
+616657*
+1B B(
+
+6111160*
+1B B(#
+
+616678*
+1E E(
+
+613157*
+1E E(
+
+619360*
+1E E((
+
+613178*
+1E E(
+
+617957*
+1E E(
+
+6111360*
+1E E(
+
+613121*
+1E E(
+
+612657*
+1E E(
+
+614657*
+1E) E(2
+
+614357*
+1E4 E(>
+
+1156420*
+1I I(
+
+1156421*
+1I I(
+
+1156633*
+1L L($
+
+1156621*
+1L L(
+
+1156660*
+1L+ L(<
+
+1156657*
+1M M(
+
+1156860*
+1M M(
+
+1156657*
+1N N(
+
+1157060*
+1N N(
+
+1156657*
+1O O(
+
+1157260*
+1O O(
+
+1157433*
+1Q$ Q(0
+
+1157421*
+1Q
+ Q(
+
+1157621*
+1Q Q("
+
+1157478*
+1Q3 Q(:
+
+1157957*
+1Q3 Q(:
+
+1158160*
+1Q; Q(E
+
+1157921*
+1Q3 Q(:
+
+1157621*
+1QF Q(Q
+
+1158378*
+1R R(
+
+1158357*
+1R R(
+
+1158560*
+1R6 R(@
+
+1158378*
+1R R(
+
+1157457*
+1R R(
+
+1158760*
+1R R(
+
+1158957*
+1R& R(4
+
+1157621*
+1R R($
+
+1154657*
+1RA R(J
+
+1158378*
+1U U(
+
+1158357*
+1U U(
+
+1158560*
+1U> U(H
+
+1158378*
+1U U(
+
+1157957*
+1U U(
+
+1159160*
+1U U(
+
+1156678*
+1U U(
+
+1153157*
+1U U(
+
+1159360*
+1U U(%
+
+1152657*
+1U U(
+
+1153121*
+1U U(
+
+1152657*
+1U U(
+
+1154657*
+1U& U(/
+
+1154357*
+1U1 U(;
+
+1156633*
+1X X(
+
+1156621*
+1X X(
+
+1156678*
+1X" X(1
+
+1153957*
+1X" X(1
+
+1159560*
+1X2 X(>
+
+1153657*
+1X" X(1
+
+1153921*
+1X" X(1
+
+1153657*
+1X" X(1
+
+1154357*
+1X? X(I
+
+1159757*
+1[ [(
+
+1159960*
+1[ [(
+
+1159757*
+1\ \(
+
+11510160*
+1\ \(
+
+1156657*
+1\) \(/
+
+11510360*
+1\0 \(9
+
+1159757*
+1] ](
+
+11510560*
+1] ](
+
+1156657*
+1]2 ](8
+
+11510760*
+1]9 ](C
+
+1159757*
+1^ ^(
+
+11510560*
+1^ ^(
+
+1156657*
+1^ ^(!
+
+11511160*
+1^" ^(,
+
+1186420*
+1b b(
+
+1186421*
+1b b(
+
+11812133*
+1e e(
+
+11812121*
+1e e(
+
+11812178*
+1e e(*
+
+1183957*
+1e e(*
+
+11812360*
+1e+ e(4
+
+1183657*
+1e e(*
+
+1183921*
+1e e(*
+
+1183657*
+1e e(*
+
+1189757*
+1h h(
+
+1189960*
+1h h(
+
+1189757*
+1i i(
+
+11810560*
+1i i(
+
+11812557*
+1i i(
+
+11812760*
+1i i($
+
+1296420*
+1l l(
+
+1296421*
+1l l(
+
+1293933*
+1o o(
+
+1293921*
+1o o(
+
+1293960*
+1o& o(5
+
+1293121*
+1o6 o(B
+
+1292657*
+1o6 o(B
+
+1299757*
+1r r(
+
+1299960*
+1r r(
+
+1326420*
+1u u(
+
+1326421*
+1u u(
+
+1323133*
+1x x(
+
+1323121*
+1x x(
+
+1323178*
+1x! x((
+
+1327957*
+1x! x((
+
+13213560*
+1x) x(-
+
+1327921*
+1x! x((
+
+1323121*
+1x. x(;
+
+1323933*
+1{ {(
+
+1323921*
+1{ {(
+
+1323960*
+1{& {(5
+
+1329757*
+1~ ~(
+
+1329960*
+1~ ~(
+
+1325557*
+1Ä Ä(1
+
+13213760*
+1Ä2 Ä(:
+
+1325521*
+1Ä Ä(1
+
+1329757*
+1Å Å(
+
+13210560*
+1Å Å(

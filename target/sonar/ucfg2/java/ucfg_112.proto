@@ -1,0 +1,35 @@
+
+Jpe.gob.onpe.wsonpe.utils.WsOnpeFileUtils#validateFile(Ljava/lang/String;)Za
+WC:/xampp/htdocs/transmision/src/main/java/pe/gob/onpe/wsonpe/utils/WsOnpeFileUtils.javaH H($"1*Ê
+1I I(.,
+I I(
+%0java.io.File"java.io.File§
+¤
+I I(
+%1"(java.io.File#<init>(Ljava/lang/String;)V*0
+
+__unknown_file (
+
+%0java.io.File*6
+
+__unknown_file (
+
+pathjava.lang.StringZ
+X
+I I(
+filejava.io.File"__id*0
+
+__unknown_file (
+
+%0java.io.Fileqo
+J J(
+%2boolean"java.io.File#exists()Z*2
+
+__unknown_file (
+
+filejava.io.File2exists()"
+J J(
+"":$
+H% H(0
+pathjava.lang.StringB,"*
+(pe.gob.onpe.wsonpe.utils.WsOnpeFileUtilsHX

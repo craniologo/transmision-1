@@ -1,0 +1,228 @@
+
+1.0craniologo_transmisionJavaFrontend"1756337472609*java2.B¨
+
+K
+Fsrc/main/java/pe/gob/onpe/wsonpe/controller/CustomErrorController.java2
+	
+type3
+	
+MAIN4
+
+
+module-key5
+
+craniologo_transmision6
+
+package8
+9
+4craniologo_transmision:pe.gob.onpe.wsonpe.controller9
+9
+3pe.gob.onpe.wsonpe.controller.CustomErrorController11
+
+class12
+
+access13
+
+public14
+
+simple-name15
+
+CustomErrorController16
+@
+:org.springframework.boot.web.servlet.error.ErrorController18
+
+unknown19
+
+
+implements20
+/
+)org.springframework.stereotype.Controller22
+
+annotated by23
+
+
+uses24
+‚
+|pe.gob.onpe.wsonpe.controller.CustomErrorController#handleError(Ljakarta/servlet/http/HttpServletRequest;)Ljava/lang/String;26
+
+method27
+
+handleError28
+-
+'jakarta.servlet.http.HttpServletRequest30
+
+	has param31
+8
+2org.springframework.web.bind.annotation.GetMapping33
+
+is type34
+$
+jakarta.servlet.ServletRequest36
+
+
+references37
+W
+Qjakarta.servlet.ServletRequest#getAttribute(Ljava/lang/String;)Ljava/lang/Object;39
+
+calls40
+'
+!jakarta.servlet.RequestDispatcher42
+9
+3jakarta.servlet.RequestDispatcher.ERROR_STATUS_CODE44
+)
+#org.springframework.http.HttpStatus46
+2
+,org.springframework.http.HttpStatus#value()I48
+3
+-org.springframework.http.HttpStatus.NOT_FOUND50
+?
+9org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR52J#
+!
+1
+12
+
+3
+4
+
+5
+6Z
+
+7
+7982
+
+
+5
+6jô
+
+47
+474819
+
+41
+414219
+
+49
+495019
+
+29
+293019
+
+35
+353619
+
+17
+171819
+>
+108
+101112 *
+1 (#:7B
+
+
+13
+14
+
+
+15
+16
+
+21
+212219
+
+51
+515219
+
+38
+383919
+
+43
+434419
+
+45
+454619
+B
+25<
+252627 *
+1 (210:7B
+
+
+13
+14
+
+
+15
+28
+
+32
+323319rí
+
+101720*
+1/ (>
+
+102123*
+1
+ 
+(
+
+102124*
+1
+ 
+(
+
+101724*
+1/ (>
+
+252931*
+1 (/
+
+253223*
+1 (
+
+253224*
+1 (
+
+252934*
+10 (7
+
+252924*
+1 (/
+
+253537*
+1 (
+
+253840*
+1 ()
+
+254124*
+1* (;
+
+254337*
+1< (M
+
+254537*
+1 ("
+
+254740*
+1- (2
+
+254524*
+1 ("
+
+254524*
+1# (,
+
+254937*
+1# (,
+
+254537*
+1 ('
+
+254740*
+1> (C
+
+254524*
+1 ('
+
+254524*
+1( (=
+
+255137*
+1( (=

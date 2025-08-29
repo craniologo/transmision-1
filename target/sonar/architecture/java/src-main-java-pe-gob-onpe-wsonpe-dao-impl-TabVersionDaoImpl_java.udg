@@ -1,0 +1,201 @@
+
+1.0craniologo_transmisionJavaFrontend"1756337474322*java2.B…
+E
+@src/main/java/pe/gob/onpe/wsonpe/dao/impl/TabVersionDaoImpl.java2
+	
+type3
+	
+MAIN4
+
+
+module-key5
+
+craniologo_transmision6
+
+package8
+7
+2craniologo_transmision:pe.gob.onpe.wsonpe.dao.impl9
+3
+-pe.gob.onpe.wsonpe.dao.impl.TabVersionDaoImpl11
+
+class12
+
+access13
+
+public14
+
+simple-name15
+
+TabVersionDaoImpl16
+*
+$pe.gob.onpe.wsonpe.dao.TabVersionDao18
+
+unknown19
+
+
+implements20
+.
+(org.springframework.stereotype.Component22
+
+annotated by23
+
+
+uses24
+
+lombok.AllArgsConstructor26
+H
+Bpe.gob.onpe.wsonpe.dao.impl.TabVersionDaoImpl.tabVersionRepository28
+
+field29
+
+private30
+
+tabVersionRepository31
+8
+2pe.gob.onpe.wsonpe.repository.TabVersionRepository33
+
+is type34
+Ç
+|pe.gob.onpe.wsonpe.dao.impl.TabVersionDaoImpl#verificarVersion(Ljava/lang/String;)Lpe/gob/onpe/wsonpe/dto/MensajeWsResponse;36
+
+method37
+
+verificarVersion38
+.
+(pe.gob.onpe.wsonpe.dto.MensajeWsResponse40
+
+returns41
+
+
+references42
+Y
+Spe.gob.onpe.wsonpe.repository.TabVersionRepository#obtenerVersion()Ljava/util/List;44
+
+calls45J#
+!
+1
+12
+
+3
+4
+
+5
+6Z
+
+7
+7982
+
+
+5
+6j¿
+B
+27<
+272829 *
+1 (
+210:7B
+
+
+13
+30
+
+
+15
+31
+
+21
+212219
+
+39
+394019
+>
+108
+101112 *
+1 (:7B
+
+
+13
+14
+
+
+15
+16
+
+32
+323319
+
+43
+434419
+
+17
+171819
+B
+35<
+353637 *
+1 (210:7B
+
+
+13
+14
+
+
+15
+38
+
+25
+252619rÊ
+
+101720*
+1+ (8
+
+102123*
+1 (
+
+102124*
+1 (
+
+102523*
+1 (
+
+102524*
+1 (
+
+101724*
+1+ (8
+
+273234*
+1 (%
+
+273224*
+1 (%
+
+273224*
+1& (:
+
+353941*
+1
+ (
+
+353924*
+1
+ (
+
+353934*
+1 (
+
+353924*
+1 (
+
+353242*
+1! (5
+
+354345*
+16 (D
+
+352742*
+1! (5
+
+353224*
+1! (5
+
+352742*
+1! (5

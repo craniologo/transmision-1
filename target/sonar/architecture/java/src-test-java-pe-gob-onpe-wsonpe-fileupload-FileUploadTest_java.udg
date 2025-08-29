@@ -1,0 +1,333 @@
+
+1.0craniologo_transmisionJavaFrontend"1756337481790*java2.B¡
+D
+?src/test/java/pe/gob/onpe/wsonpe/fileupload/FileUploadTest.java2
+	
+type3
+	
+TEST4
+
+
+module-key5
+
+craniologo_transmision6
+
+package8
+9
+4craniologo_transmision:pe.gob.onpe.wsonpe.fileupload9
+2
+,pe.gob.onpe.wsonpe.fileupload.FileUploadTest11
+
+class12
+
+access13
+
+	protected14
+
+simple-name15
+
+FileUploadTest16
+5
+/org.springframework.test.context.ActiveProfiles18
+
+unknown19
+
+annotated by20
+
+
+uses21
+:
+4org.springframework.boot.test.context.SpringBootTest23
+I
+Cpe.gob.onpe.wsonpe.fileupload.FileUploadTest#readAndCopyFileJava()V25
+
+method26
+
+readAndCopyFileJava27
+ 
+org.junit.jupiter.api.Test29
+
+
+references30
+e
+_pe.gob.onpe.wsonpe.fileupload.FileUploadTest#makeTestFile(Ljava/lang/String;)Ljava/lang/String;32
+
+calls33
+*
+$pe.gob.onpe.wsonpe.utils.WsOnpeUtils35
+\
+Vpe.gob.onpe.wsonpe.utils.WsOnpeUtils#getFileHash(Ljava/lang/String;)Ljava/lang/String;37
+.
+(pe.gob.onpe.wsonpe.utils.WsOnpeFileUtils39
+J
+Dpe.gob.onpe.wsonpe.utils.WsOnpeFileUtils#deleteFile(Ljava/io/File;)V41
+&
+ org.junit.jupiter.api.Assertions43
+Z
+Torg.junit.jupiter.api.Assertions#assertEquals(Ljava/lang/Object;Ljava/lang/Object;)V45
+N
+Hpe.gob.onpe.wsonpe.fileupload.FileUploadTest#readAndCopyFileCommonsIO()V47
+
+readAndCopyFileCommonsIO48
+%
+org.apache.commons.io.FileUtils50
+^
+Xorg.apache.commons.io.FileUtils#openInputStream(Ljava/io/File;)Ljava/io/FileInputStream;52
+a
+[org.apache.commons.io.FileUtils#copyInputStreamToFile(Ljava/io/InputStream;Ljava/io/File;)V54
+
+private55
+
+makeTestFile56J#
+!
+1
+12
+
+3
+4
+
+5
+6Z
+
+7
+7982
+
+
+5
+6jü
+
+36
+363719
+B
+31<
+313226 *
+1j j(
+210:7B
+
+
+13
+55
+
+
+15
+56
+
+17
+171819
+
+49
+495019
+>
+108
+101112 *
+1 (:7B
+
+
+13
+14
+
+
+15
+16
+
+40
+404119
+B
+24<
+242526 *
+1 (210:7B
+
+
+13
+14
+
+
+15
+27
+
+28
+282919
+
+53
+535419
+
+44
+444519
+
+22
+222319
+
+38
+383919
+
+42
+424319
+
+34
+343519
+
+51
+515219
+B
+46<
+464726 *
+1@ @(210:7B
+
+
+13
+14
+
+
+15
+48rÆ
+
+
+101720*
+1 (
+
+101721*
+1 (
+
+102220*
+1 (
+
+102221*
+1 (
+
+242820*
+1 (
+
+242821*
+1 (
+
+241030*
+1! !("
+
+243133*
+1! !("
+
+243430*
+1' '(!
+
+243633*
+1'" '(-
+
+243421*
+1' '(!
+
+241030*
+1- -(!
+
+243133*
+1- -(!
+
+243430*
+16 6("
+
+243633*
+16# 6(.
+
+243421*
+16 6("
+
+243830*
+1: :(
+
+244033*
+1: :(
+
+243821*
+1: :(
+
+243830*
+1; ;(
+
+244033*
+1; ;(
+
+243821*
+1; ;(
+
+244230*
+1= =(
+
+244433*
+1= =(
+
+462820*
+1@ @(
+
+462821*
+1@ @(
+
+461030*
+1E E("
+
+463133*
+1E E("
+
+463430*
+1J J(!
+
+463633*
+1J" J(-
+
+463421*
+1J J(!
+
+464930*
+1T T(
+
+465133*
+1T T(*
+
+464921*
+1T T(
+
+461030*
+1V V(!
+
+463133*
+1V V(!
+
+464930*
+1\ \(
+
+465333*
+1\ \("
+
+464921*
+1\ \(
+
+463430*
+1` `("
+
+463633*
+1`# `(.
+
+463421*
+1` `("
+
+463830*
+1d d(
+
+464033*
+1d d(
+
+463821*
+1d d(
+
+463830*
+1e e(
+
+464033*
+1e e(
+
+463821*
+1e e(
+
+464230*
+1g g(
+
+464433*
+1g g(

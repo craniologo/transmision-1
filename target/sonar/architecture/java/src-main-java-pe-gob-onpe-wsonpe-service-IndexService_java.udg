@@ -1,0 +1,388 @@
+
+1.0craniologo_transmisionJavaFrontend"1756337473029*java2.Bò
+?
+:src/main/java/pe/gob/onpe/wsonpe/service/IndexService.java2
+	
+type3
+	
+MAIN4
+
+
+module-key5
+
+craniologo_transmision6
+
+package8
+6
+1craniologo_transmision:pe.gob.onpe.wsonpe.service9
+-
+'pe.gob.onpe.wsonpe.service.IndexService11
+
+class12
+
+access13
+
+public14
+
+simple-name15
+
+IndexService16
+.
+(pe.gob.onpe.wsonpe.service.IIndexService18
+
+unknown19
+
+
+implements20
+,
+&org.springframework.stereotype.Service22
+
+annotated by23
+
+
+uses24
+?
+9pe.gob.onpe.wsonpe.service.IndexService.procesoRepository26
+
+field27
+
+private28
+
+procesoRepository29
+8
+2pe.gob.onpe.wsonpe.repository.TabProcesoRepository31
+
+is type32
+>
+8pe.gob.onpe.wsonpe.service.IndexService.confTxRepository34
+
+confTxRepository35
+7
+1pe.gob.onpe.wsonpe.repository.TabConfTxRepository37
+4
+.pe.gob.onpe.wsonpe.service.IndexService.ACTIVE39
+
+ACTIVE40
+Ÿ
+˜pe.gob.onpe.wsonpe.service.IndexService#<init>(Lpe/gob/onpe/wsonpe/repository/TabProcesoRepository;Lpe/gob/onpe/wsonpe/repository/TabConfTxRepository;)V42
+
+method43
+
+	has param44
+
+calls45
+
+
+references46
+e
+_pe.gob.onpe.wsonpe.service.IndexService#index(Lorg/springframework/ui/Model;)Ljava/lang/String;48
+
+index49
+"
+org.springframework.ui.Model51
+2
+,pe.gob.onpe.wsonpe.utils.ElectionInformation53
+)
+#pe.gob.onpe.wsonpe.model.TabProceso55
+j
+dpe.gob.onpe.wsonpe.repository.TabProcesoRepository#findByEstado(Ljava/lang/Integer;)Ljava/util/List;57
+@
+:pe.gob.onpe.wsonpe.projections.FindConfigurationProjection59
+j
+dpe.gob.onpe.wsonpe.repository.TabConfTxRepository#findBynEstado(Ljava/lang/Integer;)Ljava/util/List;61
+
+returns62
+s
+morg.springframework.ui.Model#addAttribute(Ljava/lang/String;Ljava/lang/Object;)Lorg/springframework/ui/Model;64J#
+!
+1
+12
+
+3
+4
+
+5
+6Z
+
+7
+7982
+
+
+5
+6jð
+B
+47<
+474843 *
+1 (	210:7B
+
+
+13
+14
+
+
+15
+49
+B
+33<
+333427 *
+1 (
+210:7B
+
+
+13
+28
+
+
+15
+35
+
+54
+545519
+
+30
+303119
+>
+108
+101112 *
+1 (:7B
+
+
+13
+14
+
+
+15
+16
+
+58
+585919
+B
+38<
+383927 *
+1 (
+210:7B
+
+
+13
+28
+
+
+15
+40
+B
+25<
+252627 *
+1 (
+210:7B
+
+
+13
+28
+
+
+15
+29
+
+63
+636419
+
+17
+171819
+
+50
+505119
+
+21
+212219
+
+52
+525319
+
+60
+606119
+
+36
+363719
+
+56
+565719
+B
+41<
+414243 *
+1 (	210:7B
+
+
+13
+14
+
+
+15
+16r—
+
+101720*
+1& (3
+
+102123*
+1 (
+
+102124*
+1 (	
+
+101724*
+1& (3
+
+253032*
+1 (%
+
+253024*
+1 (%
+
+253024*
+1& (7
+
+333632*
+1 ($
+
+333624*
+1 ($
+
+333624*
+1% (5
+
+413044*
+1 (+
+
+413644*
+1? (R
+
+411045*
+1
+ (
+
+413032*
+1, (=
+
+413024*
+1 (+
+
+413632*
+1S (c
+
+413624*
+1? (R
+
+411024*
+1 (	
+
+411046*
+1 (	
+
+413024*
+1
+ (
+
+412546*
+1
+ (
+
+411024*
+1 (	
+
+411046*
+1 (	
+
+413624*
+1
+ (
+
+413346*
+1
+ (
+
+475044*
+1 (
+
+475032*
+1 ("
+
+475024*
+1 (
+
+475232*
+1 ('
+
+475224*
+1 (
+
+475424*
+1!
+ !(
+
+473046*
+1!# !(4
+
+475645*
+1!5 !(A
+
+472546*
+1!# !(4
+
+473024*
+1!# !(4
+
+472546*
+1!# !(4
+
+475824*
+1"
+ "(%
+
+473646*
+1"2 "(B
+
+476045*
+1"C "(P
+
+473346*
+1"2 "(B
+
+473624*
+1"2 "(B
+
+473346*
+1"2 "(B
+
+473846*
+1"Q "(W
+
+475224*
+1% %(-
+
+475832*
+1+' +(-
+
+475824*
+1+ +(&
+
+475862*
+1+0 +(8
+
+475432*
+10 0(
+
+475424*
+10 0(
+
+475224*
+19 9(-
+
+475062*
+1= =(
+
+
+475046*
+1= =(
+
+
+476345*
+1= =(

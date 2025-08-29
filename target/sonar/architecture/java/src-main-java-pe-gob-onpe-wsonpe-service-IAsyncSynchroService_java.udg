@@ -1,0 +1,75 @@
+
+1.0craniologo_transmisionJavaFrontend"1756337472417*java2.B–
+G
+Bsrc/main/java/pe/gob/onpe/wsonpe/service/IAsyncSynchroService.java2
+	
+type3
+	
+MAIN4
+
+
+module-key5
+
+craniologo_transmision6
+
+package8
+6
+1craniologo_transmision:pe.gob.onpe.wsonpe.service9
+5
+/pe.gob.onpe.wsonpe.service.IAsyncSynchroService11
+
+	interface12
+
+access13
+
+public14
+
+simple-name15
+
+IAsyncSynchroService16
+Ž
+‡pe.gob.onpe.wsonpe.service.IAsyncSynchroService#doSynchro(Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;)V18
+
+method19
+
+	doSynchro20J#
+!
+1
+12
+
+3
+4
+
+5
+6Z
+
+7
+7982
+
+
+5
+6j„
+>
+108
+101112 *
+1 (&:7B
+
+
+13
+14
+
+
+15
+16
+B
+17<
+171819 *
+1 (210:7B
+
+
+13
+14
+
+
+15
+20

@@ -1,0 +1,7 @@
+:clientS" S(2"$org.apache.commons.net.ftp.FTPClient)%pe.gob.onpe.wsonpe.service.FTPService"èN
+L
+T T(ftpconnection"#id#:B$org.apache.commons.net.ftp.FTPClient/
+-
+T T("#set-field# ftpconnection:
+
+U U(*TC:/xampp/htdocs/transmision/src/main/java/pe/gob/onpe/wsonpe/service/FTPService.java

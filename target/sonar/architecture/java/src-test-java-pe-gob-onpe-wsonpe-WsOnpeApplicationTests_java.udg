@@ -1,0 +1,141 @@
+
+1.0craniologo_transmisionJavaFrontend"1756337483511*java2.Bý
+A
+<src/test/java/pe/gob/onpe/wsonpe/WsOnpeApplicationTests.java2
+	
+type3
+	
+TEST4
+
+
+module-key5
+
+craniologo_transmision6
+
+package8
+.
+)craniologo_transmision:pe.gob.onpe.wsonpe9
+/
+)pe.gob.onpe.wsonpe.WsOnpeApplicationTests11
+
+class12
+
+access13
+
+	protected14
+
+simple-name15
+
+WsOnpeApplicationTests16
+5
+/org.springframework.test.context.ActiveProfiles18
+
+unknown19
+
+annotated by20
+
+
+uses21
+:
+4org.springframework.boot.test.context.SpringBootTest23
+9
+3pe.gob.onpe.wsonpe.WsOnpeApplicationTests#prueba()V25
+
+method26
+
+prueba27
+ 
+org.junit.jupiter.api.Test29
+&
+ org.junit.jupiter.api.Assertions31
+
+
+references32
+F
+@org.junit.jupiter.api.Assertions#assertNull(Ljava/lang/Object;)V34
+
+calls35J#
+!
+1
+12
+
+3
+4
+
+5
+6Z
+
+7
+7982
+
+
+5
+6jè
+
+28
+282919
+
+22
+222319
+
+30
+303119
+
+33
+333419
+
+17
+171819
+>
+108
+101112 *
+1
+ 
+(:7B
+
+
+13
+14
+
+
+15
+16
+B
+24<
+242526 *
+1 (210:7B
+
+
+13
+14
+
+
+15
+27ró
+
+101720*
+1 (
+
+101721*
+1 (
+
+102220*
+1	 	(
+
+102221*
+1	 	(
+
+242820*
+1 (
+
+242821*
+1 (
+
+243032*
+1 (
+
+243335*
+1 (
+
+243021*
+1 (

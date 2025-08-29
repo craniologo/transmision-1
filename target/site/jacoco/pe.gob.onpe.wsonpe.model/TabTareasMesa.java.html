@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TabTareasMesa.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">wsOnpe</a> &gt; <a href="index.source.html" class="el_package">pe.gob.onpe.wsonpe.model</a> &gt; <span class="el_source">TabTareasMesa.java</span></div><h1>TabTareasMesa.java</h1><pre class="source lang-java linenums">package pe.gob.onpe.wsonpe.model;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.NamedStoredProcedureQuery;
+import jakarta.persistence.ParameterMode;
+import jakarta.persistence.StoredProcedureParameter;
+import jakarta.persistence.Table;
+import lombok.Data;
+
+import java.sql.Timestamp;
+
+@Entity
+@Table(name = &quot;TAB_TAREAS_MESA&quot;)
+<span class="nc bnc" id="L16" title="All 86 branches missed.">@Data</span>
+@NamedStoredProcedureQuery(name = &quot;TabTrama.spInsercionTareasTabTrama&quot;,
+  procedureName = &quot;jel_stae.SP_INS_TAREAS_P&quot;, parameters = {
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_C_MESA_PK&quot;, type = String.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_USER&quot;, type = String.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_N_TIPO_SOLUCION&quot;, type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_N_TIPO_TRAMA&quot;, type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_N_MODULO&quot;, type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_N_IDFLUJO&quot;, type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.OUT, name = &quot;PO_PROCEDER&quot;, type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.OUT, name = &quot;PO_RESULTADO&quot;, type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.OUT, name = &quot;PO_MENSAJE&quot;, type = String.class) })
+@NamedStoredProcedureQuery(name = &quot;TabTrama.spVerificaTareasTabTrama&quot;,
+  procedureName = &quot;jel_stae.SP_VERIFICA_TAREAS_P&quot;, parameters = {
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_C_MESA_PK&quot;, type = String.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_COUNT_TRAMA&quot;, type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.OUT, name = &quot;PO_PROCEDER&quot;, type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.OUT, name = &quot;PO_RESULTADO&quot;, type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.OUT, name = &quot;PO_MENSAJE&quot;, type = String.class) })
+@NamedStoredProcedureQuery(name = &quot;TabTrama.spListaTareasTabTrama&quot;,
+  procedureName = &quot;jel_stae.SP_LIS_TAREAS_P&quot;, parameters = {
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_C_MESA_PK&quot;, type = String.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_N_TIPO_SOLUCION&quot;, type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_N_TIPO_TRAMA&quot;, type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_N_MODULO&quot;, type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_N_IDFLUJO&quot;, type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_N_TIPO_TAREA&quot;, type = String.class),
+  @StoredProcedureParameter(mode = ParameterMode.OUT, name = &quot;PO_PROCEDER&quot;, type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.OUT, name = &quot;PO_RESULTADO&quot;, type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.OUT, name = &quot;PO_MENSAJE&quot;, type = String.class) })
+
+public class TabTareasMesa {
+  @Id
+  @Column(name = &quot;C_MESA&quot;)
+<span class="nc" id="L50">  private String mesaPk;</span>
+
+  @Column(name = &quot;N_TAREA_MESA&quot;)
+<span class="nc" id="L53">  private Integer tareaNro;</span>
+
+  @Column(name = &quot;N_TIPO_SOLUCION&quot;)
+<span class="nc" id="L56">  private Integer tipoSolucion;</span>
+
+  @Column(name = &quot;N_TIPO_TRAMA&quot;)
+<span class="nc" id="L59">  private Integer tipoTrama;</span>
+
+  @Column(name = &quot;N_MODULO&quot;)
+<span class="nc" id="L62">  private Integer modulo;</span>
+
+  @Column(name = &quot;N_IDFLUJO&quot;)
+<span class="nc" id="L65">  private Integer idFlujo;</span>
+
+  @Column(name = &quot;C_TIPO_TAREA&quot;)
+<span class="nc" id="L68">  private String tipoTarea;</span>
+
+  @Column(name = &quot;N_FLAG&quot;)
+<span class="nc" id="L71">  private Integer flag;</span>
+
+  @Column(name = &quot;C_USUARIO&quot;)
+<span class="nc" id="L74">  private String usuario;</span>
+
+  @Column(name = &quot;D_FECHA&quot;)
+<span class="nc" id="L77">  private Timestamp fecha;</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

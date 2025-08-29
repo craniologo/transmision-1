@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>WsOnpeFileUtils.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">wsOnpe</a> &gt; <a href="index.source.html" class="el_package">pe.gob.onpe.wsonpe.utils</a> &gt; <span class="el_source">WsOnpeFileUtils.java</span></div><h1>WsOnpeFileUtils.java</h1><pre class="source lang-java linenums">package pe.gob.onpe.wsonpe.utils;
+
+import lombok.extern.slf4j.Slf4j;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+<span class="fc" id="L10">@Slf4j</span>
+public class WsOnpeFileUtils {
+
+<span class="fc" id="L13">  private WsOnpeFileUtils() {</span>
+<span class="fc" id="L14">    throw new IllegalStateException(&quot;WsOnpeFileUtils class&quot;);</span>
+  }
+
+  public static boolean deleteWithChildren(String path) {
+<span class="fc" id="L18">    File file = new File(path);</span>
+<span class="fc bfc" id="L19" title="All 2 branches covered.">    if (!file.exists()) {</span>
+<span class="fc" id="L20">      return true;</span>
+    }
+<span class="fc bfc" id="L22" title="All 2 branches covered.">    if (!file.isDirectory()) {</span>
+<span class="fc" id="L23">      return deleteDirectory(file);</span>
+    }
+<span class="fc bfc" id="L25" title="All 4 branches covered.">    return deleteChildren(file) &amp;&amp; deleteDirectory(file);</span>
+  }
+
+  private static boolean deleteChildren(File dir) {
+<span class="fc" id="L29">    File[] children = dir.listFiles();</span>
+<span class="fc" id="L30">    boolean childrenDeleted = true;</span>
+<span class="fc bfc" id="L31" title="All 4 branches covered.">    for (int i = 0; children != null &amp;&amp; i &lt; children.length; i++) {</span>
+<span class="fc" id="L32">      File child = children[i];</span>
+<span class="fc bfc" id="L33" title="All 2 branches covered.">      if (child.isDirectory()) {</span>
+<span class="pc bpc" id="L34" title="2 of 4 branches missed.">        childrenDeleted = deleteChildren(child) &amp;&amp; childrenDeleted;</span>
+      }
+<span class="pc bpc" id="L36" title="1 of 2 branches missed.">      if (child.exists()) {</span>
+<span class="pc bpc" id="L37" title="2 of 4 branches missed.">        childrenDeleted = deleteDirectory(child) &amp;&amp; childrenDeleted;</span>
+      }
+    }
+<span class="fc" id="L40">    return childrenDeleted;</span>
+  }
+
+  public static void deleteFile(String nameFile) {
+<span class="fc" id="L44">    File file = new File(nameFile);</span>
+<span class="fc" id="L45">    deleteFile(file);</span>
+<span class="fc" id="L46">  }</span>
+
+  public static void deleteFile(File file) {
+    try {
+<span class="pc bpc" id="L50" title="1 of 4 branches missed.">      if (file.exists() &amp;&amp; file.isFile()) {</span>
+<span class="fc" id="L51">        Files.delete(file.toPath());</span>
+<span class="fc" id="L52">        log.info(&quot;File {} borrado exitosamente&quot;, file.getAbsolutePath());</span>
+      } else {
+<span class="fc" id="L54">        log.warn(&quot;File {} no pudo ser borrado&quot;, file.getAbsolutePath());</span>
+      }
+<span class="fc" id="L56">    } catch (Exception e) {</span>
+<span class="fc" id="L57">      log.error(&quot;Error al eliminar archivo: {}&quot;, e.getMessage());</span>
+<span class="fc" id="L58">    }</span>
+<span class="fc" id="L59">  }</span>
+
+  public static boolean validateDir(String path, boolean action) {
+<span class="fc" id="L62">    File file = new File(path);</span>
+<span class="fc" id="L63">    boolean isDirectory = file.isDirectory();</span>
+
+<span class="pc bpc" id="L65" title="1 of 4 branches missed.">    if (action &amp;&amp; !file.exists()) {</span>
+<span class="fc" id="L66">      file.mkdirs();</span>
+<span class="fc" id="L67">      return true;</span>
+    }
+<span class="fc" id="L69">    return isDirectory;</span>
+  }
+
+  public static boolean validateFile(String path) {
+<span class="fc" id="L73">    File file = new File(path);</span>
+<span class="fc" id="L74">    return file.exists();</span>
+  }
+
+  public static boolean createFolderTree(String pathname) {
+<span class="fc" id="L78">    File folder = new File(pathname);</span>
+
+<span class="fc bfc" id="L80" title="All 2 branches covered.">    if (folder.exists()) return true;</span>
+
+<span class="fc" id="L82">    File fileAux = new File(Paths.get(pathname, &quot;aux.txt&quot;).toString());</span>
+<span class="fc" id="L83">    File parent = fileAux.getParentFile();</span>
+
+<span class="pc bpc" id="L85" title="3 of 6 branches missed.">    return parent == null || parent.exists() || parent.mkdirs();</span>
+  }
+
+  public static boolean deleteDirectory(File file) {
+<span class="pc bpc" id="L89" title="1 of 2 branches missed.">    if (file.isDirectory()) {</span>
+      try {
+<span class="fc" id="L91">        Files.delete(file.toPath());</span>
+<span class="fc" id="L92">        return true;</span>
+<span class="nc" id="L93">      } catch (IOException e) {</span>
+<span class="nc" id="L94">        return false;</span>
+      }
+    }
+<span class="nc" id="L97">    return false;</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

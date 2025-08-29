@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ActaService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">wsOnpe</a> &gt; <a href="index.source.html" class="el_package">pe.gob.onpe.wsonpe.service</a> &gt; <span class="el_source">ActaService.java</span></div><h1>ActaService.java</h1><pre class="source lang-java linenums">package pe.gob.onpe.wsonpe.service;
+
+import lombok.extern.slf4j.Slf4j;
+
+import org.springframework.stereotype.Service;
+import pe.gob.onpe.wsonpe.dto.ActaRequest;
+import pe.gob.onpe.wsonpe.dto.MensajeWsResponse;
+import pe.gob.onpe.wsonpe.repository.TabMesaTransmitidaRepository;
+import pe.gob.onpe.wsonpe.repository.TabUsuarioRepository;
+import pe.gob.onpe.wsonpe.utils.WsOnpeUtils;
+import pe.gob.onpe.wsonpe.constants.WebService;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Map;
+
+
+@Service
+<span class="fc" id="L20">@Slf4j</span>
+public class ActaService implements IActaService {
+
+  private static final String TRANSMISION = &quot;transmisión&quot;;
+	private static final int ERR_INVALID_RESULT = 2;
+  private static final int ERR_TRAMA_TRANSMITIDA = WebService.TRAMA_TRANS;
+	private static final int ERR_MESA_TRANSMITIDA = WebService.MESA_TRANS;
+	private static final int VALID_RESULT = WebService.SUCCESS_RESULT;
+	private TabUsuarioRepository usuarioRepository;
+	private TabMesaTransmitidaRepository mesaTransmitidaRepository;
+  private final ITransmisionService transmisionService;
+
+	public ActaService(TabUsuarioRepository usuarioRepository,
+                     TabMesaTransmitidaRepository mesaTransmitidaRepository,
+<span class="fc" id="L34">                     ITransmisionService transmisionService) {</span>
+<span class="fc" id="L35">		this.usuarioRepository = usuarioRepository;</span>
+<span class="fc" id="L36">		this.mesaTransmitidaRepository = mesaTransmitidaRepository;</span>
+<span class="fc" id="L37">    this.transmisionService = transmisionService;</span>
+<span class="fc" id="L38">  }</span>
+
+	@Override
+	public MensajeWsResponse receiveActa(ActaRequest request) {
+
+<span class="fc" id="L43">		MensajeWsResponse response = new MensajeWsResponse(ERR_INVALID_RESULT, false, &quot;&quot;);</span>
+<span class="fc" id="L44">		String username = request.getUsuario();</span>
+
+<span class="fc" id="L46">    String logHead = String.format(WebService.LOG_HEAD_FORMAT, request.getMesa(), request.getTipoSolucion(), request.getTipoModulo(), request.getTipoTrama());</span>
+
+<span class="fc" id="L48">    int fechaTransmisionIni = WsOnpeUtils.getCurrentTimestampInteger();</span>
+
+		try {
+<span class="fc" id="L51">			WsOnpeUtils.writeLog(username, TRANSMISION, &quot;Preparándose a validar&quot;);</span>
+<span class="fc" id="L52">			response = validarTransmision(request);</span>
+
+<span class="fc bfc" id="L54" title="All 2 branches covered.">			if (!response.getSuccess()) {</span>
+<span class="fc" id="L55">				WsOnpeUtils.writeLog(username, TRANSMISION, &quot;Validación no válida para la transmisión&quot;);</span>
+<span class="fc" id="L56">				return response;</span>
+			}
+
+<span class="fc" id="L59">			WsOnpeUtils.writeLog(username, TRANSMISION, &quot;Validación de transmisión&quot;);</span>
+<span class="fc" id="L60">			log.info(&quot;{}. receiveActa: fechaTransmisionIni: {}&quot;, logHead, fechaTransmisionIni);</span>
+<span class="fc" id="L61">			response = insertarTransmision(request, fechaTransmisionIni);</span>
+
+<span class="fc" id="L63">		} catch (Exception e) {</span>
+<span class="fc" id="L64">			WsOnpeUtils.writeLog(&quot;catch&quot;, &quot;&quot;, e.getMessage());</span>
+<span class="fc" id="L65">      log.error(&quot;{}. Error en receiveActa: {}&quot;, logHead, e.getMessage());</span>
+<span class="fc" id="L66">			response.setCodigo(ERR_INVALID_RESULT);</span>
+<span class="fc" id="L67">			response.setMessage(&quot;Error interno del servidor&quot;);</span>
+<span class="fc" id="L68">			response.setSuccess(false);</span>
+<span class="fc" id="L69">		}</span>
+
+<span class="fc" id="L71">		return response;</span>
+	}
+
+	private MensajeWsResponse validarTransmision(ActaRequest actaRequest) {
+
+<span class="fc" id="L76">    String logHead = String.format(WebService.LOG_HEAD_FORMAT, actaRequest.getMesa(), actaRequest.getTipoSolucion(), actaRequest.getTipoModulo(), actaRequest.getTipoTrama());</span>
+
+<span class="fc" id="L78">    Map&lt;String, Object&gt; validaTransmisionResponse = usuarioRepository.spValidaTransmision(</span>
+<span class="fc" id="L79">      actaRequest.getMesa(), actaRequest.getTipoSolucion(),</span>
+<span class="fc" id="L80">				actaRequest.getTipoModulo(), actaRequest.getTipoTrama(), actaRequest.getPaginaNro()</span>
+    );
+
+<span class="fc" id="L83">		int result = Integer.parseInt(validaTransmisionResponse.get(&quot;PO_RESULTADO&quot;).toString());</span>
+<span class="fc bfc" id="L84" title="All 2 branches covered.">		boolean success = result == VALID_RESULT;</span>
+<span class="fc" id="L85">		String message = &quot;&quot;;</span>
+
+<span class="fc" id="L87">		log.info(&quot;{}. Usuario: {}, Validar de Transmision: responseSP -&gt; {}&quot;, logHead, actaRequest.getUsuario(),</span>
+				validaTransmisionResponse);
+
+<span class="pc bpc" id="L90" title="2 of 4 branches missed.">		if (result != ERR_MESA_TRANSMITIDA &amp;&amp; result != ERR_TRAMA_TRANSMITIDA) {</span>
+<span class="fc" id="L91">			result = ERR_INVALID_RESULT;</span>
+		}
+<span class="fc bfc" id="L93" title="All 2 branches covered.">		if (!success) {</span>
+<span class="fc" id="L94">			DateFormat dateFormat = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;);</span>
+<span class="fc" id="L95">			message = dateFormat.format(new Date());</span>
+		}
+<span class="fc" id="L97">		return new MensajeWsResponse(result, success, message);</span>
+	}
+
+	private MensajeWsResponse insertarTransmision(ActaRequest actaRequest, int fechaTransmisionIni) {
+<span class="fc" id="L101">		DateFormat dateFormat = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;);</span>
+<span class="fc" id="L102">    String funcName = &quot;insertarTransmision&quot;;</span>
+
+<span class="fc" id="L104">    String logHead = String.format(WebService.LOG_HEAD_FORMAT, actaRequest.getMesa(), actaRequest.getTipoSolucion(), actaRequest.getTipoModulo(), actaRequest.getTipoTrama());</span>
+
+<span class="fc" id="L106">		int fechaTransmisionFin = WsOnpeUtils.getCurrentTimestampInteger();</span>
+		int result;
+		boolean success;
+		String description;
+<span class="fc" id="L110">		String message = dateFormat.format(new Date());</span>
+<span class="fc" id="L111">		String username = actaRequest.getUsuario();</span>
+
+<span class="fc" id="L113">		log.info(&quot;{}. {}: mesa: {}&quot;, logHead, funcName, actaRequest);</span>
+<span class="fc" id="L114">		log.info(&quot;{}. {}: fechaTransmisionIni: {}&quot;, logHead, funcName, fechaTransmisionIni);</span>
+<span class="fc" id="L115">		log.info(&quot;{}. {}: fechaTransmisionFin: {}&quot;, logHead, funcName, fechaTransmisionFin);</span>
+
+		try {
+<span class="fc" id="L118">			Map&lt;String, Object&gt; insertaTransmisionResponse = mesaTransmitidaRepository.spInsercionTransmision(</span>
+<span class="fc" id="L119">					actaRequest.getMesa(), actaRequest.getTipoSolucion(), actaRequest.getTipoModulo(),</span>
+<span class="fc" id="L120">					actaRequest.getTipoTrama(), actaRequest.getPaginaNro(), actaRequest.getUsuario(),</span>
+<span class="fc" id="L121">					actaRequest.getTrama(), actaRequest.getTrama2(), actaRequest.getFirma(), actaRequest.getMeta(),</span>
+<span class="fc" id="L122">					fechaTransmisionIni, fechaTransmisionFin, actaRequest.getPdfDigest());</span>
+
+<span class="fc" id="L124">			log.info(&quot;{}. Usuario: {}, Insertar Transmision: responseSP -&gt; {}&quot;, logHead, actaRequest.getUsuario(),</span>
+					insertaTransmisionResponse);
+
+<span class="fc" id="L127">			description = (String) insertaTransmisionResponse.get(&quot;PO_MENSAJE&quot;);</span>
+<span class="fc" id="L128">			result = Integer.parseInt(insertaTransmisionResponse.get(&quot;PO_RESULTADO&quot;).toString());</span>
+<span class="fc bfc" id="L129" title="All 2 branches covered.">			success = result == VALID_RESULT;</span>
+
+<span class="fc bfc" id="L131" title="All 2 branches covered.">			if (!success) {</span>
+<span class="fc" id="L132">				message = description;</span>
+
+        // trama insertada pero falta validar el archivo previamente transmitido
+<span class="fc bfc" id="L135" title="All 2 branches covered.">        if (result == WebService.VALIDATE_FILE) {</span>
+
+<span class="fc" id="L137">          MensajeWsResponse fileValidationResponse = this.retryValidateFile(</span>
+<span class="fc" id="L138">            actaRequest.getMesa(),</span>
+<span class="fc" id="L139">            actaRequest.getTipoSolucion(),</span>
+<span class="fc" id="L140">            actaRequest.getTipoModulo(),</span>
+<span class="fc" id="L141">            actaRequest.getTipoTrama(),</span>
+<span class="fc" id="L142">            actaRequest.getPaginaNro(),</span>
+            username,
+            description
+          );
+
+<span class="fc" id="L147">          success = fileValidationResponse.getSuccess();</span>
+<span class="fc" id="L148">          result = fileValidationResponse.getCodigo();</span>
+<span class="pc bpc" id="L149" title="1 of 2 branches missed.">          if (success) message = dateFormat.format(new Date());</span>
+<span class="nc" id="L150">          else message = fileValidationResponse.getMessage();</span>
+
+<span class="pc bpc" id="L152" title="2 of 4 branches missed.">        } else if (result != ERR_MESA_TRANSMITIDA &amp;&amp; result != ERR_TRAMA_TRANSMITIDA) {</span>
+<span class="fc" id="L153">					result = ERR_INVALID_RESULT;</span>
+<span class="fc" id="L154">					WsOnpeUtils.writeLog(username, TRANSMISION, &quot;Error en la inserción a la BD&quot;);</span>
+<span class="nc bnc" id="L155" title="All 2 branches missed.">				} else if (result == ERR_MESA_TRANSMITIDA) {</span>
+<span class="nc" id="L156">					WsOnpeUtils.writeLog(username, TRANSMISION, &quot;Mesa ya transmitida&quot;);</span>
+<span class="nc bnc" id="L157" title="All 2 branches missed.">				} else if (result == ERR_TRAMA_TRANSMITIDA) {</span>
+<span class="nc" id="L158">          WsOnpeUtils.writeLog(username, TRANSMISION, &quot;Trama ya transmitida&quot;);</span>
+        }
+			}
+
+<span class="fc" id="L162">			WsOnpeUtils.writeLog(&quot;logTransmision&quot;,</span>
+<span class="fc" id="L163">					&quot;trama: &quot; + actaRequest.getTrama() + &quot; *****|***** firma:&quot; + actaRequest.getFirma(), &quot;&quot;);</span>
+<span class="fc" id="L164">			WsOnpeUtils.writeLog(username, TRANSMISION, &quot;Inserción a la BD válida&quot;);</span>
+
+<span class="fc" id="L166">		} catch (Exception exception) {</span>
+<span class="fc" id="L167">      log.error(&quot;{}. Error en {}: {} - {}&quot;, logHead, funcName, exception.getMessage(), exception.getStackTrace());</span>
+<span class="fc" id="L168">			success = false;</span>
+<span class="fc" id="L169">			message = &quot;Error en la inserción&quot;;</span>
+<span class="fc" id="L170">			result = ERR_INVALID_RESULT;</span>
+<span class="fc" id="L171">			WsOnpeUtils.writeLog(&quot;catch&quot;, TRANSMISION, exception.getMessage());</span>
+<span class="fc" id="L172">		}</span>
+
+<span class="fc" id="L174">		return new MensajeWsResponse(result, success, message);</span>
+	}
+
+  public MensajeWsResponse retryValidateFile(
+    String mesa, int tipoSolucion, int tipoModulo, int tipoTrama, int idFlujo, String username, String fileName) {
+<span class="fc" id="L179">    String funcName = &quot;retryValidateFile&quot;;</span>
+
+<span class="fc" id="L181">    String logHead = String.format(WebService.LOG_HEAD_FORMAT, mesa, tipoSolucion, tipoModulo, tipoTrama);</span>
+
+
+<span class="fc" id="L184">    MensajeWsResponse res = this.transmisionService.validateAndConfirmFile(mesa,</span>
+      tipoSolucion,
+      tipoModulo, tipoTrama, idFlujo, username, fileName);
+
+<span class="fc" id="L188">    log.info(&quot;{}. {}: Respuesta del intento de validacion del archivo: {}&quot;, logHead, funcName, res);</span>
+
+<span class="fc bfc" id="L190" title="All 2 branches covered.">    if (res.getSuccess()) {</span>
+<span class="fc" id="L191">      res.setCodigo(WebService.SUCCESS_RESULT);</span>
+<span class="fc" id="L192">      res.setMessage(&quot;Datos enviados satisfactoriamente&quot;);</span>
+    } else {
+<span class="fc" id="L194">      res.setCodigo(WebService.VALIDATION_FILE_FAILED);</span>
+    }
+
+<span class="fc" id="L197">    return res;</span>
+
+  }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

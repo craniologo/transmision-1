@@ -1,0 +1,295 @@
+
+1.0craniologo_transmisionJavaFrontend"1756337477679*java2.Bè	
+:
+5src/main/java/pe/gob/onpe/wsonpe/dto/UserRequest.java2
+	
+type3
+	
+MAIN4
+
+
+module-key5
+
+craniologo_transmision6
+
+package8
+2
+-craniologo_transmision:pe.gob.onpe.wsonpe.dto9
+(
+"pe.gob.onpe.wsonpe.dto.UserRequest11
+
+class12
+
+access13
+
+public14
+
+simple-name15
+
+UserRequest16
+
+lombok.Data18
+
+unknown19
+
+annotated by20
+
+
+uses21
+
+lombok.AllArgsConstructor23
+
+lombok.NoArgsConstructor25
+/
+)pe.gob.onpe.wsonpe.dto.UserRequest.accion27
+
+field28
+
+private29
+
+accion30
+0
+*pe.gob.onpe.wsonpe.dto.UserRequest.usuario32
+
+usuario33
+5
+/pe.gob.onpe.wsonpe.dto.UserRequest.llaveUsuario35
+
+llaveUsuario36
+-
+'pe.gob.onpe.wsonpe.dto.UserRequest.mesa38
+
+
+mesa39
+5
+/pe.gob.onpe.wsonpe.dto.UserRequest.tipoSolucion41
+
+tipoSolucion42
+1
++pe.gob.onpe.wsonpe.dto.UserRequest.usbParte44
+
+usbParte45
+2
+,pe.gob.onpe.wsonpe.dto.UserRequest.usbModulo47
+
+	usbModulo48
+2
+,pe.gob.onpe.wsonpe.dto.UserRequest.paginaNro50
+
+	paginaNro51
+h
+bpe.gob.onpe.wsonpe.dto.UserRequest#<init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V53
+
+method54
+
+calls55
+
+
+references56J#
+!
+1
+12
+
+3
+4
+
+5
+6Z
+
+7
+7982
+
+
+5
+6j‡
+>
+108
+101112 *
+1
+ 
+(:7B
+
+
+13
+14
+
+
+15
+16
+B
+40<
+404128 *
+1 (
+210:7B
+
+
+13
+29
+
+
+15
+42
+B
+46<
+464728 *
+1 (
+210:7B
+
+
+13
+29
+
+
+15
+48
+B
+43<
+434428 *
+1 (
+210:7B
+
+
+13
+29
+
+
+15
+45
+B
+34<
+343528 *
+1 (
+210:7B
+
+
+13
+29
+
+
+15
+36
+B
+37<
+373828 *
+1 (
+210:7B
+
+
+13
+29
+
+
+15
+39
+
+17
+171819
+B
+31<
+313228 *
+1 (
+210:7B
+
+
+13
+29
+
+
+15
+33
+B
+49<
+495028 *
+1 (
+210:7B
+
+
+13
+29
+
+
+15
+51
+
+22
+222319
+B
+26<
+262728 *
+1 (
+210:7B
+
+
+13
+29
+
+
+15
+30
+B
+52<
+525354 *
+1 (	210:7B
+
+
+13
+14
+
+
+15
+16
+
+24
+242519r∞
+
+101720*
+1 (
+
+101721*
+1 (
+
+102220*
+1 (
+
+102221*
+1 (
+
+102420*
+1	 	(
+
+102421*
+1	 	(
+
+521055*
+1
+ (
+
+521021*
+1 (	
+
+521056*
+1 (	
+
+522656*
+1
+ (
+
+521021*
+1 (	
+
+521056*
+1 (	
+
+523156*
+1
+ (
+
+521021*
+1 (	
+
+521056*
+1 (	
+
+523456*
+1
+ (

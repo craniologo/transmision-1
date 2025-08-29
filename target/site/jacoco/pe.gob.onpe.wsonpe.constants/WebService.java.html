@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>WebService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">wsOnpe</a> &gt; <a href="index.source.html" class="el_package">pe.gob.onpe.wsonpe.constants</a> &gt; <span class="el_source">WebService.java</span></div><h1>WebService.java</h1><pre class="source lang-java linenums">package pe.gob.onpe.wsonpe.constants;
+
+import lombok.Getter;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component
+public final class WebService {
+
+<span class="nc" id="L10">  @Getter</span>
+  private static String tipoEnvioData;
+
+  @SuppressWarnings(&quot;unused&quot;)
+  private WebService(
+    @Value(&quot;${stae.trans.typeenviodata}&quot;) String localTipoEnvioData
+<span class="fc" id="L16">  ) {</span>
+<span class="fc" id="L17">    setTipoEnvioData(localTipoEnvioData);</span>
+<span class="fc" id="L18">  }</span>
+
+  private static void setTipoEnvioData(String value) {
+<span class="fc" id="L21">    tipoEnvioData = value;</span>
+<span class="fc" id="L22">  }</span>
+
+  public static final int SUCCESS_RESULT = 1;
+  public static final int TRAMA_TRANS = 65;
+  public static final int MESA_TRANS = 66;
+  public static final int VALIDATE_FILE = 67;
+  public static final int REGISTRO_TAREAS = 3;
+  public static final int LISTA_TAREAS = 21;
+  public static final int REGISTRO_D_TAREAS = 5;
+  public static final int JSON_NOT_NULL = 22;
+  public static final int JSON_NULL = 23;
+  public static final int ENCRYPTED_FILE = 103;
+  public static final int ACTIVE = 1;
+  public static final int VALIDATION_FILE_FAILED = -100;
+  public static final int NO_FILE_IN_SYNCHRO = 20;
+  public static final int REGISTRO_TRAMAS = 4;
+
+  public static final String LOG_HEAD_FORMAT = &quot;Mesa:%s, S:%s, M:%s, T:%s&quot;;
+
+<span class="fc" id="L41">  public static final String FILE_SEPARATOR = System.getProperty(&quot;file.separator&quot;);</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

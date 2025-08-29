@@ -1,0 +1,461 @@
+
+1.0craniologo_transmisionJavaFrontend"1756337471117*java2.Bµ
+R
+Msrc/main/java/pe/gob/onpe/wsonpe/repository/TabMesaTransmitidaRepository.java2
+	
+type3
+	
+MAIN4
+
+
+module-key5
+
+craniologo_transmision6
+
+package8
+9
+4craniologo_transmision:pe.gob.onpe.wsonpe.repository9
+@
+:pe.gob.onpe.wsonpe.repository.TabMesaTransmitidaRepository11
+
+	interface12
+
+access13
+
+public14
+
+simple-name15
+"
+TabMesaTransmitidaRepository16
+;
+5org.springframework.data.jpa.repository.JpaRepository18
+
+unknown19
+
+
+implements20
+
+
+uses21
+1
++pe.gob.onpe.wsonpe.model.TabMesaTransmitida23
+µ
+®pe.gob.onpe.wsonpe.repository.TabMesaTransmitidaRepository#spInsercionTransmision(Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;)Ljava/util/Map;25
+
+method26
+
+spInsercionTransmision27
+=
+7org.springframework.data.jpa.repository.query.Procedure29
+
+annotated by30
+5
+/org.springframework.data.repository.query.Param32
+‚
+ûpe.gob.onpe.wsonpe.repository.TabMesaTransmitidaRepository#spActualizaFileTransmision(Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;)Ljava/util/Map;34
+ 
+spActualizaFileTransmision35
+Ý
+Öpe.gob.onpe.wsonpe.repository.TabMesaTransmitidaRepository#spValidaTransmisionArchivo(Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;)Ljava/util/Map;37
+ 
+spValidaTransmisionArchivo38
+z
+tpe.gob.onpe.wsonpe.repository.TabMesaTransmitidaRepository#eliminarMesasTransmitidasPorUsuario(Ljava/lang/Integer;)V40
+)
+#eliminarMesasTransmitidasPorUsuario41
+'
+!jakarta.transaction.Transactional43
+7
+1org.springframework.data.jpa.repository.Modifying45
+3
+-org.springframework.data.jpa.repository.Query47
+t
+npe.gob.onpe.wsonpe.repository.TabMesaTransmitidaRepository#eliminarIntegracionPorUsuario(Ljava/lang/Integer;)V49
+#
+eliminarIntegracionPorUsuario50
+w
+qpe.gob.onpe.wsonpe.repository.TabMesaTransmitidaRepository#eliminarSincronizacionPorUsuario(Ljava/lang/Integer;)V52
+&
+ eliminarSincronizacionPorUsuario53J#
+!
+1
+12
+
+3
+4
+
+5
+6Z
+
+7
+7982
+
+
+5
+6jä
+
+44
+444519
+
+31
+313219
+
+46
+464719
+B
+51<
+515226 *
+1I I(210:7B
+
+
+13
+14
+
+
+15
+53
+
+28
+282919
+B
+33<
+333426 *
+1 (210:7B
+
+
+13
+14
+
+
+15
+35
+B
+36<
+363726 *
+1+ +(210:7B
+
+
+13
+14
+
+
+15
+38
+
+22
+222319
+
+42
+424319
+B
+24<
+242526 *
+1 (210:7B
+
+
+13
+14
+
+
+15
+27
+B
+39<
+394026 *
+15 5(210:7B
+
+
+13
+14
+
+
+15
+41
+
+17
+171819
+>
+108
+101112 *
+1 (.:7B
+
+
+13
+14
+
+
+15
+16
+B
+48<
+484926 *
+1= =(210:7B
+
+
+13
+14
+
+
+15
+50r­
+
+101720*
+17 (D
+
+101721*
+17 (D
+
+102221*
+1E (W
+
+242830*
+1 (
+
+242821*
+1 (
+
+243130*
+1 (
+
+243121*
+1 (
+
+243130*
+1 (
+
+243121*
+1 (
+
+243130*
+1 (
+
+243121*
+1 (
+
+243130*
+1 (
+
+243121*
+1 (
+
+243130*
+1 (
+
+243121*
+1 (
+
+243130*
+1 (
+
+243121*
+1 (
+
+243130*
+1 (
+
+243121*
+1 (
+
+243130*
+1 (
+
+243121*
+1 (
+
+243130*
+1 (
+
+243121*
+1 (
+
+243130*
+1 (
+
+243121*
+1 (
+
+243130*
+1 (
+
+243121*
+1 (
+
+243130*
+1 (
+
+243121*
+1 (
+
+243130*
+1 (
+
+243121*
+1 (
+
+332830*
+1 (
+
+332821*
+1 (
+
+333130*
+1! !(
+
+333121*
+1! !(
+
+333130*
+1" "(
+
+333121*
+1" "(
+
+333130*
+1# #(
+
+333121*
+1# #(
+
+333130*
+1$ $(
+
+333121*
+1$ $(
+
+333130*
+1% %(
+
+333121*
+1% %(
+
+333130*
+1& &(
+
+333121*
+1& &(
+
+333130*
+1' '(
+
+333121*
+1' '(
+
+333130*
+1( ((
+
+333121*
+1( ((
+
+362830*
+1+ +(
+
+362821*
+1+ +(
+
+363130*
+1- -(
+
+363121*
+1- -(
+
+363130*
+1. .(
+
+363121*
+1. .(
+
+363130*
+1/ /(
+
+363121*
+1/ /(
+
+363130*
+10 0(
+
+363121*
+10 0(
+
+363130*
+11 1(
+
+363121*
+11 1(
+
+363130*
+12 2(
+
+363121*
+12 2(
+
+394230*
+15 5(
+
+394221*
+15 5(
+
+394430*
+16 6(
+
+394421*
+16 6(
+
+394630*
+17 7(
+
+394621*
+17 7(	
+
+393130*
+1;. ;(/
+
+393121*
+1;/ ;(4
+
+484230*
+1= =(
+
+484221*
+1= =(
+
+484430*
+1> >(
+
+484421*
+1> >(
+
+484630*
+1? ?(
+
+484621*
+1? ?(	
+
+483130*
+1F( F()
+
+483121*
+1F) F(.
+
+514230*
+1I I(
+
+514221*
+1I I(
+
+514430*
+1J J(
+
+514421*
+1J J(
+
+514630*
+1K K(
+
+514621*
+1K K(	
+
+513130*
+1R+ R(,
+
+513121*
+1R, R(1

@@ -1,0 +1,336 @@
+
+1.0craniologo_transmisionJavaFrontend"1756337472300*java2.BÉ	
+;
+6src/main/java/pe/gob/onpe/wsonpe/model/TabProceso.java2
+	
+type3
+	
+MAIN4
+
+
+module-key5
+
+craniologo_transmision6
+
+package8
+4
+/craniologo_transmision:pe.gob.onpe.wsonpe.model9
+)
+#pe.gob.onpe.wsonpe.model.TabProceso11
+
+class12
+
+access13
+
+public14
+
+simple-name15
+
+
+TabProceso16
+ 
+jakarta.persistence.Entity18
+
+unknown19
+
+annotated by20
+
+
+uses21
+
+jakarta.persistence.Table23
+
+lombok.Data25
+
+lombok.NoArgsConstructor27
+3
+-pe.gob.onpe.wsonpe.model.TabProceso.procesoPk29
+
+field30
+
+private31
+
+	procesoPk32
+
+jakarta.persistence.Id34
+ 
+jakarta.persistence.Column36
+7
+1pe.gob.onpe.wsonpe.model.TabProceso.nombreProceso38
+
+nombreProceso39
+5
+/pe.gob.onpe.wsonpe.model.TabProceso.descProceso41
+
+descProceso42
+6
+0pe.gob.onpe.wsonpe.model.TabProceso.fechaProceso44
+
+fechaProceso45
+:
+4pe.gob.onpe.wsonpe.model.TabProceso.archivoConfigSea47
+
+archivoConfigSea48
+4
+.pe.gob.onpe.wsonpe.model.TabProceso.codAgrupol50
+
+
+codAgrupol51
+0
+*pe.gob.onpe.wsonpe.model.TabProceso.estado53
+
+estado54
+/
+)pe.gob.onpe.wsonpe.model.TabProceso.mesas56
+
+mesas57
+3
+-pe.gob.onpe.wsonpe.model.TabProceso.electores59
+
+	electores60J#
+!
+1
+12
+
+3
+4
+
+5
+6Z
+
+7
+7982
+
+
+5
+6jœ
+B
+46<
+464730 *
+1   (210:7B
+
+
+13
+31
+
+
+15
+48
+
+17
+171819
+B
+49<
+495030 *
+1# #(210:7B
+
+
+13
+31
+
+
+15
+51
+>
+108
+101112 *
+1 (:7B
+
+
+13
+14
+
+
+15
+16
+
+33
+333419
+B
+28<
+282930 *
+1 (210:7B
+
+
+13
+31
+
+
+15
+32
+
+22
+222319
+
+35
+353619
+B
+52<
+525330 *
+1& &(210:7B
+
+
+13
+31
+
+
+15
+54
+B
+40<
+404130 *
+1 (210:7B
+
+
+13
+31
+
+
+15
+42
+
+24
+242519
+B
+58<
+585930 *
+1, ,(210:7B
+
+
+13
+31
+
+
+15
+60
+B
+37<
+373830 *
+1 (210:7B
+
+
+13
+31
+
+
+15
+39
+B
+43<
+434430 *
+1 (210:7B
+
+
+13
+31
+
+
+15
+45
+B
+55<
+555630 *
+1) )(210:7B
+
+
+13
+31
+
+
+15
+57
+
+26
+262719rô
+
+101720*
+1 (
+
+101721*
+1 (
+
+102220*
+1 (
+
+102221*
+1 (
+
+102420*
+1 (
+
+102421*
+1 (
+
+102620*
+1 (
+
+102621*
+1 (
+
+283320*
+1 (
+
+283321*
+1 (
+
+283520*
+1 (
+
+283521*
+1 (
+
+
+373520*
+1 (
+
+373521*
+1 (
+
+
+403520*
+1 (
+
+403521*
+1 (
+
+
+433520*
+1 (
+
+433521*
+1 (
+
+
+463520*
+1   (
+
+463521*
+1   (
+
+
+493520*
+1# #(
+
+493521*
+1# #(
+
+
+523520*
+1& &(
+
+523521*
+1& &(
+
+
+553520*
+1) )(
+
+553521*
+1) )(
+
+
+583520*
+1, ,(
+
+583521*
+1, ,(

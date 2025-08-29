@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>NetClientPost.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">wsOnpe</a> &gt; <a href="index.source.html" class="el_package">pe.gob.onpe.wsonpe.utils</a> &gt; <span class="el_source">NetClientPost.java</span></div><h1>NetClientPost.java</h1><pre class="source lang-java linenums">package pe.gob.onpe.wsonpe.utils;
+
+import lombok.extern.slf4j.Slf4j;
+import pe.gob.onpe.wsonpe.dto.MensajeWsResponse;
+import pe.gob.onpe.wsonpe.dto.SynchroRequest;
+
+import javax.net.ssl.HttpsURLConnection;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.Serializable;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLConnection;
+import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
+import java.util.List;
+import java.util.logging.Level;
+
+<span class="fc" id="L21">@Slf4j</span>
+public class NetClientPost implements Serializable {
+  private transient URLConnection urlConnection;
+  private transient HttpURLConnection httpURLConnection;
+  private transient HttpsURLConnection httpsURLConnection;
+  private String params;
+  private String urlString;
+
+<span class="fc" id="L29">  public NetClientPost(String urlString) {</span>
+
+
+    try {
+
+<span class="fc" id="L34">      URL url = new URL(urlString);</span>
+
+<span class="fc" id="L36">      this.urlString = urlString;</span>
+<span class="fc" id="L37">      this.urlConnection = url.openConnection();</span>
+
+<span class="fc" id="L39">      this.urlConnection.setConnectTimeout(30000);</span>
+<span class="fc" id="L40">      this.urlConnection.setDoInput(true);</span>
+<span class="fc" id="L41">      this.urlConnection.setDoOutput(true);</span>
+<span class="fc" id="L42">      this.urlConnection.setRequestProperty(&quot;Content-Type&quot;, &quot;application/x-www-form-urlencoded;charset=UTF-8&quot;);</span>
+<span class="fc" id="L43">      this.urlConnection.setRequestProperty(&quot;User-Agent&quot;, &quot;wsOnpe Agent&quot;);</span>
+
+<span class="fc" id="L45">      this.urlConnection.setUseCaches(false);</span>
+<span class="fc" id="L46">    } catch (IOException e) {</span>
+<span class="fc" id="L47">      log.error(&quot;{}: {}&quot;, this.getClass().getName(), e.getMessage());</span>
+<span class="fc" id="L48">    }</span>
+<span class="fc" id="L49">  }</span>
+
+  public void setRequestParams(SynchroRequest params) {
+<span class="fc" id="L52">    StringBuilder sb = new StringBuilder();</span>
+
+<span class="fc" id="L54">    sb.append(String.format(&quot;masterKey=%s&amp;&quot;, params.getMasterKey()));</span>
+<span class="fc" id="L55">    sb.append(String.format(&quot;mesa=%s&amp;&quot;, params.getMesa()));</span>
+<span class="fc" id="L56">    sb.append(String.format(&quot;tipoSolucion=%s&amp;&quot;, params.getTipoSolucion()));</span>
+<span class="fc" id="L57">    sb.append(String.format(&quot;tipoModulo=%s&amp;&quot;, params.getTipoModulo()));</span>
+<span class="fc" id="L58">    sb.append(String.format(&quot;tipoTrama=%s&amp;&quot;, params.getTipoTrama()));</span>
+<span class="fc" id="L59">    sb.append(String.format(&quot;force=%s&amp;&quot;, params.getForce()));</span>
+
+<span class="fc" id="L61">    this.params = sb.toString();</span>
+<span class="fc" id="L62">  }</span>
+
+  public String sendRequestWithSSL() {
+<span class="fc" id="L65">    String response = &quot;&quot;;</span>
+
+    try {
+<span class="fc" id="L68">      this.httpsURLConnection = (HttpsURLConnection) this.urlConnection;</span>
+<span class="fc" id="L69">      this.httpsURLConnection.connect();</span>
+
+<span class="fc" id="L71">      OutputStream os = this.httpsURLConnection.getOutputStream();</span>
+<span class="fc" id="L72">      os.write(this.params.getBytes());</span>
+<span class="fc" id="L73">      os.flush();</span>
+
+<span class="fc" id="L75">      BufferedReader br = new BufferedReader(new InputStreamReader(this.httpsURLConnection.getInputStream(), StandardCharsets.UTF_8));</span>
+      String output;
+
+<span class="fc bfc" id="L78" title="All 2 branches covered.">      while ((output = br.readLine()) != null) {</span>
+<span class="fc" id="L79">        response = output;</span>
+      }
+
+<span class="fc" id="L82">      this.httpsURLConnection.disconnect();</span>
+
+<span class="fc" id="L84">      os.close();</span>
+<span class="fc" id="L85">      br.close();</span>
+
+<span class="fc" id="L87">    } catch (Exception ex) {</span>
+<span class="fc" id="L88">      log.error(&quot;Error enviando con SSL: {}&quot;, ex.getMessage());</span>
+<span class="fc" id="L89">    }</span>
+
+<span class="fc" id="L91">    return response;</span>
+  }
+
+  public MensajeWsResponse getResult() {
+
+<span class="fc" id="L96">    MensajeWsResponse response = new MensajeWsResponse();</span>
+<span class="fc" id="L97">    String strResponse = &quot;&quot;;</span>
+
+    try {
+<span class="pc bpc" id="L100" title="1 of 2 branches missed.">      if (isSSL()) {</span>
+<span class="nc" id="L101">        strResponse = this.sendRequestWithSSL();</span>
+      } else {
+<span class="fc" id="L103">        strResponse = this.sendRequest();</span>
+      }
+
+<span class="fc" id="L106">      response = WsOnpeUtils.getJsonToObject(strResponse, MensajeWsResponse.class);</span>
+
+<span class="fc bfc" id="L108" title="All 2 branches covered.">      if (response == null) {</span>
+<span class="fc" id="L109">        response = new MensajeWsResponse();</span>
+<span class="fc" id="L110">        response.setSuccess(false);</span>
+<span class="fc" id="L111">        response.setMessage(strResponse);</span>
+      }
+
+<span class="fc" id="L114">    } catch (Exception e) {</span>
+<span class="fc" id="L115">      log.error(&quot;Error conectando con la sincronizacion: {}&quot;, e.getMessage());</span>
+<span class="fc" id="L116">      response = new MensajeWsResponse();</span>
+<span class="fc" id="L117">      response.setSuccess(false);</span>
+<span class="fc" id="L118">      response.setMessage(e.getMessage());</span>
+<span class="fc" id="L119">    }</span>
+
+<span class="fc" id="L121">    return response;</span>
+  }
+
+  public String sendRequest() {
+<span class="fc" id="L125">    StringBuilder sb = new StringBuilder();</span>
+
+    try {
+<span class="fc" id="L128">      this.httpURLConnection = (HttpURLConnection) this.urlConnection;</span>
+<span class="fc" id="L129">      this.httpURLConnection.connect();</span>
+
+      BufferedReader br;
+
+<span class="fc" id="L133">      try (OutputStream os = this.httpURLConnection.getOutputStream()) {</span>
+<span class="fc" id="L134">        os.write(this.params.getBytes());</span>
+<span class="fc" id="L135">        os.flush();</span>
+<span class="fc" id="L136">        br = new BufferedReader(new InputStreamReader((this.httpURLConnection.getInputStream()), StandardCharsets.UTF_8));</span>
+        String s;
+<span class="fc bfc" id="L138" title="All 2 branches covered.">        while ((s = br.readLine()) != null) {</span>
+<span class="fc" id="L139">          sb.append(s);</span>
+        }
+<span class="fc" id="L141">        this.httpURLConnection.disconnect();</span>
+      }
+<span class="fc" id="L143">      br.close();</span>
+
+<span class="fc" id="L145">    } catch (IOException e) {</span>
+<span class="fc" id="L146">      log.error(&quot;{}: {}: {}&quot;, this.getClass().getName(), &quot;getResponse&quot;, e.getMessage());</span>
+<span class="fc" id="L147">    }</span>
+
+<span class="fc" id="L149">    return sb.toString();</span>
+  }
+
+  private boolean isSSL() {
+<span class="fc" id="L153">    List&lt;String&gt; urlParts = Arrays.asList(this.urlString.split(&quot;:&quot;));</span>
+<span class="pc bpc" id="L154" title="1 of 4 branches missed.">    return !urlParts.isEmpty() &amp;&amp; urlParts.get(0).equalsIgnoreCase(&quot;https&quot;);</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

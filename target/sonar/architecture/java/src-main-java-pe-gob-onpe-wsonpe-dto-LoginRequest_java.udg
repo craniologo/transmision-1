@@ -1,0 +1,195 @@
+
+1.0craniologo_transmisionJavaFrontend"1756337474214*java2.Bç
+;
+6src/main/java/pe/gob/onpe/wsonpe/dto/LoginRequest.java2
+	
+type3
+	
+MAIN4
+
+
+module-key5
+
+craniologo_transmision6
+
+package8
+2
+-craniologo_transmision:pe.gob.onpe.wsonpe.dto9
+)
+#pe.gob.onpe.wsonpe.dto.LoginRequest11
+
+class12
+
+access13
+
+public14
+
+simple-name15
+
+LoginRequest16
+
+lombok.Setter18
+
+unknown19
+
+annotated by20
+
+
+uses21
+
+lombok.Getter23
+
+lombok.Data25
+
+lombok.AllArgsConstructor27
+
+lombok.NoArgsConstructor29
+1
++pe.gob.onpe.wsonpe.dto.LoginRequest.usuario31
+
+field32
+
+private33
+
+usuario34
+/
+)pe.gob.onpe.wsonpe.dto.LoginRequest.clave36
+
+clave37
+-
+'pe.gob.onpe.wsonpe.dto.LoginRequest.key39
+	
+key40
+6
+0pe.gob.onpe.wsonpe.dto.LoginRequest.refreshToken42
+
+refreshToken43J#
+!
+1
+12
+
+3
+4
+
+5
+6Z
+
+7
+7982
+
+
+5
+6j¥
+B
+30<
+303132 *
+1 (
+210:7B
+
+
+13
+33
+
+
+15
+34
+
+17
+171819
+>
+108
+101112 *
+1 (:7B
+
+
+13
+14
+
+
+15
+16
+
+22
+222319
+B
+35<
+353632 *
+1 (
+210:7B
+
+
+13
+33
+
+
+15
+37
+
+24
+242519
+
+26
+262719
+B
+41<
+414232 *
+1 (
+210:7B
+
+
+13
+33
+
+
+15
+43
+B
+38<
+383932 *
+1 (
+210:7B
+
+
+13
+33
+
+
+15
+40
+
+28
+282919ré
+
+101720*
+1
+ 
+(
+
+101721*
+1
+ 
+(
+
+102220*
+1 (
+
+102221*
+1 (
+
+102420*
+1 (
+
+102421*
+1 (
+
+102620*
+1 (
+
+102621*
+1 (
+
+102820*
+1 (
+
+102821*
+1 (

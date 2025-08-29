@@ -1,0 +1,207 @@
+
+úpe.gob.onpe.wsonpe.service.LoginService#dataAuthentication(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lpe/gob/onpe/wsonpe/dto/MensajeWsResponse;`
+VC:/xampp/htdocs/transmision/src/main/java/pe/gob/onpe/wsonpe/service/LoginService.javaW W(-"14*ï
+13] ]("{y
+] ](,
+%8boolean"java.util.List#isEmpty()Z*8
+
+__unknown_file (
+
+opConfTxjava.util.List2	isEmpty()*
+11
+12*w
+2p p(7c
+a
+p p(7
+datajava.lang.String"__id*5
+
+__unknown_file (
+
+%16java.lang.String*
+1*¶
+14Y/ Y(?´
+®
+Y/ Y(?7
+%01pe.gob.onpe.wsonpe.repository.TabConfTxRepository"__id*]
+
+__unknown_file (A*?)
+'pe.gob.onpe.wsonpe.service.LoginService"
+confTxRepositoryA
+?
+YN Y(T	
+%1int"__id*"
+
+__unknown_file (
+""≠™
+Y/ Y(U
+%2java.util.List"dpe.gob.onpe.wsonpe.repository.TabConfTxRepository#findBynEstado(Ljava/lang/Integer;)Ljava/util/List;*U
+
+__unknown_file (9
+7
+%01pe.gob.onpe.wsonpe.repository.TabConfTxRepository*'
+
+__unknown_file (
+	
+%1int2"findBynEstado(Ljava/lang/Integer;)b
+`
+Y Y(V
+opConfTxjava.util.List"__id*2
+
+__unknown_file (
+
+%2java.util.ListØ
+¨
+Z& Z(89
+%33pe.gob.onpe.wsonpe.repository.TabEleccionRepository"__id*_
+
+__unknown_file (C*A)
+'pe.gob.onpe.wsonpe.service.LoginService"
+eleccionRepository÷”
+Z& Z(B
+%4java.util.List"Mpe.gob.onpe.wsonpe.repository.TabEleccionRepository#findAll()Ljava/util/List;*W
+
+__unknown_file (;
+9
+%33pe.gob.onpe.wsonpe.repository.TabEleccionRepository2	findAll()i
+g
+Z Z(C!
+tabEleccionListjava.util.List"__id*2
+
+__unknown_file (
+
+%4java.util.List<:
+[5 [(@
+%5java.util.ArrayList"java.util.ArrayListj
+h
+[1 [(B
+%6"java.util.ArrayList#<init>()V*7
+
+__unknown_file (
+
+%5java.util.ArrayListm
+k
+[ [(C 
+eleccionesListjava.util.List"__id*7
+
+__unknown_file (
+
+%5java.util.ArrayListx
+v
+] ](
+%7boolean"	__compare*
+] ](
+==*(
+] ](
+
+opConfTxjava.util.List*
+] ](
+""*
+13
+12*˜
+8p
+ p(‚ﬂ
+p
+ p(7
+%16java.lang.String"dcom.fasterxml.jackson.databind.ObjectMapper#writeValueAsString(Ljava/lang/Object;)Ljava/lang/String;*Y
+
+__unknown_file (=
+;
+objectMapper+com.fasterxml.jackson.databind.ObjectMapper*Q
+
+__unknown_file (5
+3
+userResponse#pe.gob.onpe.wsonpe.dto.UserResponse2&writeValueAsString(Ljava/lang/Object;)*
+2*Ö
+9i i(0mk
+i" i(.2
+%14+com.fasterxml.jackson.databind.ObjectMapper"+com.fasterxml.jackson.databind.ObjectMapperù
+ö
+i i(0
+%15"5com.fasterxml.jackson.databind.ObjectMapper#<init>()V*P
+
+__unknown_file (4
+2
+%14+com.fasterxml.jackson.databind.ObjectMapper¢
+ü
+i i(1;
+objectMapper+com.fasterxml.jackson.databind.ObjectMapper"__id*P
+
+__unknown_file (4
+2
+%14+com.fasterxml.jackson.databind.ObjectMapperk
+i
+j l(j3
+userResponse#pe.gob.onpe.wsonpe.dto.UserResponse"__id*"
+
+__unknown_file (
+""P
+N
+m m(
+datajava.lang.String"__id*"
+
+__unknown_file (
+""*
+8*÷
+10e e(û
+õ
+e f(W"
+%11java.util.function.Consumer"__declareFunction*X
+
+__unknown_file (<:
+8__sonar_lambda_1$pe.gob.onpe.wsonpe.service.LoginServiceõ
+ò
+
+__unknown_file (6
+"
+%11java.util.function.Consumer"
+eleccionesList"__id*>
+
+__unknown_file ("
+ 
+eleccionesListjava.util.ListÅ˛
+e f(X
+%13void":java.lang.Iterable#forEach(Ljava/util/function/Consumer;)V*?
+
+__unknown_file (#
+!
+tabEleccionListjava.util.List*@
+
+__unknown_file ($
+"
+%11java.util.function.Consumer2&forEach(Ljava/util/function/Consumer;)*
+9*ù
+11b' b(/¿Ω
+b' b(9@
+%9:pe.gob.onpe.wsonpe.projections.FindConfigurationProjection"*java.util.List#getLast()Ljava/lang/Object;*8
+
+__unknown_file (
+
+opConfTxjava.util.List2	getLast()π
+∂
+b b(:D
+confTx:pe.gob.onpe.wsonpe.projections.FindConfigurationProjection"__id*^
+
+__unknown_file (B
+@
+%9:pe.gob.onpe.wsonpe.projections.FindConfigurationProjectionÑÅ
+d d( 
+%10boolean"java.util.List#isEmpty()Z*?
+
+__unknown_file (#
+!
+tabEleccionListjava.util.List2	isEmpty()*
+9
+10*"
+12^ ^("
+_ _(Z
+""*!
+1w w("
+y y(.
+"":'
+W. W(=
+usuariojava.lang.String:%
+W> W(K
+tokenjava.lang.String:-
+WL W(`!
+usuarioPerfiljava.lang.StringB+)
+'pe.gob.onpe.wsonpe.service.LoginService

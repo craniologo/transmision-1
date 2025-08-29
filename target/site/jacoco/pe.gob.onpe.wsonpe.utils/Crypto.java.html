@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Crypto.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">wsOnpe</a> &gt; <a href="index.source.html" class="el_package">pe.gob.onpe.wsonpe.utils</a> &gt; <span class="el_source">Crypto.java</span></div><h1>Crypto.java</h1><pre class="source lang-java linenums">package pe.gob.onpe.wsonpe.utils;
+
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import pe.gob.onpe.wsonpe.constants.CryptoValues;
+
+import javax.crypto.Cipher;
+import javax.crypto.spec.GCMParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.security.Key;
+import java.util.Arrays;
+import java.util.Base64;
+
+<span class="fc" id="L19">@Slf4j</span>
+public class Crypto {
+
+  private static final String ALGORITHM = &quot;AES&quot;;
+  private static final String TRANSFORMATION = &quot;AES/GCM/NoPadding&quot;;
+
+  public static final int GCM_TAG_LENGTH = 16;
+  public static final int GCM_IV_LENGTH = 12;
+
+<span class="fc" id="L28">  private static final Logger LOGGER = LoggerFactory.getLogger(Crypto.class);</span>
+
+
+<span class="fc" id="L31">  private Crypto() {</span>
+<span class="fc" id="L32">    throw new UnsupportedOperationException(&quot;notImplemented() cannot be performed because ...&quot;);</span>
+  }
+
+  public static void decryptFileSTAE(File inputFile, File outputFile, String encKey){
+    try {
+<span class="fc" id="L37">      byte[] inputBytes = Files.readAllBytes(inputFile.toPath());</span>
+
+<span class="fc" id="L39">      SecretKeySpec key = new SecretKeySpec(encKey.getBytes(), ALGORITHM);</span>
+
+<span class="fc" id="L41">      Cipher cipher = Cipher.getInstance(TRANSFORMATION);</span>
+<span class="fc" id="L42">      byte[] initVector = Arrays.copyOfRange(inputBytes, 0, GCM_IV_LENGTH);</span>
+<span class="fc" id="L43">      GCMParameterSpec spec = new GCMParameterSpec(GCM_TAG_LENGTH * Byte.SIZE, initVector);</span>
+<span class="fc" id="L44">      cipher.init(Cipher.DECRYPT_MODE, key, spec);</span>
+<span class="fc" id="L45">      byte[] plaintext = cipher.doFinal(inputBytes, GCM_IV_LENGTH, inputBytes.length - GCM_IV_LENGTH);</span>
+
+<span class="fc" id="L47">      try(FileOutputStream outputStream = new FileOutputStream(outputFile)){</span>
+<span class="fc" id="L48">        outputStream.write(plaintext);</span>
+      }
+
+<span class="fc" id="L51">    }catch(Exception e){</span>
+<span class="fc" id="L52">      LOGGER.error(e.getMessage(), e.getCause());</span>
+<span class="fc" id="L53">    }</span>
+<span class="fc" id="L54">  }</span>
+
+  public static String decryptStringAES(String encryptedText){
+<span class="fc" id="L57">    String key = CryptoValues.getAesEncryptKey();</span>
+<span class="fc" id="L58">    String decryptedText = &quot;&quot;;</span>
+
+<span class="fc" id="L60">    byte[] inputBytes = Base64.getDecoder().decode(encryptedText.getBytes(StandardCharsets.UTF_8));</span>
+
+    try {
+<span class="fc" id="L63">      SecretKeySpec aesKey = new SecretKeySpec(key.getBytes(StandardCharsets.UTF_8), ALGORITHM);</span>
+<span class="fc" id="L64">      Cipher cipher = Cipher.getInstance(TRANSFORMATION);</span>
+
+<span class="fc" id="L66">      byte[] initVector = Arrays.copyOfRange(inputBytes, 0, GCM_IV_LENGTH);</span>
+<span class="fc" id="L67">      GCMParameterSpec spec = new GCMParameterSpec(GCM_TAG_LENGTH * Byte.SIZE, initVector);</span>
+
+<span class="fc" id="L69">      cipher.init(Cipher.DECRYPT_MODE, aesKey, spec);</span>
+<span class="fc" id="L70">      byte[] plaintext = cipher.doFinal(inputBytes, GCM_IV_LENGTH, inputBytes.length - GCM_IV_LENGTH);</span>
+<span class="fc" id="L71">      decryptedText = new String(plaintext, StandardCharsets.UTF_8);</span>
+
+<span class="fc" id="L73">    } catch (Exception e){</span>
+<span class="fc" id="L74">      log.error(&quot;Error desencriptando el texto: {}, {}&quot;, e.getMessage(), e.getStackTrace());</span>
+<span class="fc" id="L75">    }</span>
+
+<span class="fc" id="L77">    return decryptedText;</span>
+  }
+
+  public static String encryptStringAES(String plainText){
+<span class="fc" id="L81">    String key = CryptoValues.getAesEncryptKey();</span>
+<span class="fc" id="L82">    byte[] inputBytes = plainText.getBytes(StandardCharsets.UTF_8);</span>
+<span class="fc" id="L83">    String encryptedText = &quot;&quot;;</span>
+
+    try {
+
+<span class="fc" id="L87">      Key aesKey = new SecretKeySpec(key.getBytes(StandardCharsets.UTF_8), ALGORITHM);</span>
+<span class="fc" id="L88">      Cipher cipher = Cipher.getInstance(TRANSFORMATION);</span>
+
+<span class="fc" id="L90">      byte[] initVector = new byte[GCM_IV_LENGTH];</span>
+<span class="fc" id="L91">      GCMParameterSpec spec = new GCMParameterSpec(GCM_TAG_LENGTH * Byte.SIZE, initVector);</span>
+
+<span class="fc" id="L93">      cipher.init(Cipher.ENCRYPT_MODE, aesKey, spec);</span>
+<span class="fc" id="L94">      byte[] cipherText = new byte[initVector.length + cipher.getOutputSize(inputBytes.length)];</span>
+<span class="fc" id="L95">      System.arraycopy(initVector, 0, cipherText, 0, initVector.length);</span>
+
+<span class="fc" id="L97">      cipher.doFinal(inputBytes, 0, inputBytes.length, cipherText, initVector.length);</span>
+<span class="fc" id="L98">      encryptedText = Base64.getEncoder().encodeToString(cipherText);</span>
+
+<span class="fc" id="L100">    } catch (Exception e){</span>
+<span class="fc" id="L101">      log.error(&quot;Error encriptando el texto: {}&quot;, e.getMessage());</span>
+<span class="fc" id="L102">    }</span>
+
+<span class="fc" id="L104">    return encryptedText;</span>
+  }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

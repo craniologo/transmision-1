@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: pe.gob.onpe.wsonpe.service.TransmisionServiceTest
+-------------------------------------------------------------------------------
+Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.593 s - in pe.gob.onpe.wsonpe.service.TransmisionServiceTest

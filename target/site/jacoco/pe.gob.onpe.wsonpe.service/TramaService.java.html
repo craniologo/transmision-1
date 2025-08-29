@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TramaService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">wsOnpe</a> &gt; <a href="index.source.html" class="el_package">pe.gob.onpe.wsonpe.service</a> &gt; <span class="el_source">TramaService.java</span></div><h1>TramaService.java</h1><pre class="source lang-java linenums">package pe.gob.onpe.wsonpe.service;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+import pe.gob.onpe.wsonpe.constants.WebService;
+import pe.gob.onpe.wsonpe.dto.MensajeWsResponse;
+import pe.gob.onpe.wsonpe.dto.TramaLogRequest;
+import pe.gob.onpe.wsonpe.repository.TabTareasMesaRepository;
+
+import java.util.Map;
+
+@Service
+<span class="fc" id="L15">@Slf4j</span>
+public class TramaService implements ITramaService{
+
+  private static final String PO_RESULTADO = &quot;PO_RESULTADO&quot;;
+  private static final String PO_MENSAJE = &quot;PO_MENSAJE&quot;;
+
+  private TabTareasMesaRepository tramaRepository;
+
+<span class="fc" id="L23">  public TramaService(TabTareasMesaRepository tramaRepository) {</span>
+<span class="fc" id="L24">    this.tramaRepository = tramaRepository;</span>
+<span class="fc" id="L25">  }</span>
+
+  @Override
+  public MensajeWsResponse receiveTrama(String usuario, String trama) {
+
+<span class="fc bfc" id="L30" title="All 4 branches covered.">    if (trama == null || trama.isEmpty()) {</span>
+<span class="fc" id="L31">      return new MensajeWsResponse(2, false, &quot;Trama vacía&quot;);</span>
+    }
+
+<span class="fc" id="L34">    ObjectMapper objectMapper = new ObjectMapper();</span>
+<span class="fc" id="L35">    int codigo =  2;</span>
+<span class="fc" id="L36">    String descripcion = &quot;&quot;;</span>
+<span class="fc" id="L37">    String descripcionJson = &quot;&quot;;</span>
+<span class="fc" id="L38">    String mesa = trama;</span>
+<span class="fc" id="L39">    int strama = 0;</span>
+
+    try {
+        TramaLogRequest[] array;
+<span class="fc" id="L43">        array = objectMapper.readValue(trama, TramaLogRequest[].class);</span>
+
+<span class="fc" id="L45">        mesa = String.valueOf(array[0].getMesa());</span>
+        //Tareas de la cantidad de tramas presidenciales
+<span class="fc" id="L47">        strama = array.length*2;</span>
+
+        // Verificación de las tareas pendientes de la mesa
+<span class="fc" id="L50">        log.info(&quot;Accion valida verificacion de las tareas pendientes de {}.&quot;, mesa);</span>
+<span class="fc" id="L51">        log.info(&quot;Llamando stored procedure de verificacion de tareas para la mesa {}&quot;, mesa);</span>
+
+<span class="fc" id="L53">        log.info(&quot;verificacionTareas: mesa: {}&quot;, mesa);</span>
+
+<span class="fc" id="L55">        Map&lt;String, Object&gt; verificaTareasResponse = tramaRepository.spVerificaTareas(mesa, strama);</span>
+
+<span class="fc" id="L57">        codigo = (Integer) verificaTareasResponse.get(PO_RESULTADO);</span>
+
+        // Registro de Trareas Pendientes
+<span class="fc bfc" id="L60" title="All 2 branches covered.">        boolean successRegistroTareas = codigo == WebService.REGISTRO_TAREAS;</span>
+        // Lista las Trareas Pendientes
+<span class="fc bfc" id="L62" title="All 2 branches covered.">        boolean successListaTareas = codigo == WebService.LISTA_TAREAS;</span>
+        // Registro duplicado de Trareas Pendientes
+<span class="fc bfc" id="L64" title="All 2 branches covered.">        boolean successRegistroDTareas = codigo == WebService.REGISTRO_D_TAREAS;</span>
+        // La mesa ya fue transmitida
+        //Tramas de la Primera eleccion completadas
+<span class="pc bpc" id="L67" title="1 of 2 branches missed.">        boolean successTramas = codigo == WebService.REGISTRO_TRAMAS;</span>
+
+<span class="fc" id="L69">        descripcion = (String) verificaTareasResponse.get(PO_MENSAJE);</span>
+
+<span class="pc bpc" id="L71" title="1 of 4 branches missed.">        if (successRegistroTareas || successTramas){</span>
+          // Inserción de las tareas pendientes de la mesa
+<span class="fc" id="L73">          log.info(&quot;Mesa:{}. Accion Insercion de las tareas pendientes.&quot;, mesa);</span>
+<span class="fc" id="L74">          log.info(&quot;Llamando stored procedure.&quot;);</span>
+
+<span class="fc bfc" id="L76" title="All 2 branches covered.">          for (int i = 0; i &lt;array.length; i++) {</span>
+<span class="fc" id="L77">            Integer tipoSolucion = Integer.valueOf(String.valueOf(array[i].getTipoSolucion()));</span>
+<span class="fc" id="L78">            Integer tipoTrama = Integer.valueOf(array[i].getTipoTrama());</span>
+<span class="fc" id="L79">            Integer modulo = Integer.valueOf(array[i].getModulo());</span>
+<span class="fc" id="L80">            Integer tipoFlujo = Integer.valueOf(array[i].getIdFlujo());</span>
+
+<span class="fc" id="L82">            String logHead = String.format(WebService.LOG_HEAD_FORMAT, mesa, tipoSolucion, modulo, tipoTrama);</span>
+
+<span class="fc" id="L84">            log.info(&quot;{}. RegistroTareas: mesa: {}, tipoFlujo: {}&quot;, logHead, mesa, tipoFlujo);</span>
+
+<span class="fc" id="L86">            Map&lt;String, Object&gt; registraTareasResponse =</span>
+<span class="fc" id="L87">              tramaRepository.spInsercionTareas(mesa,usuario,tipoSolucion,tipoTrama,modulo,tipoFlujo);</span>
+
+<span class="fc" id="L89">            codigo = (Integer) registraTareasResponse.get(PO_RESULTADO);</span>
+<span class="fc bfc" id="L90" title="All 2 branches covered.">            boolean success = codigo == WebService.REGISTRO_TAREAS;</span>
+<span class="fc" id="L91">            descripcion = (String) verificaTareasResponse.get(PO_MENSAJE);</span>
+
+<span class="fc bfc" id="L93" title="All 2 branches covered.">            if (!success) {</span>
+<span class="fc" id="L94">              log.error(&quot;{}. Error en el regristro de tareas: {}&quot;, logHead, descripcionJson);</span>
+<span class="fc" id="L95">              return new MensajeWsResponse(codigo, success, descripcion);</span>
+            }
+          }
+
+<span class="fc" id="L99">          log.info(&quot;Mesa: {}.Registro de las tareas pendientes exitoso&quot;, mesa);</span>
+
+<span class="fc bfc" id="L101" title="All 2 branches covered.">        } else if (successListaTareas) {</span>
+          // Json de las tareas pendientes de la mesa
+<span class="fc" id="L103">          log.info(&quot;Accion Json de las tareas pendientes de mesa {}&quot;, mesa);</span>
+<span class="fc" id="L104">          log.info(&quot;Llamando stored procedure.&quot;);</span>
+
+<span class="fc" id="L106">          descripcion = &quot;&quot;;</span>
+<span class="fc bfc" id="L107" title="All 2 branches covered.">          for (int i = 0; i &lt;array.length; i++) {</span>
+<span class="fc" id="L108">            Integer tipoSolucion = Integer.valueOf(String.valueOf(array[i].getTipoSolucion()));</span>
+<span class="fc" id="L109">            Integer tipoTrama = Integer.valueOf(array[i].getTipoTrama());</span>
+<span class="fc" id="L110">            Integer modulo = Integer.valueOf(array[i].getModulo());</span>
+<span class="fc" id="L111">            Integer tipoFlujo = Integer.valueOf(array[i].getIdFlujo());</span>
+
+<span class="fc" id="L113">            String logHead = String.format(WebService.LOG_HEAD_FORMAT, mesa, tipoSolucion, modulo, tipoTrama);</span>
+
+<span class="fc" id="L115">            log.info(&quot;{}. listaTareas: mesa: {} tipoFlujo: {}&quot;, logHead, mesa, tipoFlujo);</span>
+
+<span class="fc" id="L117">            Map&lt;String, Object&gt; listaTareasMetadataResponse =</span>
+<span class="fc" id="L118">              tramaRepository.spListaTareas(mesa,tipoSolucion,tipoTrama,modulo,tipoFlujo,&quot;M&quot;);</span>
+
+<span class="fc" id="L120">            codigo = (Integer) listaTareasMetadataResponse.get(PO_RESULTADO);</span>
+            // Lista del json
+<span class="fc bfc" id="L122" title="All 2 branches covered.">            boolean successJson = codigo == WebService.JSON_NOT_NULL;</span>
+            // Lista vacía del json
+<span class="fc bfc" id="L124" title="All 2 branches covered.">            boolean successJsonNull = codigo == WebService.JSON_NULL;</span>
+<span class="fc" id="L125">            descripcionJson = (String) listaTareasMetadataResponse.get(PO_MENSAJE);</span>
+
+<span class="fc bfc" id="L127" title="All 2 branches covered.">            if (successJson ) {</span>
+<span class="fc" id="L128">              descripcion = descripcion + descripcionJson + &quot;,&quot;;</span>
+<span class="fc bfc" id="L129" title="All 2 branches covered.">            } else if (!successJsonNull) {</span>
+<span class="fc" id="L130">              log.error(&quot;{}. Error al listar las tareas pendientes de metadata&quot;, logHead);</span>
+<span class="fc" id="L131">              return new MensajeWsResponse(codigo, false, descripcionJson);</span>
+            }
+
+<span class="fc" id="L134">            Map&lt;String, Object&gt; listaTareasFileResponse =</span>
+<span class="fc" id="L135">              tramaRepository.spListaTareas(mesa,tipoSolucion,tipoTrama,modulo,tipoFlujo,&quot;F&quot;);</span>
+
+<span class="fc" id="L137">            codigo = (Integer) listaTareasFileResponse.get(PO_RESULTADO);</span>
+            // Lista del json
+<span class="fc bfc" id="L139" title="All 2 branches covered.">            successJson = codigo == WebService.JSON_NOT_NULL;</span>
+            // Lista vacía del json
+<span class="fc bfc" id="L141" title="All 2 branches covered.">            successJsonNull = codigo == WebService.JSON_NULL;</span>
+<span class="fc" id="L142">            descripcionJson = (String) listaTareasFileResponse.get(PO_MENSAJE);</span>
+
+<span class="fc bfc" id="L144" title="All 2 branches covered.">            if (successJson) {</span>
+<span class="fc" id="L145">              descripcion = descripcion + descripcionJson + &quot;,&quot;;</span>
+<span class="fc bfc" id="L146" title="All 2 branches covered.">            } else if (!successJsonNull) {</span>
+<span class="fc" id="L147">              log.error(&quot;{}. Error al listar las tareas pendientes de archivo&quot;, descripcionJson);</span>
+<span class="fc" id="L148">              return new MensajeWsResponse(codigo, false, descripcionJson);</span>
+            }
+          }
+<span class="fc" id="L151">          codigo = WebService.LISTA_TAREAS;</span>
+<span class="fc bfc" id="L152" title="All 2 branches covered.">          if (descripcion.endsWith(&quot;,&quot;)){</span>
+<span class="fc" id="L153">            descripcion = descripcion.substring(0, descripcion.length()- 1);</span>
+          }
+<span class="fc" id="L155">          descripcion = &quot;[&quot; + descripcion + &quot;]&quot;;</span>
+
+<span class="fc" id="L157">          log.info(&quot;Mesa:{}. Tareas pendientes: {}&quot;, mesa, descripcion);</span>
+
+<span class="fc bfc" id="L159" title="All 2 branches covered.">        } else if (successRegistroDTareas) {</span>
+<span class="fc" id="L160">          log.info(&quot;Mesa:{}. registro duplicado de las tareas pendientes: {}&quot;, mesa, descripcion);</span>
+        /*} else if (successMesaTrans) {
+          log.info(&quot;Mesa:{}. Mesa ya transmitida: {}&quot;, mesa, descripcion);*/
+        } else {
+<span class="fc" id="L164">          log.info(&quot;Mesa:{}. error en la verificación de las tareas pendientes: {}&quot;, mesa, descripcion);</span>
+<span class="fc" id="L165">          return new MensajeWsResponse(codigo, false, descripcion);</span>
+        }
+<span class="fc" id="L167">    } catch (JsonProcessingException e) {</span>
+<span class="fc" id="L168">        log.error(&quot;Mesa:{}. Error en receive trama: {} - {}&quot;, mesa, e.getMessage(), e.getStackTrace());</span>
+<span class="fc" id="L169">    }</span>
+
+<span class="fc" id="L171">    return new MensajeWsResponse(codigo, true, descripcion);</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

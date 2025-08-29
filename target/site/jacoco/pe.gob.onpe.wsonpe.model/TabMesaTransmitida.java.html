@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TabMesaTransmitida.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">wsOnpe</a> &gt; <a href="index.source.html" class="el_package">pe.gob.onpe.wsonpe.model</a> &gt; <span class="el_source">TabMesaTransmitida.java</span></div><h1>TabMesaTransmitida.java</h1><pre class="source lang-java linenums">package pe.gob.onpe.wsonpe.model;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.NamedStoredProcedureQuery;
+import jakarta.persistence.ParameterMode;
+import jakarta.persistence.StoredProcedureParameter;
+import jakarta.persistence.Table;
+import lombok.Data;
+
+import java.sql.Timestamp;
+
+@Entity
+@Table(name = &quot;TAB_MESA_TRANSMITIDA&quot;)
+<span class="nc bnc" id="L16" title="All 158 branches missed.">@Data</span>
+@NamedStoredProcedureQuery(name = &quot;TabMesaTransmitida.spInsercionTransmisionTabMesaTransmitida&quot;,
+  procedureName = &quot;jel_stae.SP_INS_TRANSMISION&quot;,
+  parameters = {
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_C_MESA_PK&quot;, type = String.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_N_TIPO_SOLUCION&quot;, type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_N_MODULO&quot;, type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_N_TIPO_TRAMA&quot;, type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_N_PAGINA_NRO&quot;, type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_C_USUARIO&quot;, type = String.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_C_DATA_ELECCION&quot;, type = String.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_C_DATA_ELECCION2&quot;, type = String.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_C_DATA_FIRMA&quot;, type = String.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_C_DATA_META&quot;, type = String.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_D_FECHA_TRANSMISION_INI&quot;, type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_D_FECHA_TRANSMISION_FIN&quot;, type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_C_PDF_DIGEST&quot;, type = String.class),
+  @StoredProcedureParameter(mode = ParameterMode.OUT, name = &quot;PO_PROCEDER&quot;, type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.OUT, name = &quot;PO_RESULTADO&quot;, type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.OUT, name = &quot;PO_MENSAJE&quot;, type = String.class) })
+@NamedStoredProcedureQuery(name = &quot;TabMesaTransmitida.spActualizaFileTransmisionTabMesaTransmitida&quot;,
+  procedureName = &quot;jel_stae.SP_VALIDA_ARCHIVO&quot;,
+  parameters = {
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_C_MESA_PK&quot;, type = String.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_N_TIPO_SOLUCION&quot;, type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_N_MODULO&quot;, type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_N_TIPO_TRAMA&quot;, type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_N_PAGINA_NRO&quot;, type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_C_PDF_DIGEST&quot;, type = String.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_ARCHIVO_VALIDO&quot;, type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_ARCHIVO_NOMBRE&quot;, type = String.class),
+  @StoredProcedureParameter(mode = ParameterMode.OUT, name = &quot;PO_PROCEDER&quot;, type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.OUT, name = &quot;PO_RESULTADO&quot;, type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.OUT, name = &quot;PO_MENSAJE&quot;, type = String.class) })
+@NamedStoredProcedureQuery(name = &quot;TabMesaTransmitida.spValidaTransmisionArchivo&quot;,
+  procedureName = &quot;jel_stae.sp_valida_transmision_archivo&quot;, parameters = {
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_C_MESA_PK&quot;, type = String.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_N_TIPO_SOLUCION&quot;, type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_N_MODULO&quot;, type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_N_TIPO_TRAMA&quot;, type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_N_PAGINA_NRO&quot;, type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_USUARIO&quot;, type = String.class),
+  @StoredProcedureParameter(mode = ParameterMode.OUT, name = &quot;PO_RESULTADO&quot;, type = Integer.class),
+  @StoredProcedureParameter(mode = ParameterMode.OUT, name = &quot;PO_MENSAJE&quot;, type = String.class) })
+public class TabMesaTransmitida {
+  @Id
+  @Column(name = &quot;N_MESA_TRANS_PK&quot;)
+<span class="nc" id="L63">  private Integer mesaTransPk;</span>
+
+  @Column(name = &quot;C_MESA&quot;)
+<span class="nc" id="L66">  private String mesaPk;</span>
+
+  @Column(name = &quot;N_TIPO_SOLUCION&quot;)
+<span class="nc" id="L69">  private Integer tipoSolucion;</span>
+
+  @Column(name = &quot;N_MODULO&quot;)
+<span class="nc" id="L72">  private Integer modulo;</span>
+
+  @Column(name = &quot;N_TIPO_TRAMA&quot;)
+<span class="nc" id="L75">  private Integer tipoTrama;</span>
+
+  @Column(name = &quot;N_PAGINA_NRO&quot;)
+<span class="nc" id="L78">  private Integer paginaNro;</span>
+
+  @Column(name = &quot;N_USUARIO&quot;)
+<span class="nc" id="L81">  private Integer usuario;</span>
+
+  @Column(name = &quot;C_DATA_ELECCION&quot;)
+<span class="nc" id="L84">  private String dataEleccion;</span>
+
+  @Column(name = &quot;C_DATA_FIRMA&quot;)
+<span class="nc" id="L87">  private String dataFirma;</span>
+
+  @Column(name = &quot;D_FECHA_TRANSMISION_INI&quot;)
+<span class="nc" id="L90">  private Timestamp fechaTransmisionIni;</span>
+
+  @Column(name = &quot;D_FECHA_TRANSMISION_FIN&quot;)
+<span class="nc" id="L93">  private Timestamp fechaTransmisionFin;</span>
+
+  @Column(name = &quot;N_FLAG_SINCRONIZACION&quot;)
+<span class="nc" id="L96">  private Integer flagSincronizacion;</span>
+
+  @Column(name = &quot;N_PID&quot;)
+<span class="nc" id="L99">  private Integer pid;</span>
+
+  @Column(name = &quot;C_DATA_METADOC&quot;)
+<span class="nc" id="L102">  private String dataMetadoc;</span>
+
+  @Column(name = &quot;C_PDF_DIGEST&quot;)
+<span class="nc" id="L105">  private String pdfDigest;</span>
+
+  @Column(name = &quot;N_FLAG_PDF&quot;)
+<span class="nc" id="L108">  private Integer flagPdf;</span>
+
+  @Column(name = &quot;N_REINTENTO&quot;)
+<span class="nc" id="L111">  private Integer reintento;</span>
+
+  @Column(name = &quot;N_FLAG_TRAMA&quot;)
+<span class="nc" id="L114">  private Integer nFlagTrama;</span>
+
+  @Column(name = &quot;C_FILE_NAME&quot;)
+<span class="nc" id="L117">  private String nFileName;</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

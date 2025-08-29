@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TramaLogRequest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">wsOnpe</a> &gt; <a href="index.source.html" class="el_package">pe.gob.onpe.wsonpe.dto</a> &gt; <span class="el_source">TramaLogRequest.java</span></div><h1>TramaLogRequest.java</h1><pre class="source lang-java linenums">package pe.gob.onpe.wsonpe.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.Accessors;
+
+<span class="fc" id="L10">@Setter</span>
+@Getter
+<span class="nc bnc" id="L12" title="All 62 branches missed.">@Data</span>
+<span class="nc" id="L13">@AllArgsConstructor</span>
+<span class="fc" id="L14">@NoArgsConstructor</span>
+@Accessors(chain = true)
+public class TramaLogRequest {
+
+<span class="fc" id="L18">    private String mesa;</span>
+
+    // Tipo de Solucion(sea =&gt;1, saje =&gt;2, ve =&gt;3)
+<span class="fc" id="L21">    private String tipoSolucion;</span>
+
+    // Modulo(instalacion =&gt;1, sufragio =&gt;2, escrutinio =&gt;3)
+<span class="fc" id="L24">    private String modulo;</span>
+
+    //Tipo de Trama( trama Escrutinio=&gt;1 )    
+<span class="fc" id="L27">    private String tipoTrama;</span>
+
+    //Data en formato json
+<span class="fc" id="L30">    private String data;</span>
+
+    //Flag de transmision(0=no transmitido,1=transmitido)
+<span class="fc" id="L33">    private Integer transmitio;</span>
+
+    //Tipo de flujo
+<span class="fc" id="L36">    private String idFlujo;</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

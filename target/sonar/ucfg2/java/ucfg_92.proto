@@ -1,0 +1,337 @@
+
+Zpe.gob.onpe.wsonpe.service.LoginService#getJwtToken(Ljava/lang/String;Z)Ljava/lang/String;`
+VC:/xampp/htdocs/transmision/src/main/java/pe/gob/onpe/wsonpe/service/LoginService.java} }("4* 
+2
+Ç< Ç(Gh
+f
+
+Ç< Ç(M
+
+%4long"__calculate*
+
+ÇH Ç(I
+**
+
+Ç< Ç(G
+""*
+
+ÇJ Ç(M
+""J
+H
+
+Ç< Ç(M
+
+%2long"__id*(
+
+__unknown_file (
+
+
+%4long*
+1* 
+3
+Ç! Ç(3h
+f
+
+Ç! Ç(9
+
+%3long"__calculate*
+
+Ç4 Ç(5
+**
+
+Ç! Ç(3
+""*
+
+Ç6 Ç(9
+""J
+H
+
+Ç! Ç(9
+
+%2long"__id*(
+
+__unknown_file (
+
+
+%3long*
+1*ù
+4~. ~(<Ø
+¨
+~. ~(m
+%0java.util.List"Çorg.springframework.security.core.authority.AuthorityUtils#commaSeparatedStringToAuthorityList(Ljava/lang/String;)Ljava/util/List;*Z
+
+__unknown_file (>"<
+:org.springframework.security.core.authority.AuthorityUtils*)
+
+__unknown_file (
+	ROLE_USERl
+j
+~ ~(n$
+grantedAuthoritiesjava.util.List"__id*2
+
+__unknown_file (
+
+%0java.util.Listf
+d
+
+Ä Ä(
+
+%1long"__calculate*
+
+Ä Ä(
+**
+
+Ä Ä(2<*
+
+Ä Ä(
+""*
+2
+3*ƒ#
+1
+Ç Ç(N:8
+
+Ñ$ Ñ(-
+%5java.util.HashMap"java.util.HashMaph
+f
+
+Ñ  Ñ(/
+%6"java.util.HashMap#<init>()V*5
+
+__unknown_file (
+
+%5java.util.HashMapc
+a
+
+Ñ Ñ(0
+claimjava.util.Map"__id*5
+
+__unknown_file (
+
+%5java.util.HashMap¥±
+
+Ö Ö(8
+%7java.util.stream.Stream"6java.util.Collection#stream()Ljava/util/stream/Stream;*B
+
+__unknown_file (&
+$
+grantedAuthoritiesjava.util.List2stream()àÖ
+
+Ö Ö(\
+%8java.util.stream.Stream"Sjava.util.stream.Stream#map(Ljava/util/function/Function;)Ljava/util/stream/Stream;*;
+
+__unknown_file (
+
+%7java.util.stream.Stream*"
+
+__unknown_file (
+""2"map(Ljava/util/function/Function;)∞
+≠
+
+Öe Ö(x 
+%9java.util.stream.Collector"@java.util.stream.Collectors#toList()Ljava/util/stream/Collector;*;
+
+__unknown_file ("
+java.util.stream.Collectorsõò
+
+Ö Ö(y
+%10java.util.List"Ojava.util.stream.Stream#collect(Ljava/util/stream/Collector;)Ljava/lang/Object;*;
+
+__unknown_file (
+
+%8java.util.stream.Stream*>
+
+__unknown_file ("
+ 
+%9java.util.stream.Collector2%collect(Ljava/util/stream/Collector;) 
+«
+
+Ö Ö(z
+%11java.lang.Object"__mapSet*4
+
+__unknown_file (
+
+claimjava.util.Map*+
+
+__unknown_file (
+authorities*3
+
+__unknown_file (
+
+%10java.util.List˝
+˙
+
+Ü Ü(4
+%12java.lang.String"Vpe.gob.onpe.wsonpe.utils.Crypto#encryptStringAES(Ljava/lang/String;)Ljava/lang/String;*?
+
+__unknown_file (#"!
+pe.gob.onpe.wsonpe.utils.Crypto*:
+
+__unknown_file (
+
+usernamejava.lang.Stringh
+f
+
+Ü Ü(5
+subjectjava.lang.String"__id*5
+
+__unknown_file (
+
+%12java.lang.String§
+°
+
+à â(!
+%13io.jsonwebtoken.JwtBuilder":io.jsonwebtoken.Jwts#builder()Lio/jsonwebtoken/JwtBuilder;*4
+
+__unknown_file ("
+io.jsonwebtoken.Jwtsòï
+
+à ä(!!
+%14io.jsonwebtoken.JwtBuilder"Qio.jsonwebtoken.JwtBuilder#setClaims(Ljava/util/Map;)Lio/jsonwebtoken/JwtBuilder;*?
+
+__unknown_file (#
+!
+%13io.jsonwebtoken.JwtBuilder*4
+
+__unknown_file (
+
+claimjava.util.Map2setClaims(Ljava/util/Map;)•¢
+
+à ã($!
+%15io.jsonwebtoken.JwtBuilder"Uio.jsonwebtoken.JwtBuilder#setSubject(Ljava/lang/String;)Lio/jsonwebtoken/JwtBuilder;*?
+
+__unknown_file (#
+!
+%14io.jsonwebtoken.JwtBuilder*9
+
+__unknown_file (
+
+subjectjava.lang.String2setSubject(Ljava/lang/String;)t
+r
+
+å& å(@
+%16long"%java.lang.System#currentTimeMillis()J*0
+
+__unknown_file ("
+java.lang.System53
+
+å! å(%
+%17java.util.Date"java.util.Dateë
+é
+
+å å(A
+%18"java.util.Date#<init>(J)V*3
+
+__unknown_file (
+
+%17java.util.Date*)
+
+__unknown_file (
+
+%16longùö
+
+à å(B!
+%19io.jsonwebtoken.JwtBuilder"Tio.jsonwebtoken.JwtBuilder#setIssuedAt(Ljava/util/Date;)Lio/jsonwebtoken/JwtBuilder;*?
+
+__unknown_file (#
+!
+%15io.jsonwebtoken.JwtBuilder*3
+
+__unknown_file (
+
+%17java.util.Date2setIssuedAt(Ljava/util/Date;)t
+r
+
+ç( ç(B
+%20long"%java.lang.System#currentTimeMillis()J*0
+
+__unknown_file ("
+java.lang.Systemp
+n
+
+ç( ç(M
+%21long"__calculate*
+
+çC ç(D
++*
+
+ç( ç(B
+
+%20long*
+
+çE ç(M
+""53
+
+ç# ç('
+%22java.util.Date"java.util.Dateë
+é
+
+ç ç(N
+%23"java.util.Date#<init>(J)V*3
+
+__unknown_file (
+
+%22java.util.Date*)
+
+__unknown_file (
+
+%21long°û
+
+à ç(O!
+%24io.jsonwebtoken.JwtBuilder"Vio.jsonwebtoken.JwtBuilder#setExpiration(Ljava/util/Date;)Lio/jsonwebtoken/JwtBuilder;*?
+
+__unknown_file (#
+!
+%19io.jsonwebtoken.JwtBuilder*3
+
+__unknown_file (
+
+%22java.util.Date2setExpiration(Ljava/util/Date;)c
+a
+
+é é(2)
+%25"io.jsonwebtoken.SignatureAlgorithm"__id*"
+
+__unknown_file (
+""ﬂ‹
+
+à é(X
+%26"gio.jsonwebtoken.JwtBuilder#signWith(Lio/jsonwebtoken/SignatureAlgorithm;[B)Lio/jsonwebtoken/JwtBuilder;*?
+
+__unknown_file (#
+!
+%24io.jsonwebtoken.JwtBuilder*G
+
+__unknown_file (+
+)
+%25"io.jsonwebtoken.SignatureAlgorithm*"
+
+__unknown_file (
+""20signWith(Lio/jsonwebtoken/SignatureAlgorithm;[B)S
+Q
+
+à è(
+tokenjava.lang.String"__id*"
+
+__unknown_file (
+""w
+u
+
+ë	 ë(
+%27java.lang.String"__concat*
+
+ë	 ë(	
+Bearer *)
+
+ë ë(
+
+tokenjava.lang.String"'
+
+ë ë(
+
+%27java.lang.String:(
+} }(,
+usernamejava.lang.String: 
+
+__unknown_file (
+""B+)
+'pe.gob.onpe.wsonpe.service.LoginService

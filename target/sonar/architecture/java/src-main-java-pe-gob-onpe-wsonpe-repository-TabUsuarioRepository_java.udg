@@ -1,0 +1,423 @@
+
+1.0craniologo_transmisionJavaFrontend"1756337470179*java2.Bì
+J
+Esrc/main/java/pe/gob/onpe/wsonpe/repository/TabUsuarioRepository.java2
+	
+type3
+	
+MAIN4
+
+
+module-key5
+
+craniologo_transmision6
+
+package8
+9
+4craniologo_transmision:pe.gob.onpe.wsonpe.repository9
+8
+2pe.gob.onpe.wsonpe.repository.TabUsuarioRepository11
+
+	interface12
+
+access13
+
+public14
+
+simple-name15
+
+TabUsuarioRepository16
+;
+5org.springframework.data.jpa.repository.JpaRepository18
+
+unknown19
+
+
+implements20
+/
+)org.springframework.stereotype.Repository22
+
+annotated by23
+
+
+uses24
+)
+#pe.gob.onpe.wsonpe.model.TabUsuario26
+|
+vpe.gob.onpe.wsonpe.repository.TabUsuarioRepository#spValidaAcceso(Ljava/lang/String;Ljava/lang/String;)Ljava/util/Map;28
+
+method29
+
+spValidaAcceso30
+=
+7org.springframework.data.jpa.repository.query.Procedure32
+5
+/org.springframework.data.repository.query.Param34
+€
+zpe.gob.onpe.wsonpe.repository.TabUsuarioRepository#spActualizaEstado(Ljava/lang/String;Ljava/lang/Integer;)Ljava/util/Map;36
+
+spActualizaEstado37
+Ô
+Ípe.gob.onpe.wsonpe.repository.TabUsuarioRepository#spVerificaPuestaCeroTrans(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;)Ljava/util/Map;39
+
+spVerificaPuestaCeroTrans40
+¼
+µpe.gob.onpe.wsonpe.repository.TabUsuarioRepository#spValidaTransmision(Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;)Ljava/util/Map;42
+
+spValidaTransmision43
+Á
+ºpe.gob.onpe.wsonpe.repository.TabUsuarioRepository#spVerificaPuestaCeroTransD(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/Integer;)Ljava/util/Map;45
+ 
+spVerificaPuestaCeroTransD46
+q
+kpe.gob.onpe.wsonpe.repository.TabUsuarioRepository#spEjecutarPuestaCeroD(Ljava/lang/String;)Ljava/util/Map;48
+
+spEjecutarPuestaCeroD49
+j
+dpe.gob.onpe.wsonpe.repository.TabUsuarioRepository#spValidaEstado(Ljava/lang/String;)Ljava/util/Map;51
+
+spValidaEstado52
+
+ype.gob.onpe.wsonpe.repository.TabUsuarioRepository#findByUsuario(Ljava/lang/String;)Lpe/gob/onpe/wsonpe/model/TabUsuario;54
+
+findByUsuario55
+
+returns56J#
+!
+1
+12
+
+3
+4
+
+5
+6Z
+
+7
+7982
+
+
+5
+6jÄ
+
+33
+333419
+B
+47<
+474829 *
+1. .(210:7B
+
+
+13
+14
+
+
+15
+49
+B
+53<
+535429 *
+14 4(210:7B
+
+
+13
+14
+
+
+15
+55
+B
+41<
+414229 *
+1 (210:7B
+
+
+13
+14
+
+
+15
+43
+B
+35<
+353629 *
+1 (210:7B
+
+
+13
+14
+
+
+15
+37
+>
+108
+101112 *
+1 (&:7B
+
+
+13
+14
+
+
+15
+16
+
+31
+313219
+B
+27<
+272829 *
+1 (210:7B
+
+
+13
+14
+
+
+15
+30
+B
+44<
+444529 *
+1& &(210:7B
+
+
+13
+14
+
+
+15
+46
+B
+50<
+505129 *
+11 1(210:7B
+
+
+13
+14
+
+
+15
+52
+B
+38<
+383929 *
+1 (210:7B
+
+
+13
+14
+
+
+15
+40
+
+21
+212219
+
+17
+171819
+
+25
+252619rÛ
+
+101720*
+1/ (<
+
+102123*
+1
+ 
+(
+
+102124*
+1
+ 
+(
+
+101724*
+1/ (<
+
+102524*
+1= (G
+
+273123*
+1 (
+
+273124*
+1 (
+
+273323*
+1& ('
+
+273324*
+1' (,
+
+273323*
+1 (
+
+273324*
+1 (
+
+353123*
+1 (
+
+353124*
+1 (
+
+353323*
+1) (*
+
+353324*
+1* (/
+
+353323*
+1 (
+
+353324*
+1 (
+
+383123*
+1 (
+
+383124*
+1 (
+
+383323*
+11 (2
+
+383324*
+12 (7
+
+383323*
+1 (
+
+383324*
+1 (
+
+383323*
+1 (
+
+383324*
+1 (
+
+383323*
+1 (
+
+383324*
+1 (
+
+383323*
+1 (
+
+383324*
+1 (
+
+383323*
+1 (
+
+383324*
+1 (
+
+413123*
+1 (
+
+413124*
+1 (
+
+413323*
+1 (
+
+413324*
+1 (
+
+413323*
+1   (
+
+413324*
+1   (
+
+413323*
+1! !(
+
+413324*
+1! !(
+
+413323*
+1" "(
+
+413324*
+1" "(
+
+413323*
+1# #(
+
+413324*
+1# #(
+
+443123*
+1& &(
+
+443124*
+1& &(
+
+443323*
+1( ((
+
+443324*
+1( ((
+
+443323*
+1) )(
+
+443324*
+1) )(
+
+443323*
+1* *(
+
+443324*
+1* *(
+
+443323*
+1+ +(
+
+443324*
+1+ +(
+
+443323*
+1, ,(
+
+443324*
+1, ,(
+
+473123*
+1. .(
+
+473124*
+1. .(
+
+473323*
+1/- /(.
+
+473324*
+1/. /(3
+
+503123*
+11 1(
+
+503124*
+11 1(
+
+503323*
+12& 2('
+
+503324*
+12' 2(,
+
+532556*
+14 4(
+
+532524*
+14 4(

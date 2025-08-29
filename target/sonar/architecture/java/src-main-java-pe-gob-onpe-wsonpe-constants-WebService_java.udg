@@ -1,0 +1,432 @@
+
+1.0craniologo_transmisionJavaFrontend"1756337477742*java2.Bÿ
+?
+:src/main/java/pe/gob/onpe/wsonpe/constants/WebService.java2
+	
+type3
+	
+MAIN4
+
+
+module-key5
+
+craniologo_transmision6
+
+package8
+8
+3craniologo_transmision:pe.gob.onpe.wsonpe.constants9
+-
+'pe.gob.onpe.wsonpe.constants.WebService11
+
+class12
+
+access13
+
+public14
+
+simple-name15
+
+
+WebService16
+.
+(org.springframework.stereotype.Component18
+
+unknown19
+
+annotated by20
+
+
+uses21
+;
+5pe.gob.onpe.wsonpe.constants.WebService.tipoEnvioData23
+
+field24
+
+private25
+
+tipoEnvioData26
+
+lombok.Getter28
+I
+Cpe.gob.onpe.wsonpe.constants.WebService#<init>(Ljava/lang/String;)V30
+
+method31
+
+calls32
+8
+2org.springframework.beans.factory.annotation.Value34
+
+
+references35
+S
+Mpe.gob.onpe.wsonpe.constants.WebService#setTipoEnvioData(Ljava/lang/String;)V37
+
+setTipoEnvioData38
+<
+6pe.gob.onpe.wsonpe.constants.WebService.SUCCESS_RESULT40
+
+SUCCESS_RESULT41
+9
+3pe.gob.onpe.wsonpe.constants.WebService.TRAMA_TRANS43
+
+TRAMA_TRANS44
+8
+2pe.gob.onpe.wsonpe.constants.WebService.MESA_TRANS46
+
+
+MESA_TRANS47
+;
+5pe.gob.onpe.wsonpe.constants.WebService.VALIDATE_FILE49
+
+VALIDATE_FILE50
+=
+7pe.gob.onpe.wsonpe.constants.WebService.REGISTRO_TAREAS52
+
+REGISTRO_TAREAS53
+:
+4pe.gob.onpe.wsonpe.constants.WebService.LISTA_TAREAS55
+
+LISTA_TAREAS56
+?
+9pe.gob.onpe.wsonpe.constants.WebService.REGISTRO_D_TAREAS58
+
+REGISTRO_D_TAREAS59
+;
+5pe.gob.onpe.wsonpe.constants.WebService.JSON_NOT_NULL61
+
+JSON_NOT_NULL62
+7
+1pe.gob.onpe.wsonpe.constants.WebService.JSON_NULL64
+
+	JSON_NULL65
+<
+6pe.gob.onpe.wsonpe.constants.WebService.ENCRYPTED_FILE67
+
+ENCRYPTED_FILE68
+4
+.pe.gob.onpe.wsonpe.constants.WebService.ACTIVE70
+
+ACTIVE71
+D
+>pe.gob.onpe.wsonpe.constants.WebService.VALIDATION_FILE_FAILED73
+
+VALIDATION_FILE_FAILED74
+@
+:pe.gob.onpe.wsonpe.constants.WebService.NO_FILE_IN_SYNCHRO76
+
+NO_FILE_IN_SYNCHRO77
+=
+7pe.gob.onpe.wsonpe.constants.WebService.REGISTRO_TRAMAS79
+
+REGISTRO_TRAMAS80
+=
+7pe.gob.onpe.wsonpe.constants.WebService.LOG_HEAD_FORMAT82
+
+LOG_HEAD_FORMAT83
+<
+6pe.gob.onpe.wsonpe.constants.WebService.FILE_SEPARATOR85
+
+FILE_SEPARATOR86J#
+!
+1
+12
+
+3
+4
+
+5
+6Z
+
+7
+7982
+
+
+5
+6jˆ
+B
+75<
+757624 *
+1$ $(	210:7B
+
+
+13
+14
+
+
+15
+77
+
+27
+272819
+B
+66<
+666724 *
+1! !(	210:7B
+
+
+13
+14
+
+
+15
+68
+B
+69<
+697024 *
+1" "(	210:7B
+
+
+13
+14
+
+
+15
+71
+B
+57<
+575824 *
+1 (	210:7B
+
+
+13
+14
+
+
+15
+59
+B
+63<
+636424 *
+1   (	210:7B
+
+
+13
+14
+
+
+15
+65
+>
+108
+101112 *
+1 (:7B
+
+
+13
+14
+
+
+15
+16
+B
+42<
+424324 *
+1 (	210:7B
+
+
+13
+14
+
+
+15
+44
+B
+22<
+222324 *
+1
+ 
+(210:7B
+
+
+13
+25
+
+
+15
+26
+B
+54<
+545524 *
+1 (	210:7B
+
+
+13
+14
+
+
+15
+56
+B
+29<
+293031 *
+1 (210:7B
+
+
+13
+25
+
+
+15
+16
+
+33
+333419
+B
+48<
+484924 *
+1 (	210:7B
+
+
+13
+14
+
+
+15
+50
+B
+78<
+787924 *
+1% %(	210:7B
+
+
+13
+14
+
+
+15
+80
+
+17
+171819
+B
+45<
+454624 *
+1 (	210:7B
+
+
+13
+14
+
+
+15
+47
+B
+51<
+515224 *
+1 (	210:7B
+
+
+13
+14
+
+
+15
+53
+B
+72<
+727324 *
+1# #(	210:7B
+
+
+13
+14
+
+
+15
+74
+B
+36<
+363731 *
+1 (
+210:7B
+
+
+13
+25
+
+
+15
+38
+B
+60<
+606124 *
+1 (	210:7B
+
+
+13
+14
+
+
+15
+62
+B
+39<
+394024 *
+1 (	210:7B
+
+
+13
+14
+
+
+15
+41
+B
+81<
+818224 *
+1' '(	210:7B
+
+
+13
+14
+
+
+15
+83
+B
+84<
+848524 *
+1) )(	210:7B
+
+
+13
+14
+
+
+15
+86rŽ
+
+101720*
+1 (
+
+101721*
+1 (
+
+222720*
+1
+ 
+(
+
+222721*
+1
+ 
+(
+
+
+291032*
+1 (
+
+293320*
+1 (
+
+293321*
+1 (
+
+291035*
+1 (
+
+293632*
+1 (
+
+362235*
+1 (

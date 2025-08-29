@@ -1,0 +1,371 @@
+
+1.0craniologo_transmisionJavaFrontend"1756337477788*java2.BÏ
+?
+:src/main/java/pe/gob/onpe/wsonpe/service/IUserService.java2
+	
+type3
+	
+MAIN4
+
+
+module-key5
+
+craniologo_transmision6
+
+package8
+6
+1craniologo_transmision:pe.gob.onpe.wsonpe.service9
+-
+'pe.gob.onpe.wsonpe.service.IUserService11
+
+	interface12
+
+access13
+
+public14
+
+simple-name15
+
+IUserService16
+ã
+Ñpe.gob.onpe.wsonpe.service.IUserService#updateEstado(Lpe/gob/onpe/wsonpe/dto/UserRequest;)Lpe/gob/onpe/wsonpe/dto/MensajeWsResponse;18
+
+method19
+
+updateEstado20
+.
+(pe.gob.onpe.wsonpe.dto.MensajeWsResponse22
+
+unknown23
+
+returns24
+(
+"pe.gob.onpe.wsonpe.dto.UserRequest26
+
+	has param27
+
+
+uses28
+
+is type29
+í
+ãpe.gob.onpe.wsonpe.service.IUserService#verificarPuestaCero(Lpe/gob/onpe/wsonpe/dto/UserRequest;)Lpe/gob/onpe/wsonpe/dto/MensajeWsResponse;31
+
+verificarPuestaCero32
+ù
+ñpe.gob.onpe.wsonpe.service.IUserService#verificarPuestaCeroDiagnostico(Lpe/gob/onpe/wsonpe/dto/UserRequest;)Lpe/gob/onpe/wsonpe/dto/MensajeWsResponse;34
+$
+verificarPuestaCeroDiagnostico35
+û
+ópe.gob.onpe.wsonpe.service.IUserService#verificarPuestaCeroYTransmitido(Lpe/gob/onpe/wsonpe/dto/UserRequest;)Lpe/gob/onpe/wsonpe/dto/MensajeWsResponse;37
+%
+verificarPuestaCeroYTransmitido38
+ü
+òpe.gob.onpe.wsonpe.service.IUserService#verificarPuestaCeroYTransmitido2(Lpe/gob/onpe/wsonpe/dto/UserRequest;)Lpe/gob/onpe/wsonpe/dto/MensajeWsResponse;40
+&
+ verificarPuestaCeroYTransmitido241
+ë
+äpe.gob.onpe.wsonpe.service.IUserService#ejecutarPuestaCero(Lpe/gob/onpe/wsonpe/dto/UserRequest;)Lpe/gob/onpe/wsonpe/dto/MensajeWsResponse;43
+
+ejecutarPuestaCero44
+í
+ãpe.gob.onpe.wsonpe.service.IUserService#ejecutarPuestaCeroD(Lpe/gob/onpe/wsonpe/dto/UserRequest;)Lpe/gob/onpe/wsonpe/dto/MensajeWsResponse;46
+
+ejecutarPuestaCeroD47
+ë
+äpe.gob.onpe.wsonpe.service.IUserService#verificarTimeSufEs(Lpe/gob/onpe/wsonpe/dto/UserRequest;)Lpe/gob/onpe/wsonpe/dto/MensajeWsResponse;49
+
+verificarTimeSufEs50
+ï
+épe.gob.onpe.wsonpe.service.IUserService#verificarSessionActiva(Lpe/gob/onpe/wsonpe/dto/UserRequest;)Lpe/gob/onpe/wsonpe/dto/MensajeWsResponse;52
+
+verificarSessionActiva53J#
+!
+1
+12
+
+3
+4
+
+5
+6Z
+
+7
+7982
+
+
+5
+6jÃ
+B
+39<
+394019 *
+1 (210:7B
+
+
+13
+14
+
+
+15
+41
+
+25
+252623
+B
+36<
+363719 *
+1 (210:7B
+
+
+13
+14
+
+
+15
+38
+B
+17<
+171819 *
+1 (210:7B
+
+
+13
+14
+
+
+15
+20
+
+21
+212223
+B
+33<
+333419 *
+1 (210:7B
+
+
+13
+14
+
+
+15
+35
+B
+30<
+303119 *
+1
+ 
+(210:7B
+
+
+13
+14
+
+
+15
+32
+>
+108
+101112 *
+1 (:7B
+
+
+13
+14
+
+
+15
+16
+B
+48<
+484919 *
+1 (210:7B
+
+
+13
+14
+
+
+15
+50
+B
+51<
+515219 *
+1 (210:7B
+
+
+13
+14
+
+
+15
+53
+B
+45<
+454619 *
+1 (210:7B
+
+
+13
+14
+
+
+15
+47
+B
+42<
+424319 *
+1 (210:7B
+
+
+13
+14
+
+
+15
+44rø	
+
+172124*
+1 (
+
+172527*
+1" (-
+
+172128*
+1 (
+
+172529*
+1. (5
+
+172528*
+1" (-
+
+302124*
+1
+ 
+(
+
+302527*
+1
+) 
+(4
+
+302128*
+1
+ 
+(
+
+302529*
+1
+5 
+(<
+
+302528*
+1
+) 
+(4
+
+332124*
+1 (
+
+332527*
+14 (?
+
+332128*
+1 (
+
+332529*
+1@ (G
+
+332528*
+14 (?
+
+362124*
+1 (
+
+362527*
+15 (@
+
+362128*
+1 (
+
+362529*
+1A (H
+
+362528*
+15 (@
+
+392124*
+1 (
+
+392527*
+16 (A
+
+392128*
+1 (
+
+392529*
+1B (I
+
+392528*
+16 (A
+
+422124*
+1 (
+
+422527*
+1( (3
+
+422128*
+1 (
+
+422529*
+14 (;
+
+422528*
+1( (3
+
+452124*
+1 (
+
+452527*
+1) (4
+
+452128*
+1 (
+
+452529*
+15 (<
+
+452528*
+1) (4
+
+482124*
+1 (
+
+482527*
+1( (3
+
+482128*
+1 (
+
+482529*
+14 (;
+
+482528*
+1( (3
+
+512124*
+1 (
+
+512527*
+1, (7
+
+512128*
+1 (
+
+512529*
+18 (?
+
+512528*
+1, (7

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>JWTAuthorizationFilter.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">wsOnpe</a> &gt; <a href="index.source.html" class="el_package">pe.gob.onpe.wsonpe.security</a> &gt; <span class="el_source">JWTAuthorizationFilter.java</span></div><h1>JWTAuthorizationFilter.java</h1><pre class="source lang-java linenums">package pe.gob.onpe.wsonpe.security;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.MalformedJwtException;
+import io.jsonwebtoken.SignatureException;
+import io.jsonwebtoken.UnsupportedJwtException;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Component;
+import org.springframework.web.filter.OncePerRequestFilter;
+import pe.gob.onpe.wsonpe.constants.CryptoValues;
+import pe.gob.onpe.wsonpe.dto.MensajeWsResponse;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+
+@Component
+<span class="fc" id="L32">@RequiredArgsConstructor</span>
+<span class="fc" id="L33">@Slf4j</span>
+public class JWTAuthorizationFilter extends OncePerRequestFilter {
+
+  private static final String HEADER = &quot;Authorization&quot;;
+  private static final String PREFIX = &quot;Bearer &quot;;
+
+  @Override
+<span class="pc bpc" id="L40" title="1 of 2 branches missed.">  protected void doFilterInternal(@NonNull HttpServletRequest request,</span>
+<span class="pc bpc" id="L41" title="1 of 2 branches missed.">                                  @NonNull HttpServletResponse response,</span>
+<span class="pc bpc" id="L42" title="1 of 2 branches missed.">                                  @NonNull FilterChain chain)</span>
+                                  throws ServletException, IOException {
+    try {
+
+<span class="pc bpc" id="L46" title="1 of 2 branches missed.">      if (!request.getRequestURI().contains(&quot;_next/webpack-hmr&quot;))</span>
+<span class="fc" id="L47">        log.info(&quot;Endpoint called: {}&quot;, request.getRequestURI());</span>
+
+<span class="fc" id="L49">      boolean tokenExists = jwtTokenExists(request);</span>
+<span class="pc bpc" id="L50" title="1 of 2 branches missed.">      if (tokenExists) {</span>
+<span class="fc" id="L51">        Claims claims = validateToken(request);</span>
+<span class="pc bpc" id="L52" title="1 of 2 branches missed.">        if (claims.get(&quot;authorities&quot;) != null) {</span>
+<span class="fc" id="L53">          setUpSpringAuthentication(claims);</span>
+        } else {
+<span class="nc" id="L55">          throw new UnsupportedJwtException(&quot;&quot;);</span>
+        }
+<span class="fc" id="L57">      } else {</span>
+<span class="nc bnc" id="L58" title="All 4 branches missed.">        if (request.getRequestURI().startsWith(&quot;/login&quot;) || request.getMethod().equals(&quot;GET&quot;)) {</span>
+<span class="nc" id="L59">          SecurityContextHolder.clearContext();</span>
+        } else {
+<span class="nc" id="L61">          throw new MalformedJwtException(&quot;El token no existe&quot;);</span>
+        }
+      }
+<span class="fc" id="L64">      chain.doFilter(request, response);</span>
+<span class="nc" id="L65">    } catch (ExpiredJwtException | UnsupportedJwtException | MalformedJwtException |</span>
+             SignatureException e) {
+<span class="nc" id="L67">      log.info(&quot;Error en el token: {}&quot;, e.getMessage());</span>
+<span class="nc" id="L68">      MensajeWsResponse wsResponse = new MensajeWsResponse(443, false, &quot;El token no es válido&quot;);</span>
+<span class="nc" id="L69">      response.setContentType(APPLICATION_JSON_VALUE);</span>
+<span class="nc" id="L70">      new ObjectMapper().writeValue(response.getOutputStream(), wsResponse);</span>
+<span class="nc" id="L71">    } catch (Exception e) {</span>
+<span class="nc" id="L72">      log.error(&quot;Error interno del sistema: {}&quot;, e.getMessage());</span>
+<span class="nc" id="L73">      MensajeWsResponse wsResponse = new MensajeWsResponse(500, false, &quot;Error interno del sistema&quot;);</span>
+<span class="nc" id="L74">      response.setContentType(APPLICATION_JSON_VALUE);</span>
+<span class="nc" id="L75">      new ObjectMapper().writeValue(response.getOutputStream(), wsResponse);</span>
+<span class="pc" id="L76">    }</span>
+<span class="fc" id="L77">  }</span>
+
+  private Claims validateToken(HttpServletRequest request) {
+<span class="fc" id="L80">    String jwtToken = request.getHeader(HEADER).replace(PREFIX, &quot;&quot;);</span>
+
+<span class="fc" id="L82">    return Jwts.parser().setSigningKey(CryptoValues.getJwtKey().getBytes()).parseClaimsJws(jwtToken).getBody();</span>
+  }
+
+  private void setUpSpringAuthentication(Claims claims) {
+    @SuppressWarnings(&quot;unchecked&quot;)
+<span class="fc" id="L87">    List&lt;String&gt; authorities = (List) claims.get(&quot;authorities&quot;);</span>
+
+<span class="fc" id="L89">    UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(claims.getSubject(), null,</span>
+<span class="fc" id="L90">      authorities.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList()));</span>
+<span class="fc" id="L91">    SecurityContextHolder.getContext().setAuthentication(auth);</span>
+<span class="fc" id="L92">  }</span>
+
+  private boolean jwtTokenExists(HttpServletRequest request) {
+<span class="fc" id="L95">    String authenticationHeader = request.getHeader(HEADER);</span>
+<span class="pc bpc" id="L96" title="2 of 4 branches missed.">    return authenticationHeader != null &amp;&amp; authenticationHeader.startsWith(PREFIX);</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

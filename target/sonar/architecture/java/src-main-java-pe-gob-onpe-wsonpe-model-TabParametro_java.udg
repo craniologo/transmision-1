@@ -1,0 +1,235 @@
+
+1.0craniologo_transmisionJavaFrontend"1756337474254*java2.B…
+=
+8src/main/java/pe/gob/onpe/wsonpe/model/TabParametro.java2
+	
+type3
+	
+MAIN4
+
+
+module-key5
+
+craniologo_transmision6
+
+package8
+4
+/craniologo_transmision:pe.gob.onpe.wsonpe.model9
++
+%pe.gob.onpe.wsonpe.model.TabParametro11
+
+class12
+
+access13
+
+public14
+
+simple-name15
+
+TabParametro16
+ 
+jakarta.persistence.Entity18
+
+unknown19
+
+annotated by20
+
+
+uses21
+
+jakarta.persistence.Table23
+
+lombok.Data25
+:
+4pe.gob.onpe.wsonpe.model.TabParametro.tabParametroId27
+
+field28
+
+private29
+
+tabParametroId30
+
+jakarta.persistence.Id32
+ 
+jakarta.persistence.Column34
+7
+1pe.gob.onpe.wsonpe.model.TabParametro.codigoTabla36
+
+codigoTabla37
+1
++pe.gob.onpe.wsonpe.model.TabParametro.valor39
+
+valor40
+2
+,pe.gob.onpe.wsonpe.model.TabParametro.estado42
+
+estado43
+1
++pe.gob.onpe.wsonpe.model.TabParametro.orden45
+
+orden46J#
+!
+1
+12
+
+3
+4
+
+5
+6Z
+
+7
+7982
+
+
+5
+6jø
+>
+108
+101112 *
+1 (:7B
+
+
+13
+14
+
+
+15
+16
+
+17
+171819
+
+33
+333419
+B
+35<
+353628 *
+1 (210:7B
+
+
+13
+29
+
+
+15
+37
+B
+26<
+262728 *
+1 (210:7B
+
+
+13
+29
+
+
+15
+30
+
+24
+242519
+B
+44<
+444528 *
+1 (210:7B
+
+
+13
+29
+
+
+15
+46
+B
+38<
+383928 *
+1 (210:7B
+
+
+13
+29
+
+
+15
+40
+
+31
+313219
+B
+41<
+414228 *
+1 (210:7B
+
+
+13
+29
+
+
+15
+43
+
+22
+222319ræ
+
+101720*
+1
+ 
+(
+
+101721*
+1
+ 
+(
+
+102220*
+1 (
+
+102221*
+1 (
+
+102420*
+1 (
+
+102421*
+1 (
+
+263120*
+1 (
+
+263121*
+1 (
+
+263320*
+1 (
+
+263321*
+1 (
+
+
+353320*
+1 (
+
+353321*
+1 (
+
+
+383320*
+1 (
+
+383321*
+1 (
+
+
+413320*
+1 (
+
+413321*
+1 (
+
+
+443320*
+1 (
+
+443321*
+1 (

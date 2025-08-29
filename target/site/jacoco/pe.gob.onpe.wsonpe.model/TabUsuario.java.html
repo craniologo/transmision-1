@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TabUsuario.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">wsOnpe</a> &gt; <a href="index.source.html" class="el_package">pe.gob.onpe.wsonpe.model</a> &gt; <span class="el_source">TabUsuario.java</span></div><h1>TabUsuario.java</h1><pre class="source lang-java linenums">package pe.gob.onpe.wsonpe.model;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.NamedStoredProcedureQuery;
+import jakarta.persistence.ParameterMode;
+import jakarta.persistence.StoredProcedureParameter;
+import jakarta.persistence.Table;
+import lombok.Data;
+
+import java.sql.Timestamp;
+
+@Entity
+@Table(name = &quot;TAB_USUARIO&quot;)
+<span class="pc bnc" id="L16" title="All 158 branches missed.">@Data</span>
+@NamedStoredProcedureQuery(
+  name = &quot;TabUsuario.spValidaAccesoTabUsuarioEntity&quot;,
+  procedureName = &quot;jel_stae.sp_valida_acceso&quot;,
+  parameters = {
+    @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_USER&quot;, type = String.class),
+    @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_PWD&quot;, type = String.class),
+    @StoredProcedureParameter(mode = ParameterMode.OUT, name = &quot;PO_PROCEDER&quot;, type = Integer.class),
+    @StoredProcedureParameter(mode = ParameterMode.OUT, name = &quot;PO_RESULTADO&quot;, type = Integer.class),
+    @StoredProcedureParameter(mode = ParameterMode.OUT, name = &quot;PO_MENSAJE&quot;, type = String.class)
+  })
+@NamedStoredProcedureQuery(
+  name = &quot;TabUsuario.spActualizaEstado&quot;,
+  procedureName = &quot;jel_stae.SP_ACT_ESTADO&quot;,
+  parameters = {
+    @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_USER&quot;, type = String.class),
+    @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_STATUS&quot;, type = Integer.class),
+    @StoredProcedureParameter(mode = ParameterMode.OUT, name = &quot;PO_PROCEDER&quot;, type = Integer.class),
+    @StoredProcedureParameter(mode = ParameterMode.OUT, name = &quot;PO_RESULTADO&quot;, type = Integer.class),
+    @StoredProcedureParameter(mode = ParameterMode.OUT, name = &quot;PO_MENSAJE&quot;, type = String.class)
+  })
+@NamedStoredProcedureQuery(
+  name = &quot;TabUsuario.spVerificaPuestaCeroTrans&quot;,
+  procedureName = &quot;jel_stae.SP_VERIFICA_PUESTA_CERO_TRANS&quot;,
+  parameters = {
+    @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_USER&quot;, type = String.class),
+    @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_MESA&quot;, type = String.class),
+    @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_N_TIPO_SOLUCION&quot;, type = Integer.class),
+    @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_N_TIPO_USB&quot;, type = Integer.class),
+    @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_N_MODULO&quot;, type = Integer.class),
+    @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_N_PAGINA_NRO&quot;, type = Integer.class),
+    @StoredProcedureParameter(mode = ParameterMode.OUT, name = &quot;PO_PROCEDER&quot;, type = Integer.class),
+    @StoredProcedureParameter(mode = ParameterMode.OUT, name = &quot;PO_RESULTADO&quot;, type = Integer.class),
+    @StoredProcedureParameter(mode = ParameterMode.OUT, name = &quot;PO_MENSAJE&quot;, type = String.class)
+  })
+@NamedStoredProcedureQuery(
+  name = &quot;TabUsuario.spValidaTransmisionTabUsuarioEntity&quot;,
+  procedureName = &quot;jel_stae.SP_VALIDA_TRASMISION&quot;,
+  parameters = {
+    @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_MESA&quot;, type = String.class),
+    @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_N_TIPO_SOLUCION&quot;, type = Integer.class),
+    @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_N_MODULO&quot;, type = Integer.class),
+    @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_N_TIPO_TRAMA&quot;, type = Integer.class),
+    @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_N_PAGINA_NRO&quot;, type = Integer.class),
+    @StoredProcedureParameter(mode = ParameterMode.OUT, name = &quot;PO_PROCEDER&quot;, type = Integer.class),
+    @StoredProcedureParameter(mode = ParameterMode.OUT, name = &quot;PO_RESULTADO&quot;, type = Integer.class),
+    @StoredProcedureParameter(mode = ParameterMode.OUT, name = &quot;PO_MENSAJE&quot;, type = String.class)
+  })
+@NamedStoredProcedureQuery(
+  name = &quot;TabUsuario.spVerificaPuestaCeroTransD&quot;,
+  procedureName = &quot;jel_stae.SP_VERIFICA_PC_TRANS_D&quot;,
+  parameters = {
+    @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_USER&quot;, type = String.class),
+    @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_MESA&quot;, type = String.class),
+    @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_N_TIPO_SOLUCION&quot;, type = Integer.class),
+    @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_N_TIPO_USB&quot;, type = Integer.class),
+    @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_N_MODULO&quot;, type = Integer.class),
+    @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_N_PAGINA_NRO&quot;, type = Integer.class),
+    @StoredProcedureParameter(mode = ParameterMode.OUT, name = &quot;PO_PROCEDER&quot;, type = Integer.class),
+    @StoredProcedureParameter(mode = ParameterMode.OUT, name = &quot;PO_RESULTADO&quot;, type = Integer.class),
+    @StoredProcedureParameter(mode = ParameterMode.OUT, name = &quot;PO_MENSAJE&quot;, type = String.class)
+  })
+@NamedStoredProcedureQuery(
+  name = &quot;TabUsuario.spEjecutarPuestaCeroDTabUsuario&quot;,
+  procedureName = &quot;jel_stae.SP_PUESTA_CERO_D&quot;,
+  parameters = {
+    @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_USER&quot;, type = String.class),
+    @StoredProcedureParameter(mode = ParameterMode.OUT, name = &quot;PO_PROCEDER&quot;, type = Integer.class),
+    @StoredProcedureParameter(mode = ParameterMode.OUT, name = &quot;PO_RESULTADO&quot;, type = Integer.class),
+    @StoredProcedureParameter(mode = ParameterMode.OUT, name = &quot;PO_MENSAJE&quot;, type = String.class)
+  })
+@NamedStoredProcedureQuery(
+  name = &quot;TabUsuario.spValidaEstadoTabUsuario&quot;,
+  procedureName = &quot;jel_stae.SP_VALIDA_ESTADO&quot;,
+  parameters = {
+    @StoredProcedureParameter(mode = ParameterMode.IN, name = &quot;PI_USER&quot;, type = String.class),
+    @StoredProcedureParameter(mode = ParameterMode.OUT, name = &quot;PO_PROCEDER&quot;, type = Integer.class),
+    @StoredProcedureParameter(mode = ParameterMode.OUT, name = &quot;PO_RESULTADO&quot;, type = Integer.class),
+    @StoredProcedureParameter(mode = ParameterMode.OUT, name = &quot;PO_MENSAJE&quot;, type = String.class)
+  })
+public class TabUsuario {
+
+  @Id
+  @Column(name = &quot;N_USUARIO_PK&quot;)
+<span class="fc" id="L100">  private Integer nUsuarioPk;</span>
+
+  @Column(name = &quot;C_USUARIO&quot;)
+<span class="nc" id="L103">  private String usuario;</span>
+
+  @Column(name = &quot;C_CLAVE&quot;)
+<span class="nc" id="L106">  private String cClave;</span>
+
+  @Column(name = &quot;N_PERFIL&quot;)
+<span class="nc" id="L109">  private Integer nPerfil;</span>
+
+  @Column(name = &quot;N_FLAG_CENTRO_ACOPIO&quot;)
+<span class="nc" id="L112">  private Short nFlagCentroAcopio;</span>
+
+  @Column(name = &quot;N_LOGIN&quot;)
+<span class="nc" id="L115">  private Short nLogin;</span>
+
+  @Column(name = &quot;N_FLAG_PUESTA_CERO&quot;)
+<span class="fc" id="L118">  private Short nFlagPuestaCero;</span>
+
+  @Column(name = &quot;N_ESTADO&quot;)
+<span class="nc" id="L121">  private Short nEstado;</span>
+
+  @Column(name = &quot;C_CLAVE_MD5&quot;)
+<span class="nc" id="L124">  private String cClaveMd5;</span>
+
+  @Column(name = &quot;N_FLAG_PUESTA_CERO_D&quot;)
+<span class="nc" id="L127">  private Long nFlagPuestaCeroD;</span>
+
+  @Column(name = &quot;N_PROYECTO&quot;)
+<span class="nc" id="L130">  private Long nProyecto;</span>
+
+  @Column(name = &quot;N_CRUD&quot;)
+<span class="nc" id="L133">  private Long nCrud;</span>
+
+  @Column(name = &quot;C_ORGANO&quot;)
+<span class="nc" id="L136">  private String cOrgano;</span>
+
+  @Column(name = &quot;N_ROLES&quot;)
+<span class="nc" id="L139">  private Long nRoles;</span>
+
+  @Column(name = &quot;D_CADUCIDAD&quot;)
+<span class="nc" id="L142">  private Timestamp dCaducidad;</span>
+
+  @Column(name = &quot;N_USR_CREACION&quot;)
+<span class="nc" id="L145">  private Long nUsrCreacion;</span>
+
+  @Column(name = &quot;D_FEC_CREACION&quot;)
+<span class="nc" id="L148">  private Timestamp dFecCreacion;</span>
+
+  @Column(name = &quot;N_USR_EDICION&quot;)
+<span class="nc" id="L151">  private Long nUsrEdicion;</span>
+
+  @Column(name = &quot;D_FEC_EDICION&quot;)
+<span class="nc" id="L154">  private Timestamp dFecEdicion;</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>WsOnpeUtils.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">wsOnpe</a> &gt; <a href="index.source.html" class="el_package">pe.gob.onpe.wsonpe.utils</a> &gt; <span class="el_source">WsOnpeUtils.java</span></div><h1>WsOnpeUtils.java</h1><pre class="source lang-java linenums">package pe.gob.onpe.wsonpe.utils;
+
+import com.google.gson.GsonBuilder;
+import lombok.extern.slf4j.Slf4j;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
+import java.math.BigInteger;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.compress.archivers.sevenz.SevenZArchiveEntry;
+import org.apache.commons.compress.archivers.sevenz.SevenZFile;
+import org.springframework.security.core.context.SecurityContextHolder;
+import pe.gob.onpe.wsonpe.utils.exceptions.AlgorithmException;
+
+<span class="fc" id="L29">@Slf4j</span>
+public final class WsOnpeUtils {
+
+	private WsOnpeUtils() {
+	}
+
+  public static String getSHA(String input){
+    try {
+<span class="fc" id="L37">      MessageDigest md = MessageDigest.getInstance(&quot;SHA-512&quot;);</span>
+<span class="fc" id="L38">      byte[] messageDigest = md.digest(input.getBytes());</span>
+
+
+<span class="fc" id="L41">      BigInteger number = new BigInteger(1, messageDigest);</span>
+
+      // Convert message digest into hex value
+<span class="fc" id="L44">      StringBuilder hexString = new StringBuilder(number.toString(16));</span>
+
+      // Pad with leading zeros
+<span class="pc bpc" id="L47" title="1 of 2 branches missed.">      while (hexString.length() &lt; 64)</span>
+      {
+<span class="nc" id="L49">        hexString.insert(0, '0');</span>
+      }
+
+<span class="fc" id="L52">      return hexString.toString();</span>
+
+<span class="fc" id="L54">    } catch (NoSuchAlgorithmException e) {</span>
+<span class="fc" id="L55">      throw new AlgorithmException(e);</span>
+    }
+  }
+
+	public static String getMd5(String input) {
+		try {
+
+			// Static getInstance method is called with hashing MD5
+<span class="fc" id="L63">			MessageDigest md = MessageDigest.getInstance(&quot;MD5&quot;);</span>
+
+			// digest() method is called to calculate message digest
+			// of an input digest() return array of byte
+<span class="fc" id="L67">			byte[] messageDigest = md.digest(input.getBytes());</span>
+
+			// Convert byte array into signum representation
+<span class="fc" id="L70">			BigInteger no = new BigInteger(1, messageDigest);</span>
+
+			// Convert message digest into hex value
+<span class="fc" id="L73">			String hashtext = no.toString(16);</span>
+<span class="pc bpc" id="L74" title="1 of 2 branches missed.">			while (hashtext.length() &lt; 32) {</span>
+<span class="nc" id="L75">				hashtext = &quot;0&quot; + hashtext;</span>
+			}
+<span class="fc" id="L77">			return hashtext;</span>
+		}
+
+		// For specifying wrong message digest algorithms
+<span class="fc" id="L81">		catch (NoSuchAlgorithmException e) {</span>
+<span class="fc" id="L82">			throw new AlgorithmException(e);</span>
+		}
+	}
+
+	public static void writeLog(String user, String action, String message) {
+<span class="fc" id="L87">		DateFormat dateFormat = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;);</span>
+<span class="fc" id="L88">		DateFormat dateFormat2 = new SimpleDateFormat(&quot;yyyy-MM-dd&quot;);</span>
+<span class="fc" id="L89">		String now = dateFormat.format(new Date());</span>
+<span class="fc" id="L90">		String today = dateFormat2.format(new Date());</span>
+
+		try {
+<span class="fc" id="L93">			String filename = &quot;.//logs//&quot; + user + &quot;_&quot; + today + &quot;.jel&quot;;</span>
+<span class="fc" id="L94">			File file = new File(filename);</span>
+
+<span class="fc bfc" id="L96" title="All 2 branches covered.">      if (!file.createNewFile()) {</span>
+<span class="fc" id="L97">        throw new IOException(&quot;No se pudo crear el archivo &quot; + filename);</span>
+      }
+
+<span class="fc" id="L100">			Writer writer = new BufferedWriter(new FileWriter(file, true));</span>
+<span class="fc" id="L101">			String contents = &quot;[&quot; + now + &quot;] &quot; + action + &quot;: &quot; + message + &quot;\n&quot;;</span>
+<span class="fc" id="L102">			writer.write(contents);</span>
+<span class="fc" id="L103">			writer.close();</span>
+<span class="fc" id="L104">		} catch (Exception e) {</span>
+<span class="fc" id="L105">			log.warn(e.getMessage());</span>
+<span class="fc" id="L106">		}</span>
+<span class="fc" id="L107">	}</span>
+
+	public static int getCurrentTimestampInteger() {
+<span class="fc" id="L110">		return (int) ( (new Timestamp(System.currentTimeMillis())).getTime() / 1000.0);</span>
+	}
+
+	public static String getFileHash(String filePath) throws IOException {
+
+<span class="fc" id="L115">    String hash = DigestUtils.sha256Hex(Files.readAllBytes(Paths.get(filePath)));</span>
+
+<span class="fc" id="L117">		log.info(&quot;WsOnpeUtils: file: {},  getFileHash: {} &quot;, filePath, hash);</span>
+<span class="fc" id="L118">		return hash;</span>
+	}
+
+  public static String getRequestUser() {
+<span class="fc" id="L122">    String encryptedUser = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();</span>
+<span class="fc" id="L123">    return Crypto.decryptStringAES(encryptedUser);</span>
+  }
+
+  public static boolean mesaDirectoryExistsOrCreate(String pathMesa)
+  {
+<span class="fc" id="L128">    File results = new File(pathMesa);</span>
+    try {
+<span class="fc bfc" id="L130" title="All 2 branches covered.">      if (!results.exists()) {</span>
+<span class="fc" id="L131">        Files.createDirectory(Paths.get(pathMesa));</span>
+      }
+<span class="fc" id="L133">    } catch (Exception e ){</span>
+<span class="fc" id="L134">      return false;</span>
+<span class="fc" id="L135">    }</span>
+<span class="fc" id="L136">    return true;</span>
+  }
+
+  public static boolean isValidSevenFileZip(File file) throws IOException {
+    try{
+<span class="fc" id="L141">      SevenZFile sevenZFile = new SevenZFile(file);</span>
+<span class="fc" id="L142">      return validateSevenZipEntries(sevenZFile);</span>
+<span class="fc" id="L143">    } catch (IOException e) {</span>
+<span class="fc" id="L144">      log.info(&quot;Error en la  validacion. Error {}, StackTrace: {}&quot;, e.getMessage(), (Object) e.getStackTrace());</span>
+<span class="fc" id="L145">      return false;</span>
+    }
+  }
+
+  private static boolean validateSevenZipEntries(SevenZFile sevenZFile) {
+    try {
+<span class="fc" id="L151">      SevenZArchiveEntry entry = sevenZFile.getNextEntry();</span>
+<span class="fc bfc" id="L152" title="All 2 branches covered.">      while (entry != null) {</span>
+<span class="fc" id="L153">        byte[] content = new byte[(int) entry.getSize()];</span>
+<span class="fc" id="L154">        sevenZFile.read(content, 0, content.length);</span>
+<span class="fc" id="L155">        entry = sevenZFile.getNextEntry();</span>
+<span class="fc" id="L156">      }</span>
+<span class="fc" id="L157">      sevenZFile.close();</span>
+<span class="fc" id="L158">      return true;</span>
+<span class="fc" id="L159">    } catch (IOException e) {</span>
+<span class="fc" id="L160">      log.info(&quot;Error en la primera validación {}&quot;, e.getMessage());</span>
+<span class="fc" id="L161">      return false;</span>
+    }
+  }
+
+  public static boolean saveFilesFromCompressed(File file, String path) {
+<span class="fc" id="L166">    boolean filesSaved = false;</span>
+
+<span class="fc" id="L168">    try(SevenZFile sevenZFile = new SevenZFile(file)){</span>
+      SevenZArchiveEntry entry;
+
+<span class="nc bnc" id="L171" title="All 2 branches missed.">      while((entry = sevenZFile.getNextEntry()) != null){</span>
+
+<span class="nc bnc" id="L173" title="All 2 branches missed.">        if (entry.isDirectory()){</span>
+<span class="nc" id="L174">          continue;</span>
+        }
+
+<span class="nc" id="L177">        Path localPath = Paths.get(path, entry.getName());</span>
+<span class="nc" id="L178">        File destFile = new File(localPath.toString());</span>
+
+<span class="nc" id="L180">        File parent = destFile.getParentFile();</span>
+
+<span class="nc" id="L182">        boolean parentExists = true;</span>
+<span class="nc bnc" id="L183" title="All 2 branches missed.">        if (!parent.exists()) {</span>
+<span class="nc" id="L184">          parentExists = parent.mkdirs();</span>
+        }
+
+<span class="nc bnc" id="L187" title="All 2 branches missed.">        if (!parentExists) throw new IOException(&quot;No se puede  crear subcarpetas&quot;);</span>
+
+<span class="nc" id="L189">        saveEntryToFile(sevenZFile, entry, destFile, path);</span>
+<span class="nc" id="L190">      }</span>
+<span class="nc" id="L191">      filesSaved = true;</span>
+
+<span class="fc" id="L193">    } catch (Exception e) {</span>
+<span class="fc" id="L194">      log.error(&quot;Error al guardar los archivos {}&quot;, (Object) e.getStackTrace());</span>
+<span class="nc" id="L195">    }</span>
+<span class="fc" id="L196">    return filesSaved;</span>
+  }
+
+  private static void saveEntryToFile(SevenZFile sevenZFile, SevenZArchiveEntry entry,
+                                      File destFile, String path) {
+<span class="fc" id="L201">    try(FileOutputStream outputStream = new FileOutputStream(destFile)){</span>
+<span class="fc" id="L202">      byte[] content = new byte[(int) entry.getSize()];</span>
+<span class="fc" id="L203">      sevenZFile.read(content, 0, content.length);</span>
+<span class="fc" id="L204">      outputStream.write(content);</span>
+<span class="fc" id="L205">      outputStream.flush();</span>
+
+<span class="fc" id="L207">      log.info(&quot;Archivo {} fue guardado en {}&quot;, entry.getName(), path);</span>
+<span class="fc" id="L208">    } catch (Exception e) {</span>
+<span class="fc" id="L209">      log.error(&quot;Error al procesar los archivos {}&quot;, (Object) e.getStackTrace());</span>
+<span class="fc" id="L210">    }</span>
+<span class="fc" id="L211">  }</span>
+
+  public static &lt;T&gt; T getJsonToObject(String json, Class&lt;T&gt; classOfT) {
+<span class="fc" id="L214">    return new GsonBuilder().setDateFormat(&quot;yyyy-MM-dd hh:mm:ss&quot;).create().fromJson(json, classOfT);</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

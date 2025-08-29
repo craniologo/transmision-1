@@ -1,0 +1,71 @@
+
+xpe.gob.onpe.wsonpe.controller.TramaController#receiveTrama(Ljava/lang/String;)Lpe/gob/onpe/wsonpe/dto/MensajeWsResponse;f
+\C:/xampp/htdocs/transmision/src/main/java/pe/gob/onpe/wsonpe/controller/TramaController.java   (&"startingBlock*™
+startingBlock &  (OÆ
+´
+ '  (A
+%3"
+__annotate*T
+
+__unknown_file (86
+4org.springframework.web.bind.annotation.RequestParam*7
+
+__unknown_file (
+
+tramajava.lang.StringY
+W
+ I  (N
+tramajava.lang.String"__annotation*"
+
+__unknown_file (
+
+%3*
+1*Ï
+1" "($¥
+±
+" "(5
+%0java.lang.String"Gpe.gob.onpe.wsonpe.utils.WsOnpeUtils#getRequestUser()Ljava/lang/String;*D
+
+__unknown_file (("&
+$pe.gob.onpe.wsonpe.utils.WsOnpeUtilsi
+g
+" "(6
+requestUserjava.lang.String"__id*4
+
+__unknown_file (
+
+%0java.lang.String§
+°
+' '(..
+%1(pe.gob.onpe.wsonpe.service.ITramaService"__id*_
+
+__unknown_file (C*A/
+-pe.gob.onpe.wsonpe.controller.TramaController"
+tramaServiceøº
+' '(N.
+%2(pe.gob.onpe.wsonpe.dto.MensajeWsResponse"Öpe.gob.onpe.wsonpe.service.ITramaService#receiveTrama(Ljava/lang/String;Ljava/lang/String;)Lpe/gob/onpe/wsonpe/dto/MensajeWsResponse;*L
+
+__unknown_file (0
+.
+%1(pe.gob.onpe.wsonpe.service.ITramaService*=
+
+__unknown_file (!
+
+requestUserjava.lang.String*7
+
+__unknown_file (
+
+tramajava.lang.String22receiveTrama(Ljava/lang/String;Ljava/lang/String;)í
+è
+' '(O/
+res(pe.gob.onpe.wsonpe.dto.MensajeWsResponse"__id*L
+
+__unknown_file (0
+.
+%2(pe.gob.onpe.wsonpe.dto.MensajeWsResponse"=
+* *(1
+/
+res(pe.gob.onpe.wsonpe.dto.MensajeWsResponse:%
+ '  (N
+tramajava.lang.StringB1/
+-pe.gob.onpe.wsonpe.controller.TramaControllerH

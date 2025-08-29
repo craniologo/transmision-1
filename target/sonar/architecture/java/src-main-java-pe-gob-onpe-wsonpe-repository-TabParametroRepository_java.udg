@@ -1,0 +1,97 @@
+
+1.0craniologo_transmisionJavaFrontend"1756337474541*java2.BÑ
+L
+Gsrc/main/java/pe/gob/onpe/wsonpe/repository/TabParametroRepository.java2
+	
+type3
+	
+MAIN4
+
+
+module-key5
+
+craniologo_transmision6
+
+package8
+9
+4craniologo_transmision:pe.gob.onpe.wsonpe.repository9
+:
+4pe.gob.onpe.wsonpe.repository.TabParametroRepository11
+
+	interface12
+
+access13
+
+public14
+
+simple-name15
+
+TabParametroRepository16
+;
+5org.springframework.data.jpa.repository.JpaRepository18
+
+unknown19
+
+
+implements20
+/
+)org.springframework.stereotype.Repository22
+
+annotated by23
+
+
+uses24
++
+%pe.gob.onpe.wsonpe.model.TabParametro26J#
+!
+1
+12
+
+3
+4
+
+5
+6Z
+
+7
+7982
+
+
+5
+6j|
+
+25
+252619
+>
+108
+101112 *
+1 ((:7B
+
+
+13
+14
+
+
+15
+16
+
+21
+212219
+
+17
+171819r‡
+
+101720*
+11 (>
+
+102123*
+1 (
+
+102124*
+1 (
+
+101724*
+11 (>
+
+102524*
+1? (K

@@ -1,0 +1,1015 @@
+
+1.0craniologo_transmisionJavaFrontend"1756337483408*java2.B®
+N
+Isrc/test/java/pe/gob/onpe/wsonpe/security/JWTAuthorizationFilterTest.java2
+	
+type3
+	
+TEST4
+
+
+module-key5
+
+craniologo_transmision6
+
+package8
+7
+2craniologo_transmision:pe.gob.onpe.wsonpe.security9
+<
+6pe.gob.onpe.wsonpe.security.JWTAuthorizationFilterTest11
+
+class12
+
+access13
+
+	protected14
+
+simple-name15
+ 
+JWTAuthorizationFilterTest16
+5
+/org.springframework.test.context.ActiveProfiles18
+
+unknown19
+
+annotated by20
+
+
+uses21
+D
+>pe.gob.onpe.wsonpe.security.JWTAuthorizationFilterTest.request23
+
+field24
+
+private25
+
+request26
+-
+'jakarta.servlet.http.HttpServletRequest28
+
+is type29
+
+org.mockito.Mock31
+E
+?pe.gob.onpe.wsonpe.security.JWTAuthorizationFilterTest.response33
+
+response34
+.
+(jakarta.servlet.http.HttpServletResponse36
+H
+Bpe.gob.onpe.wsonpe.security.JWTAuthorizationFilterTest.filterChain38
+
+filterChain39
+!
+jakarta.servlet.FilterChain41
+L
+Fpe.gob.onpe.wsonpe.security.JWTAuthorizationFilterTest.securityContext43
+
+securityContext44
+?
+9org.springframework.security.core.context.SecurityContext46
+S
+Mpe.gob.onpe.wsonpe.security.JWTAuthorizationFilterTest.jwtAuthorizationFilter48
+
+jwtAuthorizationFilter49
+8
+2pe.gob.onpe.wsonpe.security.JWTAuthorizationFilter51
+
+org.mockito.InjectMocks53
+E
+?pe.gob.onpe.wsonpe.security.JWTAuthorizationFilterTest#setUp()V55
+
+method56
+
+setUp57
+&
+ org.junit.jupiter.api.BeforeEach59
+$
+org.mockito.MockitoAnnotations61
+
+
+references62
+[
+Uorg.mockito.MockitoAnnotations#openMocks(Ljava/lang/Object;)Ljava/lang/AutoCloseable;64
+
+calls65
+w
+qpe.gob.onpe.wsonpe.security.JWTAuthorizationFilterTest#doFilterInternal_WithValidToken_ShouldSetAuthentication()V67
+=
+7doFilterInternal_WithValidToken_ShouldSetAuthentication68
+ 
+org.junit.jupiter.api.Test70
+*
+$org.mockito.stubbing.OngoingStubbing72
+
+returns73
+o
+iorg.mockito.stubbing.OngoingStubbing#thenReturn(Ljava/lang/Object;)Lorg/mockito/stubbing/OngoingStubbing;75
+
+org.mockito.Mockito77
+X
+Rorg.mockito.Mockito#when(Ljava/lang/Object;)Lorg/mockito/stubbing/OngoingStubbing;79
+]
+Wjakarta.servlet.http.HttpServletRequest#getHeader(Ljava/lang/String;)Ljava/lang/String;81
+O
+Ijakarta.servlet.http.HttpServletRequest#getRequestURI()Ljava/lang/String;83
+
+org.mockito.MockedStatic85
+E
+?org.springframework.security.core.context.SecurityContextHolder87
+Q
+Korg.mockito.Mockito#mockStatic(Ljava/lang/Class;)Lorg/mockito/MockedStatic;89
+r
+lorg.mockito.MockedStatic#when(Lorg/mockito/MockedStatic$Verification;)Lorg/mockito/stubbing/OngoingStubbing;91
++
+%org.mockito.MockedStatic$Verification93
+
+io.jsonwebtoken.Jwts95
+/
+)pe.gob.onpe.wsonpe.constants.CryptoValues97
+
+io.jsonwebtoken.JwtParser99
+D
+=org.mockito.Mockito#mock(Ljava/lang/Class;)Ljava/lang/Object;101
+
+io.jsonwebtoken.Jws103
+
+io.jsonwebtoken.Claims105
+M
+Fio.jsonwebtoken.JwtParser#setSigningKey([B)Lio/jsonwebtoken/JwtParser;107
+#
+org.mockito.ArgumentMatchers109
+L
+Eorg.mockito.ArgumentMatchers#any(Ljava/lang/Class;)Ljava/lang/Object;111
+X
+Qio.jsonwebtoken.JwtParser#parseClaimsJws(Ljava/lang/String;)Lio/jsonwebtoken/Jws;113
+A
+:org.mockito.ArgumentMatchers#anyString()Ljava/lang/String;115
+
+io.jsonwebtoken.Jwt117
+6
+/io.jsonwebtoken.Jwt#getBody()Ljava/lang/Object;119
+<
+5io.jsonwebtoken.Claims#getSubject()Ljava/lang/String;121
+¾
+¶pe.gob.onpe.wsonpe.security.JWTAuthorizationFilter#doFilterInternal(Ljakarta/servlet/http/HttpServletRequest;Ljakarta/servlet/http/HttpServletResponse;Ljakarta/servlet/FilterChain;)V123
+o
+hjakarta.servlet.FilterChain#doFilter(Ljakarta/servlet/ServletRequest;Ljakarta/servlet/ServletResponse;)V125
+G
+@org.mockito.Mockito#verify(Ljava/lang/Object;)Ljava/lang/Object;127
+ˆ
+€org.springframework.security.core.context.SecurityContext#setAuthentication(Lorg/springframework/security/core/Authentication;)V129
+7
+0org.springframework.security.core.Authentication131
+;
+4org.mockito.ArgumentMatchers#any()Ljava/lang/Object;133J#
+!
+1
+12
+
+3
+4
+
+5
+6Z
+
+7
+7982
+
+
+5
+6j«
+
+58
+585919
+
+108
+10810919
+
+106
+10610719
+
+132
+13213319
+
+17
+171819
+
+98
+989919
+
+88
+888919
+
+60
+606119
+>
+108
+101112 *
+1 (!:7B
+
+
+13
+14
+
+
+15
+16
+
+126
+12612719
+
+128
+12812919
+
+86
+868719
+
+124
+12412519
+
+80
+808119
+
+74
+747519
+
+92
+929319
+
+69
+697019
+
+84
+848519
+
+50
+505119
+
+94
+949519
+
+45
+454619
+
+63
+636419
+
+112
+11211319
+
+130
+13013119
+
+78
+787919
+
+118
+11811919
+B
+32<
+323324 *
+1 (210:7B
+
+
+13
+25
+
+
+15
+34
+
+27
+272819
+
+30
+303119
+
+122
+12212319
+
+114
+11411519
+
+100
+10010119
+
+104
+10410519
+
+116
+11611719
+
+102
+10210319
+
+110
+11011119
+B
+37<
+373824 *
+1" "(210:7B
+
+
+13
+25
+
+
+15
+39
+B
+22<
+222324 *
+1 (210:7B
+
+
+13
+25
+
+
+15
+26
+
+52
+525319
+
+90
+909119
+
+71
+717219
+
+40
+404119
+B
+47<
+474824 *
+1( ((210:7B
+
+
+13
+25
+
+
+15
+49
+
+82
+828319
+
+76
+767719
+
+96
+969719
+
+120
+12012119
+B
+42<
+424324 *
+1% %(210:7B
+
+
+13
+25
+
+
+15
+44
+
+35
+353619
+B
+66<
+666756 *
+10 0(210:7B
+
+
+13
+14
+
+
+15
+68
+B
+54<
+545556 *
+1+ +(210:7B
+
+
+13
+14
+
+
+15
+57r·*
+
+101720*
+1 (
+
+101721*
+1 (
+
+222729*
+1 (
+
+223020*
+1 (
+
+223021*
+1 (
+
+222721*
+1 (
+
+222721*
+1 (%
+
+323529*
+1   (
+
+323020*
+1 (
+
+323021*
+1 (
+
+323521*
+1   (
+
+323521*
+1   ('
+
+374029*
+1# #(
+
+373020*
+1" "(
+
+373021*
+1" "(
+
+374021*
+1# #(
+
+374021*
+1# #("
+
+424529*
+1& &(
+
+423020*
+1% %(
+
+423021*
+1% %(
+
+424521*
+1& &(
+
+424521*
+1& &(*
+
+475029*
+1) )(!
+
+475220*
+1( ((
+
+475221*
+1( ((
+
+475021*
+1) )(!
+
+475021*
+1)" )(8
+
+545820*
+1+ +(
+
+545821*
+1+ +(
+
+546062*
+1- -(
+
+546365*
+1- -(!
+
+546021*
+1- -(
+
+541021*
+1-" -(&
+
+541062*
+1-" -(&
+
+666920*
+10 0(
+
+666921*
+10 0(
+
+667173*
+18 8(	
+
+667162*
+18 8(	
+
+667465*
+18. 8(8
+
+667173*
+18 8(	
+
+667662*
+18 8(	
+
+667865*
+18 8(	
+
+662762*
+18
+ 8(
+
+668065*
+18 8(
+
+662262*
+18
+ 8(
+
+662721*
+18
+ 8(
+
+662262*
+18
+ 8(
+
+667173*
+19 9(	
+
+667162*
+19 9(	
+
+667465*
+19# 9(-
+
+667173*
+19 9(	
+
+667662*
+19 9(	
+
+667865*
+19 9(	
+
+662762*
+19
+ 9(
+
+668265*
+19 9(
+
+662262*
+19
+ 9(
+
+662721*
+19
+ 9(
+
+662262*
+19
+ 9(
+
+668429*
+1<. <(G
+
+668421*
+1<
+ <(
+
+668621*
+1< <(,
+
+668473*
+1<J <(T
+
+667662*
+1<J <(T
+
+668865*
+1<J <(T
+
+668621*
+1<U <(j
+
+667173*
+1= =( 
+
+667162*
+1= =( 
+
+667465*
+1=I =(S
+
+667173*
+1= =( 
+
+668462*
+1= =( 
+
+669065*
+1=! =(%
+
+669262*
+1== =(G
+
+668621*
+1=& =(;
+
+664521*
+1=T =(c
+
+664262*
+1=T =(c
+
+668429*
+1@ @('
+
+668421*
+1@ @(
+
+669421*
+1@ @(
+
+668473*
+1@* @(4
+
+667662*
+1@* @(4
+
+668865*
+1@* @(4
+
+669421*
+1@5 @(9
+
+668429*
+1A) A(9
+
+668421*
+1A A(
+
+669621*
+1A A('
+
+668473*
+1A< A(F
+
+667662*
+1A< A(F
+
+668865*
+1A< A(F
+
+669621*
+1AG A(S
+
+667173*
+1C C(
+
+667162*
+1C C(
+
+667465*
+1C: C(D
+
+667173*
+1C C(
+
+668462*
+1C C(
+
+669065*
+1C C( 
+
+669262*
+1C/ C(8
+
+669621*
+1C! C(-
+
+669829*
+1F% F(2
+
+669821*
+1F F($
+
+669873*
+1F5 F(9
+
+667662*
+1F5 F(9
+
+6610065*
+1F5 F(9
+
+669821*
+1FJ F(S
+
+6610229*
+1G' G(.
+
+6610221*
+1G G(
+
+6610421*
+1G G(%
+
+6610273*
+1G1 G(5
+
+667662*
+1G1 G(5
+
+6610065*
+1G1 G(5
+
+6610429*
+1H H(
+
+6610421*
+1H H(
+
+6610473*
+1H H(#
+
+667662*
+1H H(#
+
+6610065*
+1H H(#
+
+6610421*
+1H$ H(*
+
+667173*
+1J J(
+
+667162*
+1J J(
+
+667465*
+1J' J(1
+
+667173*
+1J J(
+
+668462*
+1J J(
+
+669065*
+1J J(
+
+669262*
+1J J(%
+
+669421*
+1J J(
+
+667173*
+1K K(
+
+667162*
+1K K(
+
+667465*
+1K@ K(J
+
+667173*
+1K K(
+
+667662*
+1K K(
+
+667865*
+1K K(
+
+669873*
+1K K(
+
+669862*
+1K K(
+
+6610665*
+1K K(+
+
+6610862*
+1K, K(/
+
+6611065*
+1K, K(/
+
+667173*
+1L L(
+
+667162*
+1L L(
+
+667465*
+1L; L(E
+
+667173*
+1L L(
+
+667662*
+1L L(
+
+667865*
+1L L(
+
+6610273*
+1L L(
+
+669862*
+1L L(
+
+6611265*
+1L L(,
+
+6610862*
+1L- L(6
+
+6611465*
+1L- L(6
+
+667173*
+1M M(
+
+667162*
+1M M(
+
+667465*
+1M# M(-
+
+667173*
+1M M(
+
+667662*
+1M M(
+
+667865*
+1M M(
+
+6610473*
+1M M(
+
+6611662*
+1M M(
+
+6611865*
+1M M(
+
+667173*
+1P P(
+
+667162*
+1P P(
+
+667465*
+1P/ P(9
+
+667173*
+1P P(
+
+667662*
+1P P(
+
+667865*
+1P P(
+
+667173*
+1Q Q(
+
+667162*
+1Q Q(
+
+667465*
+1Q) Q(3
+
+667173*
+1Q Q(
+
+667662*
+1Q Q(
+
+667865*
+1Q Q(
+
+6610462*
+1Q Q(
+
+6612065*
+1Q Q(%
+
+665062*
+1T T(!
+
+6612265*
+1T" T(2
+
+664762*
+1T T(!
+
+665021*
+1T T(!
+
+664762*
+1T T(!
+
+662721*
+1T3 T(:
+
+662262*
+1T3 T(:
+
+663521*
+1T< T(D
+
+663262*
+1T< T(D
+
+664021*
+1TF T(Q
+
+663762*
+1TF T(Q
+
+664062*
+1W W(
+
+6612465*
+1W W('
+
+664073*
+1W W(
+
+667662*
+1W W(
+
+6612665*
+1W W(
+
+664021*
+1W W(
+
+663762*
+1W W(
+
+662721*
+1W( W(/
+
+662262*
+1W( W(/
+
+663521*
+1W1 W(9
+
+663262*
+1W1 W(9
+
+664562*
+1X X(
+
+6612865*
+1X# X(4
+
+664573*
+1X X(
+
+667662*
+1X X(
+
+6612665*
+1X X(
+
+664521*
+1X X(!
+
+664262*
+1X X(!
+
+6613073*
+1X5 X(8
+
+6610862*
+1X5 X(8
+
+6613265*
+1X5 X(8

@@ -1,0 +1,985 @@
+
+1.0craniologo_transmisionJavaFrontend"1756337470679*java2.Bæ'
+E
+@src/main/java/pe/gob/onpe/wsonpe/service/TransmisionService.java2
+	
+type3
+	
+MAIN4
+
+
+module-key5
+
+craniologo_transmision6
+
+package8
+6
+1craniologo_transmision:pe.gob.onpe.wsonpe.service9
+3
+-pe.gob.onpe.wsonpe.service.TransmisionService11
+
+class12
+
+access13
+
+public14
+
+simple-name15
+
+TransmisionService16
+4
+.pe.gob.onpe.wsonpe.service.ITransmisionService18
+
+unknown19
+
+
+implements20
+
+lombok.extern.slf4j.Slf4j22
+
+annotated by23
+
+
+uses24
+,
+&org.springframework.stereotype.Service26
+A
+;pe.gob.onpe.wsonpe.service.TransmisionService.storageFolder28
+
+field29
+
+private30
+
+storageFolder31
+8
+2org.springframework.beans.factory.annotation.Value33
+@
+:pe.gob.onpe.wsonpe.service.TransmisionService.electionName35
+
+electionName36
+C
+=pe.gob.onpe.wsonpe.service.TransmisionService.certsFolderRoot38
+
+certsFolderRoot39
+C
+=pe.gob.onpe.wsonpe.service.TransmisionService.certificateType41
+
+certificateType42
+C
+=pe.gob.onpe.wsonpe.service.TransmisionService.certsFolderMesa44
+
+certsFolderMesa45
+A
+;pe.gob.onpe.wsonpe.service.TransmisionService.certsFolderEF47
+
+certsFolderEF48
+D
+>pe.gob.onpe.wsonpe.service.TransmisionService.confTxRepository50
+
+confTxRepository51
+7
+1pe.gob.onpe.wsonpe.repository.TabConfTxRepository53
+
+is type54
+M
+Gpe.gob.onpe.wsonpe.service.TransmisionService.mesaTransmitidaRepository56
+
+mesaTransmitidaRepository57
+@
+:pe.gob.onpe.wsonpe.repository.TabMesaTransmitidaRepository59
+K
+Epe.gob.onpe.wsonpe.service.TransmisionService.tabTareasMesaRepository61
+
+tabTareasMesaRepository62
+;
+5pe.gob.onpe.wsonpe.repository.TabTareasMesaRepository64
+‰
+›pe.gob.onpe.wsonpe.service.TransmisionService#<init>(Lpe/gob/onpe/wsonpe/repository/TabConfTxRepository;Lpe/gob/onpe/wsonpe/repository/TabMesaTransmitidaRepository;Lpe/gob/onpe/wsonpe/repository/TabTareasMesaRepository;)V66
+
+method67
+
+	has param68
+
+calls69
+
+
+references70
+X
+Rpe.gob.onpe.wsonpe.service.TransmisionService#getEncryptionKey()Ljava/lang/String;72
+
+getEncryptionKey73
+@
+:pe.gob.onpe.wsonpe.projections.FindConfigurationProjection75
+j
+dpe.gob.onpe.wsonpe.repository.TabConfTxRepository#findBynEstado(Ljava/lang/Integer;)Ljava/util/List;77
+-
+'pe.gob.onpe.wsonpe.constants.WebService79
+4
+.pe.gob.onpe.wsonpe.constants.WebService.ACTIVE81
+
+returns82
+±
+™pe.gob.onpe.wsonpe.service.TransmisionService#validateAndConfirmFile(Ljava/lang/String;IIIILjava/lang/String;Ljava/lang/String;)Lpe/gob/onpe/wsonpe/dto/MensajeWsResponse;84
+
+validateAndConfirmFile85
+.
+(pe.gob.onpe.wsonpe.dto.MensajeWsResponse87
+=
+7pe.gob.onpe.wsonpe.constants.WebService.LOG_HEAD_FORMAT89
+<
+6pe.gob.onpe.wsonpe.constants.WebService.FILE_SEPARATOR91
+*
+$pe.gob.onpe.wsonpe.utils.WsOnpeUtils93
+[
+Upe.gob.onpe.wsonpe.utils.WsOnpeUtils#mesaDirectoryExistsOrCreate(Ljava/lang/String;)Z95
+\
+Vpe.gob.onpe.wsonpe.utils.WsOnpeUtils#getFileHash(Ljava/lang/String;)Ljava/lang/String;97
+<
+6pe.gob.onpe.wsonpe.constants.WebService.ENCRYPTED_FILE99
+P
+Ipe.gob.onpe.wsonpe.utils.WsOnpeUtils#isValidSevenFileZip(Ljava/io/File;)Z101
+É
+˚pe.gob.onpe.wsonpe.repository.TabMesaTransmitidaRepository#spActualizaFileTransmision(Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;)Ljava/util/Map;103
+=
+6pe.gob.onpe.wsonpe.constants.WebService.SUCCESS_RESULT105
+<
+5pe.gob.onpe.wsonpe.constants.WebService.VALIDATE_FILE107
+/
+(pe.gob.onpe.wsonpe.utils.WsOnpeFileUtils109
+K
+Dpe.gob.onpe.wsonpe.utils.WsOnpeFileUtils#deleteFile(Ljava/io/File;)V111
+m
+fpe.gob.onpe.wsonpe.utils.WsOnpeUtils#writeLog(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V113
+f
+_pe.gob.onpe.wsonpe.utils.WsOnpeUtils#saveFilesFromCompressed(Ljava/io/File;Ljava/lang/String;)Z115
+(
+!pe.gob.onpe.wsonpe.utils.ZipUtils117
+ì
+ãpe.gob.onpe.wsonpe.utils.ZipUtils#unZipPassword(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;119
+Z
+Spe.gob.onpe.wsonpe.service.TransmisionService#moveCertificates(Ljava/lang/String;)V121
+Ã
+ƒpe.gob.onpe.wsonpe.repository.TabTareasMesaRepository#confirmarTransmisionArchivo(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;)V123
+N
+Gpe.gob.onpe.wsonpe.service.TransmisionService#setCertificatesFolders()V125
+
+setCertificatesFolders126
+U
+Npe.gob.onpe.wsonpe.utils.WsOnpeFileUtils#createFolderTree(Ljava/lang/String;)Z128
+
+moveCertificates129
+Ä
+ype.gob.onpe.wsonpe.service.TransmisionService#processCertificateFile(Ljava/io/File;Ljava/lang/String;Ljava/lang/String;)V131
+
+processCertificateFile132
+ö
+ípe.gob.onpe.wsonpe.service.TransmisionService#determineDestinationFolder(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;134
+&
+org.apache.commons.io.FileUtils136
+N
+Gorg.apache.commons.io.FileUtils#copyFile(Ljava/io/File;Ljava/io/File;)V138
+!
+determineDestinationFolder139J#
+!
+1
+12
+
+3
+4
+
+5
+6Z
+
+7
+7982
+
+
+5
+6j¬
+
+96
+969719
+
+80
+808119
+B
+49<
+495029 *
+1+ +(
+210:7B
+
+
+13
+30
+
+
+15
+51
+H
+133A
+13313467 *
+1á á(
+210:7B
+
+
+13
+30
+
+15
+139
+B
+65<
+656667 *
+1/ /(	210:7B
+
+
+13
+14
+
+
+15
+16
+B
+40<
+404129 *
+1% %(210:7B
+
+
+13
+30
+
+
+15
+42
+
+102
+10210319
+B
+83<
+838467 *
+1F F(210:7B
+
+
+13
+14
+
+
+15
+85
+
+137
+13713819
+H
+120A
+12012167 *
+1‹ ‹(210:7B
+
+
+13
+14
+
+15
+129
+H
+124A
+12412567 *
+1æ æ(210:7B
+
+
+13
+14
+
+15
+126
+B
+71<
+717267 *
+17 7(210:7B
+
+
+13
+14
+
+
+15
+73
+B
+27<
+272829 *
+1 (210:7B
+
+
+13
+30
+
+
+15
+31
+
+110
+11011119
+
+106
+10610719
+
+21
+212219
+
+17
+171819
+
+86
+868719
+>
+108
+101112 *
+1 ( :7B
+
+
+13
+14
+
+
+15
+16
+
+92
+929319
+
+52
+525319
+
+63
+636419
+
+104
+10410519
+
+100
+10010119
+H
+130A
+13013167 *
+1Ú Ú(	210:7B
+
+
+13
+14
+
+15
+132
+
+98
+989919
+
+78
+787919
+
+74
+747519
+
+32
+323319
+
+94
+949519
+
+25
+252619
+
+88
+888919
+
+58
+585919
+B
+46<
+464729 *
+1) )(
+210:7B
+
+
+13
+30
+
+
+15
+48
+B
+55<
+555629 *
+1, ,(
+210:7B
+
+
+13
+30
+
+
+15
+57
+
+122
+12212319
+
+127
+12712819
+
+116
+11611719
+
+135
+13513619
+B
+43<
+434429 *
+1( ((
+210:7B
+
+
+13
+30
+
+
+15
+45
+B
+60<
+606129 *
+1- -(
+210:7B
+
+
+13
+30
+
+
+15
+62
+B
+37<
+373829 *
+1" "(210:7B
+
+
+13
+30
+
+
+15
+39
+
+112
+11211319
+
+118
+11811919
+
+114
+11411519
+
+108
+10810919
+
+76
+767719
+B
+34<
+343529 *
+1 (210:7B
+
+
+13
+30
+
+
+15
+36
+
+90
+909119ré#
+
+101720*
+1, (?
+
+102123*
+1 (
+
+102124*
+1 (
+
+102523*
+1 (
+
+102524*
+1 (	
+
+101724*
+1, (?
+
+273223*
+1 (
+
+273224*
+1 (	
+
+343223*
+1 (
+
+343224*
+1 (	
+
+373223*
+1" "(
+
+373224*
+1" "(	
+
+403223*
+1% %(
+
+403224*
+1% %(	
+
+495254*
+1+ +($
+
+495224*
+1+ +($
+
+495224*
+1+% +(5
+
+555854*
+1, ,(-
+
+555824*
+1, ,(-
+
+555824*
+1,. ,(G
+
+606354*
+1- -((
+
+606324*
+1- -((
+
+606324*
+1-) -(@
+
+655268*
+1/ /(0
+
+655868*
+10 0(9
+
+656368*
+11 1(4
+
+651069*
+1/
+ /(
+
+655254*
+1/1 /(A
+
+655224*
+1/ /(0
+
+655854*
+10: 0(S
+
+655824*
+10 0(9
+
+656354*
+115 1(L
+
+656324*
+11 1(4
+
+651024*
+12 2(	
+
+651070*
+12 2(	
+
+655224*
+12
+ 2(
+
+654970*
+12
+ 2(
+
+651024*
+13 3(	
+
+651070*
+13 3(	
+
+655824*
+13
+ 3(#
+
+655570*
+13
+ 3(#
+
+651024*
+14 4(	
+
+651070*
+14 4(	
+
+656324*
+14
+ 4(!
+
+656070*
+14
+ 4(!
+
+717424*
+19
+ 9(%
+
+715270*
+192 9(B
+
+717669*
+19C 9(P
+
+714970*
+192 9(B
+
+715224*
+192 9(B
+
+714970*
+192 9(B
+
+717824*
+19Q 9([
+
+718070*
+19\ 9(b
+
+717454*
+1># >()
+
+717424*
+1> >("
+
+717482*
+1>, >(4
+
+838682*
+1H
+ H(
+
+838624*
+1H
+ H(
+
+837824*
+1K$ K(.
+
+838870*
+1K/ K(>
+
+831070*
+1M M( 
+
+837169*
+1M! M(1
+
+831070*
+1M M( 
+
+831024*
+1M M( 
+
+831070*
+1M M( 
+
+832770*
+1N! N(.
+
+837824*
+1N8 N(B
+
+839070*
+1NC N(Q
+
+839270*
+1O# O(.
+
+839469*
+1O/ O(J
+
+839224*
+1O# O(.
+
+839270*
+1` `($
+
+839669*
+1`% `(0
+
+839224*
+1` `($
+
+837824*
+1k k(#
+
+839870*
+1k$ k(2
+
+839270*
+1l l( 
+
+8310069*
+1l! l(4
+
+839224*
+1l l( 
+
+835870*
+1Ä> Ä(W
+
+8310269*
+1Å
+ Å($
+
+835570*
+1Ä> Ä(W
+
+835824*
+1Ä> Ä(W
+
+835570*
+1Ä> Ä(W
+
+837824*
+1ç ç(%
+
+8310470*
+1ç& ç(4
+
+837824*
+1ë ë(
+
+8310670*
+1ë  ë(-
+
+837824*
+1ò ò(&
+
+839870*
+1ò' ò(5
+
+8310870*
+1ô ô(
+
+8311069*
+1ô ô(%
+
+8310824*
+1ô ô(
+
+839270*
+1õ	 õ(
+
+8311269*
+1õ õ(
+
+839224*
+1õ	 õ(
+
+837824*
+1† †(#
+
+839870*
+1†$ †(2
+
+839270*
+1° °()
+
+8311469*
+1°* °(A
+
+839224*
+1° °()
+
+8310870*
+1¢ ¢((
+
+8311069*
+1¢) ¢(3
+
+8310824*
+1¢ ¢((
+
+8311670*
+1§& §(.
+
+8311869*
+1§/ §(<
+
+8311624*
+1§& §(.
+
+831070*
+1ß	 ß(
+
+8312069*
+1ß ß(
+
+831070*
+1ß	 ß(
+
+831024*
+1ß	 ß(
+
+831070*
+1ß	 ß(
+
+836370*
+1Æ Æ(
+
+8312269*
+1Æ Æ(:
+
+836070*
+1Æ Æ(
+
+836324*
+1Æ Æ(
+
+836070*
+1Æ Æ(
+
+839270*
+1∫ ∫(
+
+8311269*
+1∫ ∫(
+
+839224*
+1∫ ∫(
+
+12410870*
+1√ √((
+
+12412769*
+1√) √(9
+
+12410824*
+1√ √((
+
+1243770*
+1√: √(I
+
+1243770*
+1∆- ∆(<
+
+1243470*
+1∆> ∆(J
+
+1244070*
+1∆L ∆([
+
+1243770*
+1«+ «(:
+
+1243470*
+1«< «(H
+
+1244070*
+1«J «(Y
+
+12410870*
+1… …((
+
+12412769*
+1…) …(9
+
+12410824*
+1… …((
+
+1244370*
+1   (&
+
+1244370*
+1 3  (B
+
+1244370*
+1 3  (B
+
+1244370*
+1Ã	 Ã(
+
+12410870*
+1œ œ(&
+
+12412769*
+1œ' œ(7
+
+12410824*
+1œ œ(&
+
+1244670*
+1– –("
+
+1244670*
+1–/ –(<
+
+1244670*
+1–/ –(<
+
+1244670*
+1“	 “(
+
+1203770*
+1Ê- Ê(<
+
+1203470*
+1Ê> Ê(J
+
+1204070*
+1ÊL Ê([
+
+1203770*
+1Á+ Á(:
+
+1203470*
+1Á< Á(H
+
+1204070*
+1ÁJ Á(Y
+
+1201070*
+1Î	 Î(
+
+1201070*
+1Ó Ó(
+
+12013069*
+1Ó Ó(
+
+1301070*
+1˘ ˘(5
+
+13013369*
+1˘ ˘(5
+
+13013570*
+1Å Å(
+
+13013769*
+1Å Å(
+
+13013524*
+1Å Å(

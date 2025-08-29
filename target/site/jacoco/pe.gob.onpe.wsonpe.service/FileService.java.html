@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FileService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">wsOnpe</a> &gt; <a href="index.source.html" class="el_package">pe.gob.onpe.wsonpe.service</a> &gt; <span class="el_source">FileService.java</span></div><h1>FileService.java</h1><pre class="source lang-java linenums">package pe.gob.onpe.wsonpe.service;
+
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+import pe.gob.onpe.wsonpe.constants.WebService;
+import pe.gob.onpe.wsonpe.dto.FileRequest;
+import pe.gob.onpe.wsonpe.dto.MensajeWsResponse;
+import pe.gob.onpe.wsonpe.repository.TabMesaTransmitidaRepository;
+import pe.gob.onpe.wsonpe.utils.WsOnpeUtils;
+
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Map;
+
+@Service
+<span class="fc" id="L18">@Slf4j</span>
+public class FileService implements IFileService {
+
+  @Value(&quot;${stae.trans.storageFolder}&quot;)
+  private String storageFolder;
+
+  private final TabMesaTransmitidaRepository mesaTransmitidaRepository;
+  private final ITransmisionService transmisionService;
+
+
+  public FileService(TabMesaTransmitidaRepository mesaTransmitidaRepository,
+<span class="fc" id="L29">                     ITransmisionService transmisionService) {</span>
+<span class="fc" id="L30">    this.mesaTransmitidaRepository = mesaTransmitidaRepository;</span>
+<span class="fc" id="L31">    this.transmisionService = transmisionService;</span>
+<span class="fc" id="L32">  }</span>
+
+  @Override
+  public MensajeWsResponse storeFile(FileRequest request) {
+
+<span class="fc" id="L37">    log.info(&quot;Acción valida tranmision del archivo.&quot;);</span>
+<span class="fc" id="L38">    String funcName = &quot;storeFile&quot;;</span>
+
+<span class="fc" id="L40">    this.transmisionService.setCertificatesFolders();</span>
+
+<span class="fc" id="L42">    String mesa = request.getMesa();</span>
+<span class="fc" id="L43">    String username = request.getUsuario();</span>
+<span class="fc" id="L44">    Integer tipoSolucion = request.getTipoSolucion();</span>
+<span class="fc" id="L45">    Integer tipoModulo = request.getTipoModulo();</span>
+<span class="fc" id="L46">    Integer tipoTrama = request.getTipoTrama();</span>
+<span class="fc" id="L47">    Integer npaginaNro = request.getNpaginaNro();</span>
+
+<span class="fc" id="L49">    String logHead = String.format(WebService.LOG_HEAD_FORMAT, mesa, tipoSolucion, tipoModulo, tipoTrama);</span>
+
+    String receivedFileName;
+
+    try {
+<span class="fc" id="L54">      MultipartFile multipartFile = request.getFile();</span>
+<span class="fc" id="L55">      receivedFileName = multipartFile.getOriginalFilename();</span>
+
+<span class="fc" id="L57">      log.info(&quot;mesa:{}, tipoSolucion:{}, tipoModulo:{}, tipoTrama:{}, npagina:{}, username:{}&quot;,</span>
+        mesa, tipoSolucion, tipoModulo, tipoTrama, npaginaNro, username);
+<span class="fc" id="L59">      Map&lt;String, Object&gt; validaTransmisionArchivo = mesaTransmitidaRepository</span>
+<span class="fc" id="L60">        .spValidaTransmisionArchivo(mesa, tipoSolucion, tipoModulo, tipoTrama, npaginaNro, username);</span>
+
+
+<span class="fc" id="L63">      Integer codidoValidacion = (Integer) validaTransmisionArchivo.get(&quot;PO_RESULTADO&quot;);</span>
+<span class="fc bfc" id="L64" title="All 2 branches covered.">      boolean successValidacion = codidoValidacion == WebService.SUCCESS_RESULT;</span>
+<span class="fc" id="L65">      String descripcionValidacion = (String) validaTransmisionArchivo.get(&quot;PO_MENSAJE&quot;);</span>
+
+<span class="fc bfc" id="L67" title="All 2 branches covered.">      if (codidoValidacion == 2) {</span>
+<span class="fc" id="L68">        log.info(descripcionValidacion);</span>
+<span class="fc" id="L69">        return new MensajeWsResponse(codidoValidacion, true, descripcionValidacion);</span>
+<span class="fc bfc" id="L70" title="All 2 branches covered.">      } else if (!successValidacion) {</span>
+<span class="fc" id="L71">        log.error(&quot;{}. {}. Error en la validacion de transmision del archivo: {}&quot;, logHead, funcName, descripcionValidacion);</span>
+<span class="fc" id="L72">        return new MensajeWsResponse(codidoValidacion, false, descripcionValidacion);</span>
+      }
+
+<span class="pc bpc" id="L75" title="1 of 4 branches missed.">      if (multipartFile == null || multipartFile.isEmpty()) {</span>
+<span class="fc" id="L76">        log.warn(&quot;{}. {}. El archivo recibido es vacio&quot;, logHead, funcName);</span>
+<span class="fc" id="L77">        mesaTransmitidaRepository.spActualizaFileTransmision(</span>
+<span class="fc" id="L78">          mesa, tipoSolucion, tipoModulo, tipoTrama, npaginaNro, &quot;&quot;, 0, receivedFileName</span>
+        );
+<span class="fc" id="L80">        return new MensajeWsResponse(6, false, &quot;Archivo vacio&quot;);</span>
+      }
+
+<span class="fc" id="L83">      String mesaPath = Paths.get(storageFolder, mesa) + WebService.FILE_SEPARATOR;</span>
+<span class="fc" id="L84">      boolean mesaDirectoryExists = WsOnpeUtils.mesaDirectoryExistsOrCreate(mesaPath);</span>
+
+<span class="fc bfc" id="L86" title="All 2 branches covered.">      if (!mesaDirectoryExists) {</span>
+<span class="fc" id="L87">        log.warn(&quot;{}. Error al crear o acceder el directorio de la mesa&quot;, logHead);</span>
+<span class="fc" id="L88">        return new MensajeWsResponse(7, false, &quot;Error al crear o acceder el directorio de la mesa&quot;);</span>
+      }
+
+<span class="fc" id="L91">      Path path = Paths.get(mesaPath, receivedFileName);</span>
+<span class="fc" id="L92">      multipartFile.transferTo(path);</span>
+<span class="fc" id="L93">      MensajeWsResponse fileValidation = this.transmisionService.validateAndConfirmFile(</span>
+        mesa,
+<span class="fc" id="L95">        tipoSolucion,</span>
+<span class="fc" id="L96">        tipoModulo,</span>
+<span class="fc" id="L97">        tipoTrama,</span>
+<span class="fc" id="L98">        npaginaNro,</span>
+        username,
+        receivedFileName
+      );
+
+<span class="fc" id="L103">      log.info(&quot;{}. {}: Respuesta de validateAndConfirmFile: {}&quot;, logHead, funcName, fileValidation);</span>
+
+<span class="pc bpc" id="L105" title="1 of 4 branches missed.">      if (fileValidation.getSuccess() &amp;&amp; fileValidation.getCodigo() == WebService.VALIDATE_FILE){</span>
+<span class="fc" id="L106">        fileValidation.setCodigo(1);</span>
+<span class="fc" id="L107">        fileValidation.setMessage(&quot;Transmision satisfactoria&quot;);</span>
+      }
+<span class="fc" id="L109">      return fileValidation;</span>
+
+<span class="fc" id="L111">    } catch (Exception e) {</span>
+<span class="fc" id="L112">      log.error(&quot;{}. Error en la transmisión del archivo: {} - Stacktrace:{}&quot;, logHead, e.getMessage(), e.getStackTrace());</span>
+<span class="fc" id="L113">      return new MensajeWsResponse(8, false, &quot;Error al subir el archivo al repositorio: &quot; + e.getMessage());</span>
+    }
+  }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

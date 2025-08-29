@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TransmisionService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">wsOnpe</a> &gt; <a href="index.source.html" class="el_package">pe.gob.onpe.wsonpe.service</a> &gt; <span class="el_source">TransmisionService.java</span></div><h1>TransmisionService.java</h1><pre class="source lang-java linenums">package pe.gob.onpe.wsonpe.service;
+
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.FileUtils;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+import pe.gob.onpe.wsonpe.constants.WebService;
+import pe.gob.onpe.wsonpe.dto.MensajeWsResponse;
+import pe.gob.onpe.wsonpe.projections.FindConfigurationProjection;
+import pe.gob.onpe.wsonpe.repository.TabConfTxRepository;
+import pe.gob.onpe.wsonpe.repository.TabMesaTransmitidaRepository;
+import pe.gob.onpe.wsonpe.repository.TabTareasMesaRepository;
+import pe.gob.onpe.wsonpe.utils.WsOnpeFileUtils;
+import pe.gob.onpe.wsonpe.utils.WsOnpeUtils;
+import pe.gob.onpe.wsonpe.utils.ZipUtils;
+
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+<span class="fc" id="L24">@Slf4j</span>
+@Service
+public class TransmisionService implements ITransmisionService {
+
+  @Value(&quot;${stae.trans.storageFolder}&quot;)
+  private String storageFolder;
+
+  @Value(&quot;${stae.trans.nombreEleccion}&quot;)
+  private String electionName;
+
+  @Value(&quot;${stae.trans.certsFolder}&quot;)
+  private String certsFolderRoot;
+
+  @Value(&quot;${stae.trans.certificateType}&quot;)
+  private String certificateType;
+
+<span class="fc" id="L40">  private String certsFolderMesa = &quot;&quot;;</span>
+<span class="fc" id="L41">  private String certsFolderEF = &quot;&quot;;</span>
+
+  private final TabConfTxRepository confTxRepository;
+  private final TabMesaTransmitidaRepository mesaTransmitidaRepository;
+  private final TabTareasMesaRepository tabTareasMesaRepository;
+
+  public TransmisionService(TabConfTxRepository confTxRepository,
+                            TabMesaTransmitidaRepository mesaTransmitidaRepository,
+<span class="fc" id="L49">                            TabTareasMesaRepository tabTareasMesaRepository) {</span>
+<span class="fc" id="L50">    this.confTxRepository = confTxRepository;</span>
+<span class="fc" id="L51">    this.mesaTransmitidaRepository = mesaTransmitidaRepository;</span>
+<span class="fc" id="L52">    this.tabTareasMesaRepository = tabTareasMesaRepository;</span>
+<span class="fc" id="L53">  }</span>
+
+  @Override
+  public String getEncryptionKey() {
+<span class="fc" id="L57">    List&lt;FindConfigurationProjection&gt; opConfTx = confTxRepository.findBynEstado(WebService.ACTIVE);</span>
+
+<span class="fc" id="L59">    String key = &quot;&quot;;</span>
+
+<span class="pc bpc" id="L61" title="1 of 4 branches missed.">    if (opConfTx != null &amp;&amp; !opConfTx.isEmpty()) {</span>
+<span class="fc" id="L62">      FindConfigurationProjection confTx = opConfTx.getLast();</span>
+<span class="fc" id="L63">      key = confTx.getCEncFile();</span>
+    }
+
+<span class="fc" id="L66">    return key;</span>
+  }
+
+
+  @Override
+  @SuppressWarnings(&quot;java:S2629&quot;)
+  public MensajeWsResponse validateAndConfirmFile(String mesa, int tipoSolucion, int tipoModulo, int tipoTrama,
+                                                  int idFlujo, String username, String fileName) {
+
+<span class="fc" id="L75">    String logHead = String.format(WebService.LOG_HEAD_FORMAT, mesa, tipoSolucion, tipoModulo, tipoTrama);</span>
+<span class="fc" id="L76">    String funcName = &quot;validateAndConfirmFile&quot;;</span>
+<span class="fc" id="L77">    String encryptionKey = this.getEncryptionKey();</span>
+<span class="fc" id="L78">    String mesaPath = Paths.get(storageFolder, mesa) + WebService.FILE_SEPARATOR;</span>
+<span class="fc" id="L79">    boolean mesaDirectoryExists = WsOnpeUtils.mesaDirectoryExistsOrCreate(mesaPath);</span>
+
+<span class="pc bpc" id="L81" title="1 of 2 branches missed.">    if (!mesaDirectoryExists) {</span>
+      // NOSONAR o @SuppressWarnings(&quot;java:S2629&quot;) para la línea específica
+<span class="fc" id="L83">      log.warn(&quot;{}. Error al crear o acceder el directorio de la mesa&quot;, logHead);</span>
+<span class="fc" id="L84">      return new MensajeWsResponse(7, false, &quot;Error al crear o acceder el directorio de la mesa&quot;);</span>
+    }
+
+    Integer codigo;
+    boolean success;
+    String descripcion;
+    String msg;
+
+    try {
+
+<span class="nc" id="L94">      Path path = Paths.get(mesaPath, fileName);</span>
+<span class="nc" id="L95">      File transmittedFile = new File(path.toString());</span>
+<span class="nc" id="L96">      String fileHash = WsOnpeUtils.getFileHash(transmittedFile.getAbsolutePath());</span>
+
+<span class="nc bnc" id="L98" title="All 2 branches missed.">      if(!transmittedFile.exists()){</span>
+<span class="nc" id="L99">        msg = &quot;El archivo no pudo ser encontrado en el sistema&quot;;</span>
+        // NOSONAR
+<span class="nc" id="L101">        log.warn(&quot;{}. {}: . {} {}&quot;, logHead, funcName, fileName, msg);</span>
+<span class="nc" id="L102">        return new MensajeWsResponse(7, false, msg);</span>
+      }
+
+<span class="nc" id="L105">      boolean validFile = true;</span>
+
+<span class="nc bnc" id="L107" title="All 2 branches missed.">      if (tipoModulo != WebService.ENCRYPTED_FILE) {</span>
+<span class="nc" id="L108">        validFile = WsOnpeUtils.isValidSevenFileZip(transmittedFile);</span>
+      }
+      // NOSONAR
+<span class="nc" id="L111">      log.warn(&quot;{}. Archivo {} valido: {}&quot;, logHead, fileName, validFile);</span>
+<span class="nc bnc" id="L112" title="All 2 branches missed.">      int flagValidZipFile = validFile ? 1 : 0;</span>
+      // NOSONAR
+<span class="nc" id="L114">      log.info(&quot;{}. Llamando al SP spActualizaFileTransmision de actualizacion del archivo.&quot;, logHead);</span>
+
+<span class="nc" id="L116">      Map&lt;String, Object&gt; params = new HashMap&lt;&gt;();</span>
+
+<span class="nc" id="L118">      params.put(&quot;usuario&quot;, username);</span>
+<span class="nc" id="L119">      params.put(&quot;NpaginaNro&quot;, idFlujo);</span>
+<span class="nc" id="L120">      params.put(&quot;hash&quot;, fileHash);</span>
+<span class="nc" id="L121">      params.put(&quot;filename&quot;, fileName);</span>
+<span class="nc" id="L122">      params.put(&quot;filepath&quot;, transmittedFile.getAbsolutePath());</span>
+<span class="nc" id="L123">      params.put(&quot;archivoValido&quot;, flagValidZipFile);</span>
+      // NOSONAR
+<span class="nc" id="L125">      log.info(&quot;{}. {}: {}&quot;, logHead, funcName, params);</span>
+
+      // Validación y retorno del estado del Archivo
+<span class="nc" id="L128">      Map&lt;String, Object&gt; actualizaTransmisionFileResponse = mesaTransmitidaRepository</span>
+<span class="nc" id="L129">        .spActualizaFileTransmision(</span>
+            mesa,
+<span class="nc" id="L131">            tipoSolucion,</span>
+<span class="nc" id="L132">            tipoModulo,</span>
+<span class="nc" id="L133">            tipoTrama,</span>
+<span class="nc" id="L134">            idFlujo,</span>
+            fileHash,
+<span class="nc" id="L136">            flagValidZipFile,</span>
+            fileName
+          );
+
+<span class="nc" id="L140">      codigo = (Integer) actualizaTransmisionFileResponse.get(&quot;PO_RESULTADO&quot;);</span>
+<span class="nc bnc" id="L141" title="All 2 branches missed.">      success = codigo == WebService.SUCCESS_RESULT;</span>
+<span class="nc" id="L142">      descripcion = (String) actualizaTransmisionFileResponse.get(&quot;PO_MENSAJE&quot;);</span>
+
+      // La trama no ha sido aun transmitida y no hay datos para validar
+<span class="nc bnc" id="L145" title="All 2 branches missed.">      if (codigo == WebService.VALIDATE_FILE) {</span>
+        // NOSONAR
+<span class="nc" id="L147">        log.info(&quot;{}. {}. Validacion del {} archivo: {}&quot;, logHead, funcName, fileName, descripcion);</span>
+<span class="nc" id="L148">        return new MensajeWsResponse(codigo, true, descripcion);</span>
+      }
+
+<span class="nc bnc" id="L151" title="All 2 branches missed.">      if (!success) {</span>
+<span class="nc bnc" id="L152" title="All 2 branches missed.">        if (tipoModulo !=  WebService.ENCRYPTED_FILE) {</span>
+<span class="nc" id="L153">          WsOnpeFileUtils.deleteFile(transmittedFile);</span>
+        }
+<span class="nc" id="L155">        WsOnpeUtils.writeLog(username, &quot;transmisión del archivo&quot;, descripcion);</span>
+<span class="nc" id="L156">        return new MensajeWsResponse(codigo, false, descripcion);</span>
+      }
+
+      // Descomprime y almacena los archivos en el repositorio
+<span class="nc bnc" id="L160" title="All 2 branches missed.">      if (tipoModulo != WebService.ENCRYPTED_FILE) {</span>
+<span class="nc" id="L161">        boolean filesSaved = WsOnpeUtils.saveFilesFromCompressed(transmittedFile, mesaPath);</span>
+<span class="nc bnc" id="L162" title="All 2 branches missed.">        if (filesSaved) WsOnpeFileUtils.deleteFile(transmittedFile);</span>
+<span class="nc" id="L163">      } else {</span>
+<span class="nc" id="L164">        String decryptedFolderPath = ZipUtils.unZipPassword(</span>
+<span class="nc" id="L165">          transmittedFile.getName(), mesaPath, mesaPath, encryptionKey);</span>
+<span class="nc" id="L166">        log.info(&quot;{}. {}. Archivo {} desencriptado en {}&quot;, logHead, funcName, fileName, decryptedFolderPath);</span>
+<span class="nc" id="L167">        this.moveCertificates(decryptedFolderPath);</span>
+      }
+
+      // Confirma la transmisión del archivo al repositorio
+<span class="nc" id="L171">      log.info(&quot;{}. {}. Confirmando la transmision del archivo {}&quot;, logHead, funcName, fileName);</span>
+
+      // reemplazando SP_CONFIRMA_TRANS_ARCHIVO
+<span class="nc" id="L174">      tabTareasMesaRepository.confirmarTransmisionArchivo(username, mesa, tipoSolucion, tipoTrama, tipoModulo, idFlujo);</span>
+
+<span class="nc" id="L176">      descripcion = &quot;Archivo transmitido correctamente&quot;;</span>
+
+<span class="nc" id="L178">      log.info(&quot;{}. {}: Respuesta de la confirmacion. Codigo: {}, desc: {}&quot;, logHead, funcName, codigo, descripcion);</span>
+
+<span class="nc" id="L180">    } catch (Exception e) {</span>
+<span class="nc" id="L181">      codigo = 0;</span>
+<span class="nc" id="L182">      success = false;</span>
+<span class="nc" id="L183">      descripcion = e.getMessage();</span>
+<span class="nc" id="L184">    }</span>
+
+<span class="nc" id="L186">    WsOnpeUtils.writeLog(username, &quot;transmisión del archivo&quot;, descripcion);</span>
+<span class="nc" id="L187">    return new MensajeWsResponse(codigo, success, descripcion);</span>
+  }
+
+  @Override
+  public void setCertificatesFolders() {
+
+    try {
+
+<span class="fc" id="L195">      boolean resRoot = WsOnpeFileUtils.createFolderTree(certsFolderRoot);</span>
+<span class="fc bfc" id="L196" title="All 2 branches covered.">      if (!resRoot) return;</span>
+
+<span class="fc" id="L198">      String certsFolderMesaStr = Paths.get(certsFolderRoot, electionName, certificateType).toString();</span>
+<span class="fc" id="L199">      String certsFolderEfStr = Paths.get(certsFolderRoot, electionName, certificateType, &quot;EF&quot;).toString();</span>
+
+<span class="fc" id="L201">      boolean resMesa = WsOnpeFileUtils.createFolderTree(certsFolderMesaStr);</span>
+<span class="pc bpc" id="L202" title="2 of 6 branches missed.">      if (resMesa &amp;&amp; (certsFolderMesa == null || !certsFolderMesa.equals(certsFolderMesaStr)))</span>
+      {
+<span class="fc" id="L204">        certsFolderMesa = certsFolderMesaStr;</span>
+      }
+
+<span class="fc" id="L207">      boolean resEf = WsOnpeFileUtils.createFolderTree(certsFolderEfStr);</span>
+<span class="pc bpc" id="L208" title="2 of 6 branches missed.">      if (resEf &amp;&amp; (certsFolderEF == null || !certsFolderEF.equals(certsFolderEfStr)))</span>
+      {
+<span class="fc" id="L210">        certsFolderEF = certsFolderEfStr;</span>
+      }
+
+
+<span class="nc" id="L214">    } catch (Exception e) {</span>
+<span class="nc" id="L215">      log.error(&quot;ERROR en creación de las carpetas de los certificados: {}&quot;, e.getMessage());</span>
+<span class="fc" id="L216">    }</span>
+<span class="fc" id="L217">  }</span>
+
+
+  @Override
+  public void moveCertificates(String sourceDirectory) {
+<span class="fc bfc" id="L222" title="All 2 branches covered.">    if (sourceDirectory.isEmpty()) return;</span>
+
+<span class="fc" id="L224">    File sourceDirectoryFile = new File(sourceDirectory);</span>
+<span class="fc bfc" id="L225" title="All 2 branches covered.">    if (!sourceDirectoryFile.exists()) return;</span>
+
+<span class="fc" id="L227">    File[] allFiles = sourceDirectoryFile.listFiles();</span>
+<span class="pc bpc" id="L228" title="1 of 2 branches missed.">    if (allFiles == null) return;</span>
+
+<span class="fc" id="L230">    String localCertsFolderMesa = Paths.get(certsFolderRoot, electionName, certificateType).toString();</span>
+<span class="fc" id="L231">    String localCertsFolderEF = Paths.get(certsFolderRoot, electionName, certificateType, &quot;EF&quot;).toString();</span>
+
+<span class="fc bfc" id="L233" title="All 2 branches covered.">    for (File f: allFiles) {</span>
+<span class="fc bfc" id="L234" title="All 2 branches covered.">      if (f.isDirectory()) {</span>
+<span class="fc" id="L235">        moveCertificates(f.getAbsolutePath());</span>
+<span class="fc" id="L236">        continue;</span>
+      }
+<span class="fc" id="L238">      processCertificateFile(f, localCertsFolderMesa, localCertsFolderEF);</span>
+    }
+<span class="fc" id="L240">  }</span>
+
+  public void processCertificateFile(File file, String certsFolderMesa, String certsFolderEF) {
+<span class="fc" id="L243">    String filename = file.getName();</span>
+<span class="pc bpc" id="L244" title="1 of 4 branches missed.">    if (!filename.endsWith(&quot;.crl&quot;) &amp;&amp; !filename.endsWith(&quot;.crt&quot;)) {</span>
+<span class="fc" id="L245">      return;</span>
+    }
+
+    try {
+<span class="fc" id="L249">      String destFolder = determineDestinationFolder(filename, certsFolderMesa, certsFolderEF);</span>
+
+<span class="pc bpc" id="L251" title="1 of 2 branches missed.">      if (destFolder.isEmpty()) {</span>
+<span class="nc" id="L252">        log.warn(&quot;La carpeta de destino de los certificados es vacía&quot;);</span>
+<span class="nc" id="L253">        return;</span>
+      }
+
+<span class="fc" id="L256">      File destFile = new File(Paths.get(destFolder, filename).toString());</span>
+<span class="fc" id="L257">      FileUtils.copyFile(file, destFile);</span>
+<span class="fc" id="L258">    } catch (Exception e) {</span>
+<span class="fc" id="L259">      log.error(&quot;Error copiando certificado: {} ,{}, {}&quot;, e.getMessage(), e.getCause(), e.getStackTrace());</span>
+<span class="fc" id="L260">    }</span>
+<span class="fc" id="L261">  }</span>
+
+  private String determineDestinationFolder(String filename, String certsFolderMesa, String certsFolderEF) {
+<span class="fc bfc" id="L264" title="All 2 branches covered.">    if (filename.startsWith(&quot;mesa&quot;)) {</span>
+<span class="fc" id="L265">      return certsFolderMesa;</span>
+<span class="pc bpc" id="L266" title="1 of 2 branches missed.">    } else if (filename.startsWith(&quot;certificado&quot;)) {</span>
+<span class="fc" id="L267">      return certsFolderEF;</span>
+    }
+<span class="nc" id="L269">    return &quot;&quot;;</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

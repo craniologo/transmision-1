@@ -1,0 +1,9 @@
+:this   ("&pe.gob.onpe.wsonpe.service.ActaServiceSusuarioRepository   (:"2pe.gob.onpe.wsonpe.repository.TabUsuarioRepositorycmesaTransmitidaRepository! !(K":pe.gob.onpe.wsonpe.repository.TabMesaTransmitidaRepositoryPtransmisionService" "(;".pe.gob.onpe.wsonpe.service.ITransmisionService"¶3
+1
+# #(,"#set-field# usuarioRepository:;
+9
+$ $(<"'%#set-field# mesaTransmitidaRepository:4
+2
+% %(0" #set-field# transmisionService:
+
+& &(*UC:/xampp/htdocs/transmision/src/main/java/pe/gob/onpe/wsonpe/service/ActaService.java

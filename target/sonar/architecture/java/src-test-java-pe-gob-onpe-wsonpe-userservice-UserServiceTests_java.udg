@@ -1,0 +1,978 @@
+
+1.0craniologo_transmisionJavaFrontend"1756337480775*java2.Bî
+G
+Bsrc/test/java/pe/gob/onpe/wsonpe/userservice/UserServiceTests.java2
+	
+type3
+	
+TEST4
+
+
+module-key5
+
+craniologo_transmision6
+
+package8
+:
+5craniologo_transmision:pe.gob.onpe.wsonpe.userservice9
+5
+/pe.gob.onpe.wsonpe.userservice.UserServiceTests11
+
+class12
+
+access13
+
+	protected14
+
+simple-name15
+
+UserServiceTests16
+5
+/org.springframework.test.context.ActiveProfiles18
+
+unknown19
+
+annotated by20
+
+
+uses21
+:
+4org.springframework.boot.test.context.SpringBootTest23
+N
+Hpe.gob.onpe.wsonpe.userservice.UserServiceTests.mockTabUsuarioRepository25
+
+field26
+
+private27
+
+mockTabUsuarioRepository28
+8
+2pe.gob.onpe.wsonpe.repository.TabUsuarioRepository30
+
+is type31
+
+org.mockito.Mock33
+J
+Dpe.gob.onpe.wsonpe.userservice.UserServiceTests.mockConfTxRepository35
+
+mockConfTxRepository36
+7
+1pe.gob.onpe.wsonpe.repository.TabConfTxRepository38
+O
+Ipe.gob.onpe.wsonpe.userservice.UserServiceTests.mockTabElectionRepository40
+
+mockTabElectionRepository41
+9
+3pe.gob.onpe.wsonpe.repository.TabEleccionRepository43
+N
+Hpe.gob.onpe.wsonpe.userservice.UserServiceTests.mockTabVersionRepository45
+
+mockTabVersionRepository46
+8
+2pe.gob.onpe.wsonpe.repository.TabVersionRepository48
+A
+;pe.gob.onpe.wsonpe.userservice.UserServiceTests.userService50
+
+userService51
+,
+&pe.gob.onpe.wsonpe.service.UserService53
+
+org.mockito.InjectMocks55
+=
+7pe.gob.onpe.wsonpe.userservice.UserServiceTests.request57
+
+request58
+(
+"pe.gob.onpe.wsonpe.dto.UserRequest60
+<
+6pe.gob.onpe.wsonpe.userservice.UserServiceTests.ACTIVE62
+
+ACTIVE63
+?
+9pe.gob.onpe.wsonpe.userservice.UserServiceTests.closeable65
+
+	closeable66
+D
+>pe.gob.onpe.wsonpe.userservice.UserServiceTests#initService()V68
+
+method69
+
+initService70
+&
+ org.junit.jupiter.api.BeforeEach72
+
+
+references73
+$
+org.mockito.MockitoAnnotations75
+[
+Uorg.mockito.MockitoAnnotations#openMocks(Ljava/lang/Object;)Ljava/lang/AutoCloseable;77
+
+calls78
+E
+?pe.gob.onpe.wsonpe.userservice.UserServiceTests#closeService()V80
+
+closeService81
+%
+org.junit.jupiter.api.AfterEach83
+F
+@pe.gob.onpe.wsonpe.userservice.UserServiceTests#configureTest()V85
+
+configureTest86
+%
+org.junit.jupiter.api.BeforeAll88
+H
+Bpe.gob.onpe.wsonpe.dto.UserRequest#setUsuario(Ljava/lang/String;)V90
+G
+Ape.gob.onpe.wsonpe.dto.UserRequest#setAccion(Ljava/lang/String;)V92
+B
+<pe.gob.onpe.wsonpe.userservice.UserServiceTests#testLogin()V94
+
+	testLogin95
+'
+!org.junit.jupiter.api.DisplayName97
+ 
+org.junit.jupiter.api.Test99
+A
+:pe.gob.onpe.wsonpe.projections.FindConfigurationProjection101
++
+$pe.gob.onpe.wsonpe.model.TabEleccion103
+X
+Qpe.gob.onpe.wsonpe.model.TabEleccion#setCNombreCortoEleccion(Ljava/lang/String;)V105
+O
+Hpe.gob.onpe.wsonpe.model.TabEleccion#setCEleccionPk(Ljava/lang/String;)V107
++
+$org.mockito.stubbing.OngoingStubbing109
+
+returns110
+p
+iorg.mockito.stubbing.OngoingStubbing#thenReturn(Ljava/lang/Object;)Lorg/mockito/stubbing/OngoingStubbing;112
+
+org.mockito.Mockito114
+Y
+Rorg.mockito.Mockito#when(Ljava/lang/Object;)Lorg/mockito/stubbing/OngoingStubbing;116
+}
+vpe.gob.onpe.wsonpe.repository.TabUsuarioRepository#spValidaAcceso(Ljava/lang/String;Ljava/lang/String;)Ljava/util/Map;118
+#
+org.mockito.ArgumentMatchers120
+A
+:org.mockito.ArgumentMatchers#anyString()Ljava/lang/String;122
+k
+dpe.gob.onpe.wsonpe.repository.TabConfTxRepository#findBynEstado(Ljava/lang/Integer;)Ljava/util/List;124
+T
+Mpe.gob.onpe.wsonpe.repository.TabEleccionRepository#findAll()Ljava/util/List;126
+'
+ org.junit.jupiter.api.Assertions128
+G
+@org.junit.jupiter.api.Assertions#assertNull(Ljava/lang/Object;)V130
+F
+?pe.gob.onpe.wsonpe.userservice.UserServiceTests#testLoginBad()V132
+
+testLoginBad133
+/
+(pe.gob.onpe.wsonpe.dto.MensajeWsResponse135
+O
+Hpe.gob.onpe.wsonpe.dto.MensajeWsResponse#setCodigo(Ljava/lang/Integer;)V137
+O
+Hpe.gob.onpe.wsonpe.dto.MensajeWsResponse#setMessage(Ljava/lang/String;)V139
+P
+Ipe.gob.onpe.wsonpe.dto.MensajeWsResponse#setSuccess(Ljava/lang/Boolean;)V141J#
+!
+1
+12
+
+3
+4
+
+5
+6Z
+
+7
+7982
+
+
+5
+6jé
+
+71
+717219
+
+119
+11912019
+B
+49<
+495026 *
+11 1(210:7B
+
+
+13
+27
+
+
+15
+51
+
+129
+12913019
+
+17
+171819
+B
+44<
+444526 *
+1. .(210:7B
+
+
+13
+27
+
+
+15
+46
+
+74
+747519
+
+42
+424319
+
+91
+919219
+
+106
+10610719
+
+87
+878819
+>
+108
+101112 *
+1" "(:7B
+
+
+13
+14
+
+
+15
+16
+B
+34<
+343526 *
+1' '(210:7B
+
+
+13
+27
+
+
+15
+36
+
+47
+474819
+B
+79<
+798069 *
+1= =(210:7B
+
+
+13
+14
+
+
+15
+81
+
+104
+10410519
+F
+131?
+13113269 *
+1f f(210:7B
+
+
+13
+14
+
+15
+133
+
+111
+11111219
+
+29
+293019
+B
+67<
+676869 *
+18 8(210:7B
+
+
+13
+14
+
+
+15
+70
+
+98
+989919
+
+117
+11711819
+B
+61<
+616226 *
+15 5(	210:7B
+
+
+13
+27
+
+
+15
+63
+
+134
+13413519
+
+22
+222319
+
+76
+767719
+
+37
+373819
+
+115
+11511619
+
+59
+596019
+
+32
+323319
+
+121
+12112219
+
+89
+899019
+
+100
+10010119
+B
+39<
+394026 *
+1* *(210:7B
+
+
+13
+27
+
+
+15
+41
+B
+64<
+646526 *
+16 6(	210:7B
+
+
+13
+27
+
+
+15
+66
+
+138
+13813919
+
+125
+12512619
+B
+24<
+242526 *
+1$ $(210:7B
+
+
+13
+27
+
+
+15
+28
+
+54
+545519
+B
+84<
+848569 *
+1B B(210:7B
+
+
+13
+14
+
+
+15
+86
+
+140
+14014119
+
+108
+10810919
+
+102
+10210319
+B
+93<
+939469 *
+1I I(210:7B
+
+
+13
+14
+
+
+15
+95
+
+96
+969719
+B
+56<
+565726 *
+14 4(	210:7B
+
+
+13
+27
+
+
+15
+58
+
+113
+11311419
+
+82
+828319
+
+127
+12712819
+
+123
+12312419
+
+136
+13613719
+
+52
+525319r®!
+
+101720*
+1 (
+
+101721*
+1 (
+
+102220*
+1! !(
+
+102221*
+1! !(
+
+242931*
+1%
+ %(
+
+243220*
+1$ $(
+
+243221*
+1$ $(
+
+242921*
+1%
+ %(
+
+242921*
+1% %(7
+
+343731*
+1(
+ ((
+
+343220*
+1' '(
+
+343221*
+1' '(
+
+343721*
+1(
+ ((
+
+343721*
+1( ((2
+
+394231*
+1+
+ +(
+
+393220*
+1* *(
+
+393221*
+1* *(
+
+394221*
+1+
+ +(
+
+394221*
+1+  +(9
+
+444731*
+1/
+ /(
+
+443220*
+1. .(
+
+443221*
+1. .(
+
+444721*
+1/
+ /(
+
+444721*
+1/ /(7
+
+495231*
+12
+ 2(
+
+495420*
+11 1(
+
+495421*
+11 1(
+
+495221*
+12
+ 2(
+
+495221*
+12 2(!
+
+565931*
+14 4(
+
+565921*
+14 4(
+
+565921*
+14 4($
+
+677120*
+18 8(
+
+677121*
+18 8(
+
+676473*
+1: :(
+
+677473*
+1: :(!
+
+677678*
+1:" :(+
+
+677421*
+1: :(!
+
+671021*
+1:, :(0
+
+671073*
+1:, :(0
+
+798220*
+1= =(
+
+798221*
+1= =(
+
+796473*
+1? ?(
+
+796473*
+1? ?(
+
+848720*
+1B B(
+
+848721*
+1B B(
+
+845921*
+1D D(
+
+
+845673*
+1D D(
+
+
+845978*
+1D D(
+
+845973*
+1E E(
+
+
+848978*
+1E E(
+
+845673*
+1E E(
+
+
+845921*
+1E E(
+
+
+845673*
+1E E(
+
+
+845973*
+1F F(
+
+
+849178*
+1F F(
+
+845673*
+1F F(
+
+
+845921*
+1F F(
+
+
+845673*
+1F F(
+
+
+939620*
+1I I(
+
+939621*
+1I I(
+
+939820*
+1J J(
+
+939821*
+1J J(
+
+9310031*
+1R! R(8
+
+9310021*
+1R R( 
+
+9310078*
+1R? R(Z
+
+9310221*
+1V V(
+
+9310231*
+1W W(
+
+9310221*
+1W W(
+
+9310278*
+1W! W(,
+
+9310273*
+1X X(
+
+9310478*
+1X X(&
+
+9310273*
+1Y Y(
+
+9310678*
+1Y Y(
+
+93108110*
+1\ \(
+
+
+9310873*
+1\ \(
+
+
+9311178*
+1] ](
+
+93108110*
+1\ \(
+
+
+9311373*
+1\ \(
+
+
+9311578*
+1\ \(
+
+9311321*
+1\ \(
+
+
+932973*
+1\ \((
+
+9311778*
+1\) \(7
+
+932473*
+1\ \((
+
+932921*
+1\ \((
+
+932473*
+1\ \((
+
+9311973*
+1\8 \(?
+
+9312178*
+1\@ \(I
+
+9311321*
+1\8 \(?
+
+9311973*
+1\M \(T
+
+9312178*
+1\U \(^
+
+9311321*
+1\M \(T
+
+93108110*
+1_ _(
+
+
+9310873*
+1_ _(
+
+
+9311178*
+1` `(
+
+93108110*
+1_ _(
+
+
+9311373*
+1_ _(
+
+
+9311578*
+1_ _(
+
+9311321*
+1_ _(
+
+
+933773*
+1_ _($
+
+9312378*
+1_% _(2
+
+933473*
+1_ _($
+
+933721*
+1_ _($
+
+933473*
+1_ _($
+
+936173*
+1_3 _(9
+
+93108110*
+1b b(
+
+
+9310873*
+1b b(
+
+
+9311178*
+1b5 b(?
+
+93108110*
+1b b(
+
+
+9311373*
+1b b(
+
+
+9311578*
+1b b(
+
+9311321*
+1b b(
+
+
+934273*
+1b b()
+
+9312578*
+1b* b(1
+
+933973*
+1b b()
+
+934221*
+1b b()
+
+933973*
+1b b()
+
+9312773*
+1c c(
+
+9312978*
+1c c(
+
+9312721*
+1c c(
+
+1319620*
+1f f(
+
+1319621*
+1f f(
+
+1319820*
+1g g(
+
+1319821*
+1g g(
+
+13113431*
+1o o( 
+
+13113421*
+1o o(
+
+13113478*
+1o' o(8
+
+13113473*
+1p p(
+
+13113678*
+1p p(
+
+13113473*
+1q q(
+
+13113878*
+1q q(
+
+13113473*
+1r r(
+
+13114078*
+1r r(
+
+131108110*
+1t t(
+
+
+13110873*
+1t t(
+
+
+13111178*
+1u u(
+
+131108110*
+1t t(
+
+
+13111373*
+1t t(
+
+
+13111578*
+1t t(
+
+13111321*
+1t t(
+
+
+1312973*
+1t t((
+
+13111778*
+1t) t(7
+
+1312473*
+1t t((
+
+1312921*
+1t t((
+
+1312473*
+1t t((
+
+13111973*
+1t8 t(?
+
+13112178*
+1t@ t(I
+
+13111321*
+1t8 t(?
+
+13111973*
+1tM t(T
+
+13112178*
+1tU t(^
+
+13111321*
+1tM t(T
+
+13112773*
+1w w(
+
+13112978*
+1w w(
+
+13112721*
+1w w(

@@ -1,0 +1,201 @@
+
+1.0craniologo_transmisionJavaFrontend"1756337480198*java2.BÅ
+R
+Msrc/test/java/pe/gob/onpe/wsonpe/utils/exceptions/AlgorithmExceptionTest.java2
+	
+type3
+	
+TEST4
+
+
+module-key5
+
+craniologo_transmision6
+
+package8
+?
+:craniologo_transmision:pe.gob.onpe.wsonpe.utils.exceptions9
+@
+:pe.gob.onpe.wsonpe.utils.exceptions.AlgorithmExceptionTest11
+
+class12
+
+access13
+
+	protected14
+
+simple-name15
+
+AlgorithmExceptionTest16
+5
+/org.springframework.test.context.ActiveProfiles18
+
+unknown19
+
+annotated by20
+
+
+uses21
+
+lombok.extern.slf4j.Slf4j23
+f
+`pe.gob.onpe.wsonpe.utils.exceptions.AlgorithmExceptionTest#testConstructorWithMessageAndCause()V25
+
+method26
+(
+"testConstructorWithMessageAndCause27
+ 
+org.junit.jupiter.api.Test29
+<
+6pe.gob.onpe.wsonpe.utils.exceptions.AlgorithmException31
+
+is type32
+
+calls33
+&
+ org.junit.jupiter.api.Assertions35
+
+
+references36
+Z
+Torg.junit.jupiter.api.Assertions#assertEquals(Ljava/lang/Object;Ljava/lang/Object;)V38
+`
+Zpe.gob.onpe.wsonpe.utils.exceptions.AlgorithmExceptionTest#testConstructorWithCauseOnly()V40
+"
+testConstructorWithCauseOnly41J#
+!
+1
+12
+
+3
+4
+
+5
+6Z
+
+7
+7982
+
+
+5
+6jÀ
+
+28
+282919
+>
+108
+101112 *
+1 (:7B
+
+
+13
+14
+
+
+15
+16
+
+22
+222319
+
+30
+303119
+
+37
+373819
+B
+39<
+394026 *
+1 (210:7B
+
+
+13
+14
+
+
+15
+41
+
+34
+343519
+
+17
+171819
+B
+24<
+242526 *
+1 (210:7B
+
+
+13
+14
+
+
+15
+27rÒ
+
+101720*
+1	 	(
+
+101721*
+1	 	(
+
+102220*
+1 (
+
+102221*
+1 (
+
+242820*
+1 (
+
+242821*
+1 (
+
+243032*
+1 (!
+
+243021*
+1 (
+
+243033*
+1( (:
+
+243436*
+1 (
+
+243733*
+1 (
+
+243436*
+1 (
+
+243733*
+1 (
+
+392820*
+1 (
+
+392821*
+1 (
+
+393032*
+1# #(!
+
+393021*
+1# #(
+
+393033*
+1#( #(:
+
+393436*
+1& &(
+
+393733*
+1& &(
+
+393436*
+1' '(
+
+393733*
+1' '(

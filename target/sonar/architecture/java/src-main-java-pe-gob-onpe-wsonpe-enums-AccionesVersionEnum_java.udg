@@ -1,0 +1,203 @@
+
+1.0craniologo_transmisionJavaFrontend"1756337477116*java2.BÔ
+D
+?src/main/java/pe/gob/onpe/wsonpe/enums/AccionesVersionEnum.java2
+	
+type3
+	
+MAIN4
+
+
+module-key5
+
+craniologo_transmision6
+
+package8
+4
+/craniologo_transmision:pe.gob.onpe.wsonpe.enums9
+2
+,pe.gob.onpe.wsonpe.enums.AccionesVersionEnum11
+
+
+enum12
+
+access13
+
+public14
+
+simple-name15
+
+AccionesVersionEnum16
+j
+dpe.gob.onpe.wsonpe.enums.AccionesVersionEnum#values()[Lpe/gob/onpe/wsonpe/enums/AccionesVersionEnum;18
+
+method19
+
+values20
+|
+vpe.gob.onpe.wsonpe.enums.AccionesVersionEnum#valueOf(Ljava/lang/String;)Lpe/gob/onpe/wsonpe/enums/AccionesVersionEnum;22
+
+valueOf23
+
+lombok.Getter25
+
+unknown26
+
+annotated by27
+
+
+uses28
+B
+<pe.gob.onpe.wsonpe.enums.AccionesVersionEnum.OBTENER_VERSION30
+
+field31
+
+OBTENER_VERSION32
+
+calls33
+7
+1pe.gob.onpe.wsonpe.enums.AccionesVersionEnum.code35
+
+private36
+
+
+code37
+>
+8pe.gob.onpe.wsonpe.enums.AccionesVersionEnum.description39
+
+description40
+s
+mpe.gob.onpe.wsonpe.enums.AccionesVersionEnum#<init>(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)V42
+
+
+references43J#
+!
+1
+12
+
+3
+4
+
+5
+6Z
+
+7
+7982
+
+
+5
+6jÈ
+6
+290
+293031 *
+1 (210:7B
+
+
+15
+32
+>
+108
+101112 *
+1 ( :7B
+
+
+13
+14
+
+
+15
+16
+
+24
+242526
+B
+38<
+383931 *
+1 (
+210:7B
+
+
+13
+36
+
+
+15
+40
+6
+210
+212219 *
+1 ( 210:7B
+
+
+15
+23
+6
+170
+171819 *
+1 ( 210:7B
+
+
+15
+20
+B
+34<
+343531 *
+1
+ 
+(
+210:7B
+
+
+13
+36
+
+
+15
+37
+B
+41<
+414219 *
+1 (210:7B
+
+
+13
+36
+
+
+15
+16r©
+
+102427*
+1 (
+
+102428*
+1 (
+
+291033*
+1 (
+
+291033*
+1 (
+
+411033*
+1 (
+
+411028*
+1 (	
+
+411043*
+1 (	
+
+413443*
+1
+ (
+
+411028*
+1 (	
+
+411043*
+1 (	
+
+413843*
+1
+ (

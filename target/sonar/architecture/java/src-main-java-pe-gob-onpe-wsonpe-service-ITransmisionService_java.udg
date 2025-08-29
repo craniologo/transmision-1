@@ -1,0 +1,143 @@
+
+1.0craniologo_transmisionJavaFrontend"1756337473682*java2.Bó
+F
+Asrc/main/java/pe/gob/onpe/wsonpe/service/ITransmisionService.java2
+	
+type3
+	
+MAIN4
+
+
+module-key5
+
+craniologo_transmision6
+
+package8
+6
+1craniologo_transmision:pe.gob.onpe.wsonpe.service9
+4
+.pe.gob.onpe.wsonpe.service.ITransmisionService11
+
+	interface12
+
+access13
+
+public14
+
+simple-name15
+
+ITransmisionService16
+Y
+Spe.gob.onpe.wsonpe.service.ITransmisionService#getEncryptionKey()Ljava/lang/String;18
+
+method19
+
+getEncryptionKey20
+²
+«pe.gob.onpe.wsonpe.service.ITransmisionService#validateAndConfirmFile(Ljava/lang/String;IIIILjava/lang/String;Ljava/lang/String;)Lpe/gob/onpe/wsonpe/dto/MensajeWsResponse;22
+
+validateAndConfirmFile23
+.
+(pe.gob.onpe.wsonpe.dto.MensajeWsResponse25
+
+unknown26
+
+returns27
+
+
+uses28
+N
+Hpe.gob.onpe.wsonpe.service.ITransmisionService#setCertificatesFolders()V30
+
+setCertificatesFolders31
+Z
+Tpe.gob.onpe.wsonpe.service.ITransmisionService#moveCertificates(Ljava/lang/String;)V33
+
+moveCertificates34J#
+!
+1
+12
+
+3
+4
+
+5
+6Z
+
+7
+7982
+
+
+5
+6jä
+>
+108
+101112 *
+1 (%:7B
+
+
+13
+14
+
+
+15
+16
+
+24
+242526
+B
+29<
+293019 *
+1
+ 
+(210:7B
+
+
+13
+14
+
+
+15
+31
+B
+21<
+212219 *
+1 (210:7B
+
+
+13
+14
+
+
+15
+23
+B
+32<
+323319 *
+1 (210:7B
+
+
+13
+14
+
+
+15
+34
+B
+17<
+171819 *
+1 (	210:7B
+
+
+13
+14
+
+
+15
+20r6
+
+212427*
+1 (
+
+212428*
+1 (

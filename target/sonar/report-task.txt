@@ -1,0 +1,7 @@
+organization=craniologo
+projectKey=craniologo_transmision
+serverUrl=https://sonarcloud.io
+serverVersion=8.0.0.66598
+dashboardUrl=https://sonarcloud.io/dashboard?id=craniologo_transmision
+ceTaskId=AZjt339NcsvBv6qWveGy
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AZjt339NcsvBv6qWveGy
